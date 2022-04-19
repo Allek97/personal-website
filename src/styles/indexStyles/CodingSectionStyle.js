@@ -38,7 +38,7 @@ export const CodingContainer = styled.article`
       animation: ${fadeVertically} 0.5s ease-out 1 forwards;
     `};
 
-  max-width: 150rem;
+  max-width: 160rem;
   width: 95vw;
   margin: 0 auto;
   padding: 10rem 0 12rem;

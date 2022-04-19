@@ -136,7 +136,7 @@ export const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  max-width: 145rem;
+  max-width: 152rem;
   margin: 0 auto;
   padding: 1rem 2.5rem;
 

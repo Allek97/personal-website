@@ -12,7 +12,7 @@ export const ProjectSection = styled.section`
 `;
 
 export const ProjectContainer = styled.article`
-  max-width: 145rem;
+  max-width: 152rem;
   width: 92vw;
   margin: 0 auto;
   padding: 10rem 0;

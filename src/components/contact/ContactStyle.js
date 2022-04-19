@@ -9,7 +9,7 @@ export const ContactContainer = styled.article`
   justify-content: space-between;
   align-items: flex-start;
 
-  max-width: 145rem;
+  max-width: 152rem;
   width: 92vw;
   margin: 0 auto;
   padding: 10rem 0;

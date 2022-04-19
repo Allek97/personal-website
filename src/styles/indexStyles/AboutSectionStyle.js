@@ -25,7 +25,7 @@ export const AboutContainer = styled.article`
   justify-content: center;
   align-items: center;
 
-  max-width: 148rem;
+  max-width: 152rem;
   margin: 0 auto;
 
   color: white;

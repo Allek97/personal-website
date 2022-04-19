@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
-import { useStaticQuery, graphql } from "gatsby";
+
+import { useStaticQuery, graphql, Link } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import slugify from "slugify";
 import PropTypes from "prop-types";
@@ -75,22 +76,49 @@ const Projects = ({ ignoreProject }) => {
               animateProject={projectView}
             >
               <div>
-                <ProjectImage
-                  image={projectThumbnail}
-                  alt={`${project.title} thumbnail`}
-                />
+                <Link
+                  to={`/${slugify(project.title, { lower: true })}`}
+                  onClick={() => {
+                    setIsGlobe(false);
+                  }}
+                >
+                  <ProjectImage
+                    image={projectThumbnail}
+                    alt={`${project.title} thumbnail`}
+                  />
+                </Link>
               </div>
 
               <ProjectContent>
                 <div>
-                  <h2>{project.title}</h2>
+                  <h2>
+                    <Link
+                      to={`/${slugify(project.title, { lower: true })}`}
+                      onClick={() => {
+                        setIsGlobe(false);
+                      }}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      {project.title}
+                    </Link>
+                  </h2>
                   <div>
                     {projectTags.map((tag) => {
                       return <span key={tag}>{tag}</span>;
                     })}
                   </div>
                 </div>
-                <p>{projectDescription}</p>
+                <p>
+                  <Link
+                    to={`/${slugify(project.title, { lower: true })}`}
+                    onClick={() => {
+                      setIsGlobe(false);
+                    }}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    {projectDescription}
+                  </Link>
+                </p>
                 <div>
                   <div className="projects-stacks">
                     {projectStacks.map((stack) => {
@@ -126,7 +154,7 @@ const Projects = ({ ignoreProject }) => {
                         setIsGlobe(false);
                       }}
                     >
-                      Blog
+                      Learn More &#8594;
                     </ProjectMore>
                   </div>
                 </div>

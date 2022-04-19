@@ -42,8 +42,8 @@ export const HeroArticle = styled.article`
   justify-content: space-between;
   align-items: center;
 
-  min-height: 74rem;
-  max-width: 145rem;
+  min-height: 76rem;
+  max-width: 155rem;
   margin: 0 auto;
   padding-top: 5rem;
   padding-left: 2.5rem;
