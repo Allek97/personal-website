@@ -71,6 +71,8 @@ export const DeviceContainer = styled.article`
 
   padding-top: 8rem;
 
+  width: 100%;
+
   @media only screen and (max-width: 56.25em) {
     flex-direction: column;
   }
