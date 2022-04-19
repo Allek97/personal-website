@@ -14,7 +14,7 @@ import Contact from "../components/contact/Contact";
 import ContactDetails from "../components/ContactDetails";
 import Seo from "../components/Seo";
 
-// import CodeGitVideo from "../assets/videos/codingGit.mp4";
+import CodeGitVideo from "../assets/videos/codingGit.mp4";
 
 import {
   Header,
@@ -32,9 +32,9 @@ import {
   CodingSection,
   CodingBtn,
   CodingContainer,
-  //   DeviceContainer,
-  //   PhoneImage,
-  //   DashSvg,
+  DeviceContainer,
+  PhoneImage,
+  DashSvg,
 } from "../styles/indexStyles/CodingSectionStyle";
 
 import {
@@ -116,7 +116,7 @@ export default function Index() {
   const data = useStaticQuery(query);
 
   const {
-    // phoneMockupData,
+    phoneMockupData,
     rocketData,
     beyondData,
     myGlobeData,
@@ -124,14 +124,14 @@ export default function Index() {
     // profilePictureData,
   } = data;
 
-  //   const { gatsbyImageData: phoneMockupImageData } = phoneMockupData;
+  const { gatsbyImageData: phoneMockupImageData } = phoneMockupData;
   const { gatsbyImageData: rocketImageData } = rocketData;
   const { gatsbyImageData: beyondImageData } = beyondData;
   const { gatsbyImageData: myGlobeImageData } = myGlobeData;
   const { gatsbyImageData: beyondGlobeImageData } = beyondPlanetData;
   //   const { gatsbyImageData: profilePictureImageData } = profilePictureData;
 
-  //   const phoneMockupImage = getImage(phoneMockupImageData);
+  const phoneMockupImage = getImage(phoneMockupImageData);
   const rocketImage = getImage(rocketImageData);
   const beyondImage = getImage(beyondImageData);
   const myGlobeImage = getImage(myGlobeImageData);
@@ -155,8 +155,8 @@ export default function Index() {
 
   // Code Section
   const codeContainerRef = useRef();
-  //   const codePhoneRef = useRef();
-  //   const codeDashRef = useRef();
+  const codePhoneRef = useRef();
+  const codeDashRef = useRef();
 
   const codeContainerView = onScreenIntersection(
     codeContainerRef,
@@ -164,8 +164,8 @@ export default function Index() {
     true,
     1
   );
-  //   const codePhoneView = onScreenIntersection(codePhoneRef, -100, false, 1);
-  //   const codeDashView = onScreenIntersection(codeDashRef, -100, false, 1);
+  const codePhoneView = onScreenIntersection(codePhoneRef, -100, false, 1);
+  const codeDashView = onScreenIntersection(codeDashRef, -100, false, 1);
 
   // About Section
   const aboutTextRef = useRef();
@@ -205,7 +205,7 @@ export default function Index() {
                     initial={{ y: "100%", opacity: 0 }}
                     animate={{ y: "0%", opacity: 1 }}
                     transition={{
-                      ease: "easeOut",
+                      duration: 0.6,
                     }}
                   >
                     Hello, I'm Ilias. An aspiring software developer.
@@ -270,7 +270,7 @@ export default function Index() {
                 <CodingBtn to="about" spy smooth offset={-70} duration={500}>
                   About me
                 </CodingBtn>
-                {/* <DeviceContainer
+                <DeviceContainer
                   animatePhone={codePhoneView}
                   animateDash={codeDashView}
                 >
@@ -287,7 +287,7 @@ export default function Index() {
                   <div ref={codeDashRef}>
                     <DashSvg />
                   </div>
-                </DeviceContainer> */}
+                </DeviceContainer>
               </CodingContainer>
             </CodingSection>
 
