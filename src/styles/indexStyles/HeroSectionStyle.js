@@ -14,13 +14,6 @@ const updown = keyframes`
     }
 `;
 
-const fadeVertically = keyframes`
-to {
-    opacity: 1;
-    transform: translateX(0);
-}
-`;
-
 export const Header = styled.header`
   position: relative;
 
@@ -70,12 +63,6 @@ export const HeroArticle = styled.article`
     }
 
     h1 {
-      transition: all 1s;
-      /* opacity: 0;
-      transform: translateY(150%);
-
-      animation: ${fadeVertically} 0.7s ease-out 0.1s 1 forwards; */
-
       margin-top: 2rem;
       margin-bottom: 1rem;
 
@@ -95,12 +82,6 @@ export const HeroArticle = styled.article`
     }
 
     h3 {
-      transition: all 1s;
-      opacity: 0;
-      transform: translateY(50%);
-
-      animation: ${fadeVertically} 0.7s ease-out 0.4s 1 forwards;
-
       font-size: 2.4rem;
       font-family: ManropeLight;
       font-weight: 400;
