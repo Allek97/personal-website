@@ -205,8 +205,7 @@ export default function Index() {
                     initial={{ y: "100%", opacity: 0 }}
                     animate={{ y: "0%", opacity: 1 }}
                     transition={{
-                      duration: 0.7,
-                      ease: "easeOut",
+                      duration: 0.5,
                     }}
                   >
                     Hello, I'm Ilias. An aspiring software developer.
