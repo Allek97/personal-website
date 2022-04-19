@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-// import loadable from "@loadable/component";
+import loadable from "@loadable/component";
 
 import { useStaticQuery, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import { Element } from "react-scroll";
 
-// import Loading from "../components/loading/Loading";
+import Loading from "../components/loading/Loading";
 import NavBar from "../components/navBar/NavBar";
 import Projects from "../components/projects/Projects";
 import Contact from "../components/contact/Contact";
@@ -56,12 +56,12 @@ import basics from "../constants/basics";
 
 import onScreenIntersection from "../utils/onScreenIntersection";
 
-// import { useLoading } from "../context/LoadingContext";
+import { useLoading } from "../context/LoadingContext";
 import { useGlobe, useGlobeUpdate } from "../context/GlobeContext";
 
 import { scrollFunction } from "../utils/indexScrollEffect";
 
-// const HomeGlobe = loadable(() => import("../components/HomeGlobe"));
+const HomeGlobe = loadable(() => import("../components/HomeGlobe"));
 
 // import { HomeGlobe } from "../components/HomeGlobe";
 
@@ -141,9 +141,9 @@ export default function Index() {
   // Gatsby Link component retaining scroll position and not resetting to top
   useEffect(() => window.scrollTo(0, 0), []);
 
-  //   const loadTime = 20000;
-  //   const isLoaded = useLoading();
-  const isLoaded = true;
+  const loadTime = 20000;
+  const isLoaded = useLoading();
+  //   const isLoaded = true;
   scrollFunction(isLoaded);
 
   const isGlobe = useGlobe();
@@ -190,8 +190,8 @@ export default function Index() {
   return (
     <>
       <Seo title="Home" />
-      {/* {isGlobe && <HomeGlobe />} */}
-      {/* {!isLoaded && <Loading timeLoad={loadTime} />} */}
+      {isGlobe && <HomeGlobe />}
+      {!isLoaded && <Loading timeLoad={loadTime} />}
       <ContactDetails />
 
       <div>
