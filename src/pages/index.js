@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import loadable from "@loadable/component";
 
 import { useStaticQuery, graphql } from "gatsby";
@@ -200,7 +201,13 @@ export default function Index() {
             <HeroArticle>
               {isLoaded && (
                 <div>
-                  <h1>Hello, I'm Ilias. An aspiring software developer.</h1>
+                  <motion.h1
+                    initial={{ y: "150%", opacity: 0 }}
+                    animate={{ y: "0%", opacity: 1 }}
+                    transition={{ duration: 0.1 }}
+                  >
+                    Hello, I'm Ilias. An aspiring software developer.
+                  </motion.h1>
                   <h3>
                     I'm just a guy that enjoys programming daily and building
                     cool stuff — Front-end design and solving problems are my

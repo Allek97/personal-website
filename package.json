@@ -29,6 +29,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
+    "framer-motion": "^6.3.0",
     "gatsby": "^3.11.1",
     "gatsby-plugin-image": "^1.12.0",
     "gatsby-plugin-react-helmet": "^4.13.0",

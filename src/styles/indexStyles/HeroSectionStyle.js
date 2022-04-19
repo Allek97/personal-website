@@ -71,10 +71,10 @@ export const HeroArticle = styled.article`
 
     h1 {
       transition: all 1s;
-      opacity: 0;
+      /* opacity: 0;
       transform: translateY(150%);
 
-      animation: ${fadeVertically} 0.7s ease-out 0.1s 1 forwards;
+      animation: ${fadeVertically} 0.7s ease-out 0.1s 1 forwards; */
 
       margin-top: 2rem;
       margin-bottom: 1rem;
