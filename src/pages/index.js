@@ -288,11 +288,11 @@ export default function Index() {
                   animateStacks={aboutStacksView}
                 >
                   <div ref={aboutTextRef}>
-                    <ProfileImage
+                    {/* <ProfileImage
                       image={profilePictureImage}
                       alt="my profile picture"
                       animateprofile={aboutTextView ? 1 : 0}
-                    />
+                    /> */}
                     <h1>Ilias Allek</h1>
                     <h3>Aspiring Software Developer</h3>
                     <p>

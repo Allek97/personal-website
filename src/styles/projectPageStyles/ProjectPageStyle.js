@@ -11,7 +11,7 @@ export const ProjectPage = styled.div`
 export const ProjectPageContent = styled.div`
   display: block;
 
-  max-width: 140rem;
+  max-width: 152rem;
   width: 95vw;
   margin: 0 auto;
 
