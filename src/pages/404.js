@@ -1,4 +1,5 @@
 import React from "react";
+import { StaticImage } from "gatsby-plugin-image";
 
 import Seo from "../components/Seo";
 import NavBar from "../components/navBar/NavBar";
@@ -13,7 +14,14 @@ const errorPage = () => {
       <main>
         <Container>
           <article>
-            <Space404 />
+            <Space404>
+              <StaticImage
+                src="../assets/imgs/space.png"
+                alt="astronaut"
+                placeholder="blurred"
+              />
+            </Space404>
+
             <h1>404</h1>
             <h3>Page Not Found</h3>
             <HomeBtn to="/">Back Home</HomeBtn>

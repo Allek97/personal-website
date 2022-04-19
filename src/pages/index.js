@@ -1,20 +1,20 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import loadable from "@loadable/component";
+// import loadable from "@loadable/component";
 
 import { useStaticQuery, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import { Element } from "react-scroll";
 
-import Loading from "../components/loading/Loading";
+// import Loading from "../components/loading/Loading";
 import NavBar from "../components/navBar/NavBar";
 import Projects from "../components/projects/Projects";
 import Contact from "../components/contact/Contact";
 import ContactDetails from "../components/ContactDetails";
 import Seo from "../components/Seo";
 
-import CodeGitVideo from "../assets/videos/codingGit.mp4";
+// import CodeGitVideo from "../assets/videos/codingGit.mp4";
 
 import {
   Header,
@@ -32,16 +32,16 @@ import {
   CodingSection,
   CodingBtn,
   CodingContainer,
-  DeviceContainer,
-  PhoneImage,
-  DashSvg,
+  //   DeviceContainer,
+  //   PhoneImage,
+  //   DashSvg,
 } from "../styles/indexStyles/CodingSectionStyle";
 
 import {
   AboutSection,
   AboutContainer,
   SkillBox,
-  ProfileImage,
+  //   ProfileImage,
 } from "../styles/indexStyles/AboutSectionStyle";
 
 import {
@@ -56,12 +56,12 @@ import basics from "../constants/basics";
 
 import onScreenIntersection from "../utils/onScreenIntersection";
 
-import { useLoading } from "../context/LoadingContext";
+// import { useLoading } from "../context/LoadingContext";
 import { useGlobe, useGlobeUpdate } from "../context/GlobeContext";
 
 import { scrollFunction } from "../utils/indexScrollEffect";
 
-const HomeGlobe = loadable(() => import("../components/HomeGlobe"));
+// const HomeGlobe = loadable(() => import("../components/HomeGlobe"));
 
 // import { HomeGlobe } from "../components/HomeGlobe";
 
@@ -116,32 +116,32 @@ export default function Index() {
   const data = useStaticQuery(query);
 
   const {
-    phoneMockupData,
+    // phoneMockupData,
     rocketData,
     beyondData,
     myGlobeData,
     beyondPlanetData,
-    profilePictureData,
+    // profilePictureData,
   } = data;
 
-  const { gatsbyImageData: phoneMockupImageData } = phoneMockupData;
+  //   const { gatsbyImageData: phoneMockupImageData } = phoneMockupData;
   const { gatsbyImageData: rocketImageData } = rocketData;
   const { gatsbyImageData: beyondImageData } = beyondData;
   const { gatsbyImageData: myGlobeImageData } = myGlobeData;
   const { gatsbyImageData: beyondGlobeImageData } = beyondPlanetData;
-  const { gatsbyImageData: profilePictureImageData } = profilePictureData;
+  //   const { gatsbyImageData: profilePictureImageData } = profilePictureData;
 
-  const phoneMockupImage = getImage(phoneMockupImageData);
+  //   const phoneMockupImage = getImage(phoneMockupImageData);
   const rocketImage = getImage(rocketImageData);
   const beyondImage = getImage(beyondImageData);
   const myGlobeImage = getImage(myGlobeImageData);
   const beyondGlobeImage = getImage(beyondGlobeImageData);
-  const profilePictureImage = getImage(profilePictureImageData);
+  //   const profilePictureImage = getImage(profilePictureImageData);
 
   // Gatsby Link component retaining scroll position and not resetting to top
   useEffect(() => window.scrollTo(0, 0), []);
 
-  const loadTime = 20000;
+  //   const loadTime = 20000;
   //   const isLoaded = useLoading();
   const isLoaded = true;
   scrollFunction(isLoaded);
@@ -155,8 +155,8 @@ export default function Index() {
 
   // Code Section
   const codeContainerRef = useRef();
-  const codePhoneRef = useRef();
-  const codeDashRef = useRef();
+  //   const codePhoneRef = useRef();
+  //   const codeDashRef = useRef();
 
   const codeContainerView = onScreenIntersection(
     codeContainerRef,
@@ -164,8 +164,8 @@ export default function Index() {
     true,
     1
   );
-  const codePhoneView = onScreenIntersection(codePhoneRef, -100, false, 1);
-  const codeDashView = onScreenIntersection(codeDashRef, -100, false, 1);
+  //   const codePhoneView = onScreenIntersection(codePhoneRef, -100, false, 1);
+  //   const codeDashView = onScreenIntersection(codeDashRef, -100, false, 1);
 
   // About Section
   const aboutTextRef = useRef();

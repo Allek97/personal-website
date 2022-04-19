@@ -54,5 +54,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-webpack-bundle-analyser-v2",
   ],
 };

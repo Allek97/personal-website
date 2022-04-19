@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import ThreeGlobe from "three-globe";
 
@@ -10,9 +10,9 @@ import {
   DirectionalLight,
   Color,
   Fog,
-  AxesHelper,
-  DirectionalLightHelper,
-  CameraHelper,
+  //   AxesHelper,
+  //   DirectionalLightHelper,
+  //   CameraHelper,
   PointLight,
   SphereGeometry,
 } from "three";
@@ -26,7 +26,7 @@ import airportHistory from "../data/globe-cities";
 import { useGlobe } from "../context/GlobeContext";
 import { useLoadingUpdate } from "../context/LoadingContext";
 
-const windowGlobal = typeof window !== "undefined" && window;
+// const windowGlobal = typeof window !== "undefined" && window;
 
 let renderer;
 let camera;

@@ -57,6 +57,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.27",
     "prettier": "^2.3.2"
   },
   "repository": {

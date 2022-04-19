@@ -1,18 +1,10 @@
 import { Link } from "gatsby";
 import styled, { keyframes } from "styled-components";
-import SpaceSvg from "../../assets/svgs/space.svg";
 
 const fadeVertically = keyframes`
     100% {
         opacity: 1;
         transform: translateY(0);
-    }
-`;
-
-const fadeVerticallySvg = keyframes`
-    100% {
-        opacity: 1;
-        transform: translateX(-50%);
     }
 `;
 
@@ -87,20 +79,20 @@ export const Container = styled.div`
   }
 `;
 
-export const Space404 = styled(SpaceSvg)`
-  position: absolute;
-  top: 0;
-  left: 50%;
-  z-index: 10;
+export const Space404 = styled.div`
+  & > div:first-of-type {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 10;
 
-  transition: all 0.3s ease-in 0s;
-  opacity: 0;
-  transform: translateX(-150%);
+    transition: all 0.3s ease-in 0s;
+    opacity: 1;
+    transform: translateX(-50%);
 
-  animation: ${fadeVerticallySvg} 0.5s ease-in 1 0.1s forwards;
-
-  max-width: 40rem;
-  width: 90vw;
+    max-width: 40rem;
+    width: 90vw;
+  }
 `;
 
 export const HomeBtn = styled(Link)`
