@@ -141,7 +141,8 @@ export default function Index() {
   useEffect(() => window.scrollTo(0, 0), []);
 
   const loadTime = 20000;
-  const isLoaded = useLoading();
+  //   const isLoaded = useLoading();
+  const isLoaded = true;
   scrollFunction(isLoaded);
 
   const isGlobe = useGlobe();
@@ -188,8 +189,8 @@ export default function Index() {
   return (
     <>
       <Seo title="Home" />
-      {isGlobe && <HomeGlobe />}
-      {!isLoaded && <Loading timeLoad={loadTime} />}
+      {/* {isGlobe && <HomeGlobe />} */}
+      {/* {!isLoaded && <Loading timeLoad={loadTime} />} */}
       <ContactDetails />
 
       <div>
