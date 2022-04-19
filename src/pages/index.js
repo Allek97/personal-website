@@ -274,9 +274,9 @@ export default function Index() {
                       />
                     </video>
                   </div>
-                  <div ref={codeDashRef}>
+                  {/* <div ref={codeDashRef}>
                     <DashSvg />
-                  </div>
+                  </div> */}
                 </DeviceContainer>
               </CodingContainer>
             </CodingSection>
