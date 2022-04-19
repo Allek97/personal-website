@@ -260,7 +260,7 @@ export default function Index() {
                 <CodingBtn to="about" spy smooth offset={-70} duration={500}>
                   About me
                 </CodingBtn>
-                <DeviceContainer
+                {/* <DeviceContainer
                   animatePhone={codePhoneView}
                   animateDash={codeDashView}
                 >
@@ -274,10 +274,10 @@ export default function Index() {
                       />
                     </video>
                   </div>
-                  {/* <div ref={codeDashRef}>
+                  <div ref={codeDashRef}>
                     <DashSvg />
-                  </div> */}
-                </DeviceContainer>
+                  </div>
+                </DeviceContainer> */}
               </CodingContainer>
             </CodingSection>
 

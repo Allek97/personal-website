@@ -251,6 +251,8 @@ export const ProjectMore = styled(Link)`
   line-height: 2.2rem;
   text-decoration: none;
 
+  white-space: nowrap;
+
   cursor: pointer;
 
   &:hover {
