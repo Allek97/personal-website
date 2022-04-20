@@ -34,7 +34,7 @@ import {
   CodingContainer,
   DeviceContainer,
   PhoneImage,
-  DashSvg,
+  DashImage,
 } from "../styles/indexStyles/CodingSectionStyle";
 
 import {
@@ -109,6 +109,14 @@ const query = graphql`
       }
       gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
     }
+    dashboardData: contentfulAsset(
+      file: { fileName: { eq: "Dashboard.png" } }
+    ) {
+      file {
+        fileName
+      }
+      gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
+    }
   }
 `;
 
@@ -121,6 +129,7 @@ export default function Index() {
     beyondData,
     myGlobeData,
     beyondPlanetData,
+    dashboardData,
     // profilePictureData,
   } = data;
 
@@ -129,6 +138,7 @@ export default function Index() {
   const { gatsbyImageData: beyondImageData } = beyondData;
   const { gatsbyImageData: myGlobeImageData } = myGlobeData;
   const { gatsbyImageData: beyondGlobeImageData } = beyondPlanetData;
+  const { gatsbyImageData: dashboardImageData } = dashboardData;
   //   const { gatsbyImageData: profilePictureImageData } = profilePictureData;
 
   const phoneMockupImage = getImage(phoneMockupImageData);
@@ -136,6 +146,7 @@ export default function Index() {
   const beyondImage = getImage(beyondImageData);
   const myGlobeImage = getImage(myGlobeImageData);
   const beyondGlobeImage = getImage(beyondGlobeImageData);
+  const dashboardImage = getImage(dashboardImageData);
   //   const profilePictureImage = getImage(profilePictureImageData);
 
   // Gatsby Link component retaining scroll position and not resetting to top
@@ -284,7 +295,9 @@ export default function Index() {
                       />
                     </video>
                   </div>
-                  <div ref={codeDashRef}>{/* <DashSvg /> */}</div>
+                  <div ref={codeDashRef}>
+                    <DashImage image={dashboardImage} alt="dashboard" />
+                  </div>
                 </DeviceContainer>
               </CodingContainer>
             </CodingSection>

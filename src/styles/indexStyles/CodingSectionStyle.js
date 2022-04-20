@@ -2,8 +2,6 @@ import styled, { css, keyframes } from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link as ScrollLink } from "react-scroll";
 
-import DashboardSvg from "../../assets/svgs/dashboard-animated.svg";
-
 const fadeVertically = keyframes`
 to {
     opacity: 1;
@@ -133,9 +131,13 @@ export const PhoneImage = styled(GatsbyImage)`
   width: 100%;
 `;
 
-export const DashSvg = styled(DashboardSvg)`
-  width: 100%;
-  height: 100%;
+export const DashImage = styled(GatsbyImage)`
+  width: 100% !important;
+  height: 100% !important;
+  & > div:first-of-type {
+    width: 100% !important;
+    height: 100% !important;
+  }
 `;
 
 export const CodingBtn = styled(ScrollLink)`
