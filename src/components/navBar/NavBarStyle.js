@@ -1,15 +1,8 @@
 /* eslint-disable no-nested-ternary */
-import styled, { css, keyframes } from "styled-components";
+import styled, { css } from "styled-components";
 
 import { GrClose } from "react-icons/gr";
-
-const fadeVertically = keyframes`
-to {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-`;
+import { motion } from "framer-motion";
 
 export const MenuBox = styled.div`
   position: relative;
@@ -95,18 +88,14 @@ export const MenuBox = styled.div`
   }
 `;
 
-export const NavContainer = styled.div`
+export const NavContainer = styled(motion.div)`
   position: fixed;
   z-index: 40;
 
   transition: all 0.3s ease-in 0s;
-  opacity: 0;
-  transform: translateY(-150%);
 
   width: 100%;
   height: max-content;
-
-  animation: ${fadeVertically} 0.7s ease-out 0.1s 1 forwards;
 
   ${(props) =>
     props.isOpen

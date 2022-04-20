@@ -39,7 +39,16 @@ const NavBar = ({ navColor }) => {
   return (
     <>
       <MenuList isOpen={isOpen} setIsOpen={setIsOpen} />
-      <NavContainer isScrolled={isScrolled} isOpen={isOpen}>
+      <NavContainer
+        initial={{ y: "-150%", opacity: 0 }}
+        animate={{ y: "0%", opacity: 1 }}
+        transition={{
+          duration: 0.5,
+          ease: "easeIn",
+        }}
+        isScrolled={isScrolled}
+        isOpen={isOpen}
+      >
         <Nav isOpen={isOpen} navColor={navColor} isScrolled={isScrolled}>
           <div
             onClick={toggleHome}

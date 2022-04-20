@@ -153,8 +153,8 @@ export default function Index() {
   useEffect(() => window.scrollTo(0, 0), []);
 
   const loadTime = 20000;
-  const isLoaded = useLoading();
-  //   const isLoaded = true;
+  //   const isLoaded = useLoading();
+  const isLoaded = true;
   scrollFunction(isLoaded);
 
   const isGlobe = useGlobe();
@@ -201,8 +201,8 @@ export default function Index() {
   return (
     <>
       <Seo title="Home" />
-      {isGlobe && <HomeGlobe />}
-      {!isLoaded && <Loading timeLoad={loadTime} />}
+      {/* {isGlobe && <HomeGlobe />}
+      {!isLoaded && <Loading timeLoad={loadTime} />} */}
       <ContactDetails />
 
       <div>
@@ -213,19 +213,27 @@ export default function Index() {
               {isLoaded && (
                 <div>
                   <motion.h1
-                    initial={{ y: "100%", opacity: 0 }}
+                    initial={{ y: "150%", opacity: 0 }}
                     animate={{ y: "0%", opacity: 1 }}
                     transition={{
-                      duration: 0.6,
+                      duration: 0.75,
+                      delay: 0.1,
                     }}
                   >
                     Hello, I'm Ilias. An aspiring software developer.
                   </motion.h1>
-                  <h3>
+                  <motion.h3
+                    initial={{ y: "100%", opacity: 0 }}
+                    animate={{ y: "0%", opacity: 1 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.3,
+                    }}
+                  >
                     I'm just a guy that enjoys programming daily and building
                     cool stuff — Front-end design and solving problems are my
                     favourite part. My goal is to always stand out.
-                  </h3>
+                  </motion.h3>
                   <div>
                     <HeroBtn>
                       {isGlobe ? (
