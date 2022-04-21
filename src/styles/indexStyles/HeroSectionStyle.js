@@ -123,7 +123,12 @@ export const GlobeCanvas = styled.canvas`
 
   @media only screen and (max-width: 65.5em) {
     width: 165rem !important;
-    margin-bottom: -45rem;
+    margin-bottom: -42rem;
+  }
+
+  @media only screen and (max-width: 34.5em) {
+    width: 135rem !important;
+    margin-bottom: -35rem;
   }
 `;
 
