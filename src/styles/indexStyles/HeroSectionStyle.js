@@ -118,7 +118,7 @@ export const GlobeContainer = styled.div`
 export const GlobeCanvas = styled.canvas`
   display: block;
 
-  width: 135rem !important;
+  width: 145rem !important;
   height: auto !important;
 
   @media only screen and (max-width: 65.5em) {
