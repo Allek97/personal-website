@@ -35,7 +35,8 @@ export const HeroArticle = styled.article`
   justify-content: space-between;
   align-items: center;
 
-  min-height: 76rem;
+  min-height: 70vh;
+  height: 70vh;
   max-width: 165rem;
   margin: 0 auto;
   padding-top: 5rem;
@@ -53,6 +54,8 @@ export const HeroArticle = styled.article`
     padding: 14rem 8.5rem 0;
 
     box-sizing: border-box;
+
+    height: auto;
   }
 
   @media only screen and (max-width: 37.5em) {
@@ -109,14 +112,19 @@ export const GlobeContainer = styled.div`
   display: flex;
   justify-content: center;
 
-  width: 65rem !important;
+  width: 70rem !important;
 `;
 
 export const GlobeCanvas = styled.canvas`
   display: block;
 
-  width: 130rem !important;
+  width: 135rem !important;
   height: auto !important;
+
+  @media only screen and (max-width: 65.5em) {
+    width: 165rem !important;
+    margin-bottom: -45rem;
+  }
 `;
 
 export const ExtraPlanetImage = styled(GatsbyImage)`
