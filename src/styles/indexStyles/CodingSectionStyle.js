@@ -36,10 +36,26 @@ export const CodingContainer = styled.article`
       animation: ${fadeVertically} 0.5s ease-out 1 forwards;
     `};
 
-  max-width: 160rem;
+  max-width: 169rem;
   width: 95vw;
   margin: 0 auto;
   padding: 10rem 0 12rem;
+
+  @media only screen and (max-width: 93.75em) {
+    width: calc(100vw - 8rem);
+  }
+
+  @media only screen and (max-width: 65.5em) {
+    width: calc(100vw - 12rem);
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    width: calc(100vw - 9rem);
+  }
+
+  @media only screen and (max-width: 28em) {
+    width: calc(100vw - 5rem);
+  }
 
   h1 {
     margin-bottom: 2rem;
@@ -59,6 +75,10 @@ export const CodingContainer = styled.article`
     text-transform: uppercase;
     line-height: 8.5rem;
     letter-spacing: -0.03em;
+
+    @media only screen and (max-width: 65.5em) {
+      width: 95%;
+    }
   }
 `;
 

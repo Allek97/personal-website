@@ -12,10 +12,26 @@ export const ProjectSection = styled.section`
 `;
 
 export const ProjectContainer = styled.article`
-  max-width: 152rem;
+  max-width: 162rem;
   width: 92vw;
   margin: 0 auto;
   padding: 10rem 0;
+
+  @media only screen and (max-width: 93.75em) {
+    width: calc(100vw - 15rem);
+  }
+
+  @media only screen and (max-width: 65.5em) {
+    width: calc(100vw - 17rem);
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    width: calc(100vw - 9rem);
+  }
+
+  @media only screen and (max-width: 28em) {
+    width: calc(100vw - 5rem);
+  }
 
   h1 {
     opacity: 0;

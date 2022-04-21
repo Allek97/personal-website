@@ -25,10 +25,26 @@ export const AboutContainer = styled.article`
   justify-content: center;
   align-items: center;
 
-  max-width: 152rem;
+  max-width: 162rem;
   margin: 0 auto;
 
   color: white;
+
+  @media only screen and (max-width: 93.75em) {
+    width: calc(100vw - 15rem);
+  }
+
+  @media only screen and (max-width: 65.5em) {
+    max-width: 92vw;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    width: calc(100vw - 9rem);
+  }
+
+  @media only screen and (max-width: 28em) {
+    width: calc(100vw - 5rem);
+  }
 
   & > div:first-of-type {
     display: flex;
@@ -39,7 +55,7 @@ export const AboutContainer = styled.article`
     margin-bottom: 2rem;
 
     @media only screen and (max-width: 47.5em) {
-      width: 92vw;
+      width: 100%;
     }
 
     h1,

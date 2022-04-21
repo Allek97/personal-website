@@ -156,8 +156,6 @@ export default function Index() {
   const beyondImage = getImage(beyondImageData);
   const myGlobeImage = getImage(myGlobeImageData);
   const beyondGlobeImage = getImage(beyondGlobeImageData);
-  const dashboardImage = getImage(dashboardImageData);
-  const dashboardMobileImage = getImage(dashboardMobileImageData);
   //   const profilePictureImage = getImage(profilePictureImageData);
 
   const dashImages = withArtDirection(getImage(dashboardImageData), [
@@ -219,8 +217,8 @@ export default function Index() {
   return (
     <>
       <Seo title="Home" />
-      {/* {isGlobe && <HomeGlobe />}
-      {!isLoaded && <Loading timeLoad={loadTime} />} */}
+      {isGlobe && <HomeGlobe />}
+      {!isLoaded && <Loading timeLoad={loadTime} />}
       <ContactDetails />
 
       <div>

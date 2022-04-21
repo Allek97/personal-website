@@ -9,10 +9,18 @@ export const ContactContainer = styled.article`
   justify-content: space-between;
   align-items: flex-start;
 
-  max-width: 152rem;
+  max-width: 162rem;
   width: 92vw;
   margin: 0 auto;
   padding: 10rem 0;
+
+  @media only screen and (max-width: 93.75em) {
+    width: calc(100vw - 15rem);
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    width: calc(100vw - 9rem);
+  }
 
   @media only screen and (max-width: 59.5em) {
     flex-direction: column;
@@ -95,13 +103,26 @@ export const ContactContainer = styled.article`
 
     width: 72.5rem;
 
+    @media only screen and (max-width: 93.75em) {
+      width: calc(100vw - 15rem);
+    }
+
+    @media only screen and (max-width: 65.5em) {
+      width: calc(100vw - 17rem);
+    }
+
     @media only screen and (max-width: 59.5em) {
-      max-width: 72.5rem;
-      width: 92vw;
       /* width: 72.5rem; */
       h1 {
         text-align: center;
       }
+    }
+    @media only screen and (max-width: 37.5em) {
+      width: calc(100vw - 9rem);
+    }
+
+    @media only screen and (max-width: 28em) {
+      width: calc(100vw - 5rem);
     }
 
     h1 {

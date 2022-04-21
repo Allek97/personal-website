@@ -36,10 +36,11 @@ export const HeroArticle = styled.article`
   align-items: center;
 
   min-height: 76rem;
-  max-width: 155rem;
+  max-width: 165rem;
   margin: 0 auto;
   padding-top: 5rem;
-  padding-left: 2.5rem;
+  padding-left: 7.5rem;
+  /* padding-right: 7.5rem; */
   padding-bottom: 12rem;
   box-sizing: content-box;
 
@@ -49,9 +50,17 @@ export const HeroArticle = styled.article`
     display: flex;
     flex-direction: column;
 
-    padding: 14rem 2.5rem 0;
+    padding: 14rem 8.5rem 0;
 
     box-sizing: border-box;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    padding: 14rem 4.5rem 0;
+  }
+
+  @media only screen and (max-width: 28em) {
+    padding: 14rem 2.5rem 0;
   }
 
   & > div:first-of-type {

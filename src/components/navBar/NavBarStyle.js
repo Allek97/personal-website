@@ -125,11 +125,23 @@ export const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  max-width: 152rem;
+  max-width: 162rem;
   margin: 0 auto;
-  padding: 1rem 2.5rem;
+  padding: 1rem 7.5rem;
 
   box-sizing: content-box;
+
+  @media only screen and (max-width: 65.5em) {
+    padding: 1rem 8.5rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    padding: 1rem 4.5rem;
+  }
+
+  @media only screen and (max-width: 28em) {
+    padding: 1rem 2.5rem;
+  }
 
   & > div:first-of-type {
     text-decoration: none;

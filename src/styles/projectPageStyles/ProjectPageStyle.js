@@ -11,14 +11,26 @@ export const ProjectPage = styled.div`
 export const ProjectPageContent = styled.div`
   display: block;
 
-  max-width: 152rem;
+  max-width: 162rem;
   width: 95vw;
   margin: 0 auto;
 
   padding-top: 20rem;
 
-  @media only screen and (max-width: 56.25em) {
-    @content;
+  @media only screen and (max-width: 93.75em) {
+    width: calc(100vw - 15rem);
+  }
+
+  @media only screen and (max-width: 65.5em) {
+    width: calc(100vw - 17rem);
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    width: calc(100vw - 9rem);
+  }
+
+  @media only screen and (max-width: 28em) {
+    width: calc(100vw - 5rem);
   }
 `;
 
@@ -34,7 +46,7 @@ export const ProjectPageOverview = styled.div`
 
   border-bottom: 2px solid #190e42;
 
-  @media only screen and (max-width: 65em) {
+  @media only screen and (max-width: 58em) {
     flex-direction: column;
   }
 
@@ -48,7 +60,7 @@ export const ProjectPageOverview = styled.div`
 
     font-size: 3rem;
 
-    @media only screen and (max-width: 65em) {
+    @media only screen and (max-width: 58em) {
       align-items: center;
 
       width: 100%;
@@ -163,7 +175,7 @@ export const ProjectPageImage = styled(GatsbyImage)`
 
   border-radius: 1rem;
 
-  @media only screen and (max-width: 65em) {
+  @media only screen and (max-width: 58em) {
     align-items: center;
     width: 100%;
     max-width: 80rem;
@@ -207,7 +219,7 @@ export const ProjectPageStory = styled.div`
 
   border-bottom: 2px solid #190e42;
 
-  @media only screen and (max-width: 65em) {
+  @media only screen and (max-width: 58em) {
     flex-direction: column;
     align-items: center;
     padding: 0;
@@ -218,7 +230,7 @@ export const ProjectPageStory = styled.div`
 
     width: 60%;
 
-    @media only screen and (max-width: 65em) {
+    @media only screen and (max-width: 58em) {
       width: 100%;
       max-width: 80rem;
       margin-bottom: 8rem;
@@ -269,7 +281,7 @@ export const ProjectPageStory = styled.div`
 
     width: 25%;
 
-    @media only screen and (max-width: 65em) {
+    @media only screen and (max-width: 58em) {
       position: static;
       top: 0;
 
@@ -315,7 +327,7 @@ export const ProjectPageStory = styled.div`
 
       width: 80%;
 
-      @media only screen and (max-width: 65em) {
+      @media only screen and (max-width: 58em) {
         width: 95%;
       }
 
