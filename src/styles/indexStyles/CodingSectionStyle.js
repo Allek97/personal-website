@@ -133,10 +133,9 @@ export const PhoneImage = styled(GatsbyImage)`
 
 export const DashImage = styled(GatsbyImage)`
   width: 100% !important;
-  height: 100% !important;
-  & > div:first-of-type {
-    width: 100% !important;
-    height: 100% !important;
+
+  @media only screen and (max-width: 900px) {
+    aspect-ratio: 1 / 1.316 !important;
   }
 `;
 

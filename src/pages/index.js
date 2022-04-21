@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import loadable from "@loadable/component";
 
 import { useStaticQuery, graphql } from "gatsby";
-import { getImage } from "gatsby-plugin-image";
+import { getImage, withArtDirection } from "gatsby-plugin-image";
 import { Element } from "react-scroll";
 
 import Loading from "../components/loading/Loading";
@@ -117,6 +117,14 @@ const query = graphql`
       }
       gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
     }
+    dashboardMobileData: contentfulAsset(
+      file: { fileName: { eq: "Dashboard-Mobile.png" } }
+    ) {
+      file {
+        fileName
+      }
+      gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
+    }
   }
 `;
 
@@ -130,6 +138,7 @@ export default function Index() {
     myGlobeData,
     beyondPlanetData,
     dashboardData,
+    dashboardMobileData,
     // profilePictureData,
   } = data;
 
@@ -139,6 +148,7 @@ export default function Index() {
   const { gatsbyImageData: myGlobeImageData } = myGlobeData;
   const { gatsbyImageData: beyondGlobeImageData } = beyondPlanetData;
   const { gatsbyImageData: dashboardImageData } = dashboardData;
+  const { gatsbyImageData: dashboardMobileImageData } = dashboardMobileData;
   //   const { gatsbyImageData: profilePictureImageData } = profilePictureData;
 
   const phoneMockupImage = getImage(phoneMockupImageData);
@@ -147,7 +157,15 @@ export default function Index() {
   const myGlobeImage = getImage(myGlobeImageData);
   const beyondGlobeImage = getImage(beyondGlobeImageData);
   const dashboardImage = getImage(dashboardImageData);
+  const dashboardMobileImage = getImage(dashboardMobileImageData);
   //   const profilePictureImage = getImage(profilePictureImageData);
+
+  const dashImages = withArtDirection(getImage(dashboardImageData), [
+    {
+      media: "(max-width: 900px)",
+      image: getImage(dashboardMobileImageData),
+    },
+  ]);
 
   // Gatsby Link component retaining scroll position and not resetting to top
   useEffect(() => window.scrollTo(0, 0), []);
@@ -304,7 +322,7 @@ export default function Index() {
                     </video>
                   </div>
                   <div ref={codeDashRef}>
-                    <DashImage image={dashboardImage} alt="dashboard" />
+                    <DashImage image={dashImages} alt="dashboard" />
                   </div>
                 </DeviceContainer>
               </CodingContainer>
