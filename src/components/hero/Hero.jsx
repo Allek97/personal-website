@@ -17,6 +17,7 @@ import {
   HeroBtn,
   PlanetImage,
   Stand,
+  UFOContainer,
   UFOImage,
 } from "./HeroStyle";
 
@@ -181,7 +182,16 @@ const Hero = () => {
         </HeroArticle>
         {isLoaded && (
           <>
-            <UFOImage image={rocketImage} alt="Ufo" />
+            <UFOContainer
+              initial={{ y: "50rem", scale: 0.9, opacity: 0 }}
+              animate={isLoaded && { y: "0rem", scale: 1, opacity: 1 }}
+              transition={{
+                delay: 0.3,
+              }}
+            >
+              <UFOImage image={rocketImage} alt="Ufo" />
+            </UFOContainer>
+
             <Stand />
           </>
         )}

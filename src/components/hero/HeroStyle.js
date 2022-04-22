@@ -138,25 +138,23 @@ export const ExtraPlanetImage = styled(GatsbyImage)`
 
   display: block;
 
-  min-width: 65rem;
+  min-width: 80rem;
 
   @media only screen and (max-width: 65.5em) {
-    width: 85%;
+    width: 100%;
     min-width: 58rem;
+    margin-bottom: -22vw;
   }
 `;
 
-export const UFOImage = styled(GatsbyImage)`
+export const UFOContainer = styled(motion.div)`
+  position: absolute !important;
+  z-index: 50;
+
   position: absolute !important;
   bottom: -9rem;
   right: 20rem;
   z-index: 20;
-
-  animation: ${updown} 4s ease-in-out alternate infinite forwards;
-
-  filter: drop-shadow(4px 6px 8px black);
-
-  object-fit: contain;
 
   width: 48rem;
   height: auto;
@@ -178,6 +176,14 @@ export const UFOImage = styled(GatsbyImage)`
   @media only screen and (max-width: 22em) {
     left: -4%;
   }
+`;
+
+export const UFOImage = styled(GatsbyImage)`
+  animation: ${updown} 4s ease-in-out alternate infinite forwards;
+
+  filter: drop-shadow(4px 6px 8px black);
+
+  object-fit: contain;
 `;
 
 export const Stand = styled(StandSvg)`
@@ -244,7 +250,7 @@ export const GlobeTooltip = styled(motion.span)`
   z-index: 5;
 
   display: flex;
-  padding: 4px 10px;
+  padding: 5px 11px;
 
   box-shadow: 0 0px 15px -1px rgb(255 255 255);
   border-radius: 4px;
@@ -252,7 +258,7 @@ export const GlobeTooltip = styled(motion.span)`
   background: white;
   color: black;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 1.8rem;
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
