@@ -1,7 +1,10 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Element } from "react-scroll";
+
 import { useGlobe, useGlobeUpdate } from "../../context/GlobeContext";
+import { useSiteDataImages } from "../../hooks/useSiteDataImages";
+import { useLoading } from "../../context/LoadingContext";
 
 import {
   ExtraPlanetImage,
@@ -14,7 +17,6 @@ import {
   Stand,
   UFOImage,
 } from "./HeroStyle";
-import { useSiteDataImages } from "../../hooks/useSiteDataImages";
 
 const Hero = () => {
   const homeRef = useRef();
@@ -37,20 +39,22 @@ const Hero = () => {
                 initial={{ y: "100%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 transition={{
-                  duration: 0.6,
+                  type: "spring",
+                  stiffness: 100,
+                  mass: 0.5,
                   delay: 0.1,
-                  ease: "easeIn",
                 }}
               >
                 Hello, I'm Ilias. An aspiring software developer.
               </motion.h1>
               <motion.h3
-                initial={{ y: "100%", opacity: 0 }}
+                initial={{ y: "150%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 transition={{
-                  duration: 0.6,
+                  type: "spring",
+                  stiffness: 100,
+                  mass: 0.5,
                   delay: 0.3,
-                  ease: "easeIn",
                 }}
               >
                 I'm just a guy that enjoys programming daily and building cool
@@ -83,7 +87,17 @@ const Hero = () => {
           )}
           {isGlobe ? (
             <GlobeContainer>
-              <GlobeCanvas id="globe_canvas" />
+              <GlobeCanvas
+                initial={{ scale: 0 }}
+                animate={isLoaded && { scale: 1 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 30,
+                  delay: 0.3,
+                }}
+                id="globe_canvas"
+              />
             </GlobeContainer>
           ) : (
             <ExtraPlanetImage image={beyondImage} alt="planet with spaceship" />

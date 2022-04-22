@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { motion } from "framer-motion";
 
 import StandSvg from "../../assets/svgs/stand.svg";
 
@@ -115,7 +116,7 @@ export const GlobeContainer = styled.div`
   width: 70rem !important;
 `;
 
-export const GlobeCanvas = styled.canvas`
+export const GlobeCanvas = styled(motion.canvas)`
   display: block;
 
   width: 145rem !important;

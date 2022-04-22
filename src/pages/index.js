@@ -23,6 +23,7 @@ import { useScrollEffect } from "../hooks/useScrollEffect";
 import Hero from "../components/hero/Hero";
 import Coding from "../components/coding/Coding";
 import About from "../components/about/About";
+import { useGlobe } from "../context/GlobeContext";
 
 const HomeGlobe = loadable(() => import("../components/HomeGlobe"));
 
@@ -31,6 +32,8 @@ const HomeGlobe = loadable(() => import("../components/HomeGlobe"));
 export default function Index() {
   // Gatsby Link component retaining scroll position and not resetting to top
   useEffect(() => window.scrollTo(0, 0), []);
+
+  const isGlobe = useGlobe();
 
   const loadTime = 20000;
   //   const isLoaded = useLoading();
@@ -47,11 +50,11 @@ export default function Index() {
   return (
     <>
       <Seo title="Home" />
-      {/* {isGlobe && <HomeGlobe />} */}
-      {/* {!isLoaded && <Loading timeLoad={loadTime} />} */}
+      {/* {isGlobe && <HomeGlobe />}
+      {!isLoaded && <Loading timeLoad={loadTime} />} */}
       <ContactDetails />
-      {isLoaded && <NavBar navColor="white" />}
       <div>
+        {isLoaded && <NavBar navColor="white" />}
         <Hero />
         {isLoaded && (
           <main>

@@ -1,18 +1,6 @@
-import styled, { css, keyframes } from "styled-components";
+import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link as ScrollLink } from "react-scroll";
-
-const fadeVertically = keyframes`
-to {
-    opacity: 1;
-    transform: translateY(0);
-}
-`;
-const slideHorizontally = keyframes`
-to {
-    transform: translateX(0);
-}
-`;
 
 export const CodingSection = styled.section`
   position: relative;
@@ -27,14 +15,6 @@ export const CodingContainer = styled.article`
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-
-  /* opacity: 0;
-  transform: translateY(100%);
-  ${(props) =>
-    props.animateText &&
-    css`
-      animation: ${fadeVertically} 0.5s ease-out 1 forwards;
-    `}; */
 
   max-width: 169rem;
   width: 95vw;
@@ -100,13 +80,6 @@ export const DeviceContainer = styled.article`
 
     width: 25%;
 
-    transform: translateX(-80vw);
-    ${(props) =>
-      props.animatePhone &&
-      css`
-        animation: ${slideHorizontally} 0.5s ease-out 1 forwards;
-      `};
-
     @media only screen and (max-width: 56.25em) {
       width: 50%;
       margin-bottom: 5rem;
@@ -131,14 +104,6 @@ export const DeviceContainer = styled.article`
   & > div:nth-of-type(2) {
     width: 65%;
     height: max-content;
-
-    opacity: 1;
-    transform: translateX(80vw);
-    ${(props) =>
-      props.animateDash &&
-      css`
-        animation: ${slideHorizontally} 0.5s ease-out 1 forwards;
-      `};
 
     @media only screen and (max-width: 56.25em) {
       width: 100%;

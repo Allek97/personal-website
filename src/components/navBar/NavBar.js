@@ -40,11 +40,12 @@ const NavBar = ({ navColor }) => {
     <>
       <MenuList isOpen={isOpen} setIsOpen={setIsOpen} />
       <NavContainer
-        initial={{ y: "-150%", opacity: 0 }}
+        initial={{ y: "-100%", opacity: 1 }}
         animate={{ y: "0%", opacity: 1 }}
         transition={{
           duration: 0.5,
           ease: "easeIn",
+          delay: 0.1,
         }}
         $isScrolled={isScrolled}
         $isOpen={isOpen}
