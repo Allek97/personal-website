@@ -45,8 +45,14 @@ const Hero = () => {
     },
   };
 
-  // initial={{ y: "10px", scale: 0.95 }}
-  // animate={{ y: "6px", scale: 1 }}
+  const globeMotion = {
+    scale: 1.1,
+    filter: "saturate(3.5)",
+    type: "spring",
+    stiffness: 100,
+    mass: 0.5,
+    delay: 0.3,
+  };
 
   return (
     <Element name="homeSection">
@@ -85,18 +91,13 @@ const Hero = () => {
                   aria-label="globe theme toggle"
                   initial="rest"
                   whileHover="hover"
+                  whileTap="hover"
                 >
                   {isGlobe ? (
                     <>
                       <motion.div
-                        whileHover={{
-                          scale: 1.1,
-                          filter: "saturate(3.5)",
-                          type: "spring",
-                          stiffness: 100,
-                          mass: 0.5,
-                          delay: 0.3,
-                        }}
+                        whileHover={globeMotion}
+                        whileTap={globeMotion}
                         style={{ width: "100%", height: "auto" }}
                       >
                         <PlanetImage
