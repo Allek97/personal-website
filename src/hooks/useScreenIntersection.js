@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 
-const onScreenIntersection = (
+export const useScreenIntersection = (
   ref,
   threshold,
   adjustHeight = false,
@@ -46,5 +46,3 @@ const onScreenIntersection = (
 
   return animateAppSection;
 };
-
-export default onScreenIntersection;

@@ -127,8 +127,8 @@ export const GlobeCanvas = styled.canvas`
   }
 
   @media only screen and (max-width: 34.5em) {
-    width: 135rem !important;
-    margin-bottom: -35rem;
+    width: 125rem !important;
+    margin-bottom: -30rem;
   }
 `;
 

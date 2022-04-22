@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import loadable from "@loadable/component";
-
 import { useStaticQuery, graphql } from "gatsby";
 import { getImage, withArtDirection } from "gatsby-plugin-image";
+
+import { motion } from "framer-motion";
 import { Element } from "react-scroll";
+import { useInView } from "react-intersection-observer";
 
 import Loading from "../components/loading/Loading";
 import NavBar from "../components/navBar/NavBar";
@@ -15,18 +16,6 @@ import ContactDetails from "../components/ContactDetails";
 import Seo from "../components/Seo";
 
 import CodeGitVideo from "../assets/videos/codingGit.mp4";
-
-import {
-  Header,
-  HeroArticle,
-  GlobeContainer,
-  GlobeCanvas,
-  ExtraPlanetImage,
-  UFOImage,
-  Stand,
-  HeroBtn,
-  PlanetImage,
-} from "../styles/indexStyles/HeroSectionStyle";
 
 import {
   CodingSection,
@@ -54,162 +43,62 @@ import { ContactSection } from "../styles/indexStyles/ContactSectionStyle";
 import skills from "../constants/skills";
 import basics from "../constants/basics";
 
-import onScreenIntersection from "../utils/onScreenIntersection";
+import { useScreenIntersection } from "../hooks/useScreenIntersection";
 
 import { useLoading } from "../context/LoadingContext";
 import { useGlobe, useGlobeUpdate } from "../context/GlobeContext";
 
-import { scrollFunction } from "../utils/indexScrollEffect";
+import { useScrollEffect } from "../hooks/useScrollEffect";
+import Hero from "../components/hero/Hero";
 
 const HomeGlobe = loadable(() => import("../components/HomeGlobe"));
 
 // import { HomeGlobe } from "../components/HomeGlobe";
 
-const query = graphql`
-  {
-    phoneMockupData: contentfulAsset(
-      file: { fileName: { eq: "website-mockup-phone.png" } }
-    ) {
-      file {
-        fileName
-      }
-      gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
-    }
-    rocketData: contentfulAsset(file: { fileName: { eq: "rocket.png" } }) {
-      file {
-        fileName
-      }
-      gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
-    }
-    beyondData: contentfulAsset(file: { fileName: { eq: "beyond.png" } }) {
-      file {
-        fileName
-      }
-      gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
-    }
-    myGlobeData: contentfulAsset(file: { fileName: { eq: "my-globe.png" } }) {
-      file {
-        fileName
-      }
-      gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
-    }
-    beyondPlanetData: contentfulAsset(
-      file: { fileName: { eq: "beyond-globe.png" } }
-    ) {
-      file {
-        fileName
-      }
-      gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
-    }
-    profilePictureData: contentfulAsset(
-      file: { fileName: { eq: "NEW-PP.png" } }
-    ) {
-      file {
-        fileName
-      }
-      gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
-    }
-    dashboardData: contentfulAsset(
-      file: { fileName: { eq: "Dashboard.png" } }
-    ) {
-      file {
-        fileName
-      }
-      gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
-    }
-    dashboardMobileData: contentfulAsset(
-      file: { fileName: { eq: "Dashboard-Mobile.png" } }
-    ) {
-      file {
-        fileName
-      }
-      gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
-    }
-  }
-`;
-
 export default function Index() {
-  const data = useStaticQuery(query);
-
-  const {
-    phoneMockupData,
-    rocketData,
-    beyondData,
-    myGlobeData,
-    beyondPlanetData,
-    dashboardData,
-    dashboardMobileData,
-    // profilePictureData,
-  } = data;
-
-  const { gatsbyImageData: phoneMockupImageData } = phoneMockupData;
-  const { gatsbyImageData: rocketImageData } = rocketData;
-  const { gatsbyImageData: beyondImageData } = beyondData;
-  const { gatsbyImageData: myGlobeImageData } = myGlobeData;
-  const { gatsbyImageData: beyondGlobeImageData } = beyondPlanetData;
-  const { gatsbyImageData: dashboardImageData } = dashboardData;
-  const { gatsbyImageData: dashboardMobileImageData } = dashboardMobileData;
-  //   const { gatsbyImageData: profilePictureImageData } = profilePictureData;
-
-  const phoneMockupImage = getImage(phoneMockupImageData);
-  const rocketImage = getImage(rocketImageData);
-  const beyondImage = getImage(beyondImageData);
-  const myGlobeImage = getImage(myGlobeImageData);
-  const beyondGlobeImage = getImage(beyondGlobeImageData);
-  //   const profilePictureImage = getImage(profilePictureImageData);
-
-  const dashImages = withArtDirection(getImage(dashboardImageData), [
-    {
-      media: "(max-width: 900px)",
-      image: getImage(dashboardMobileImageData),
-    },
-  ]);
-
   // Gatsby Link component retaining scroll position and not resetting to top
   useEffect(() => window.scrollTo(0, 0), []);
 
   const loadTime = 20000;
   //   const isLoaded = useLoading();
   const isLoaded = true;
-  scrollFunction(isLoaded);
-
-  const isGlobe = useGlobe();
-  const setIsGlobe = useGlobeUpdate();
+  useScrollEffect(isLoaded);
 
   ////////////////////////////////
   // NOTE:  ANIMATIONS
   ////////////////////////////////
 
-  // Code Section
-  const codeContainerRef = useRef();
-  const codePhoneRef = useRef();
-  const codeDashRef = useRef();
+  const { ref: codeInfoRef, inView: isCodeInfoInView } = useInView();
 
-  const codeContainerView = onScreenIntersection(
-    codeContainerRef,
-    -150,
-    true,
-    1
-  );
-  const codePhoneView = onScreenIntersection(codePhoneRef, -100, false, 1);
-  const codeDashView = onScreenIntersection(codeDashRef, -100, false, 1);
+  //   // Code Section
+  //   const codeContainerRef = useRef();
+  //   const codePhoneRef = useRef();
+  //   const codeDashRef = useRef();
 
-  // About Section
-  const aboutTextRef = useRef();
-  const aboutStacksRef = useRef();
+  //   const codeContainerView = useScreenIntersection(
+  //     codeContainerRef,
+  //     -150,
+  //     true,
+  //     1
+  //   );
+  //   const codePhoneView = useScreenIntersection(codePhoneRef, -100, false, 1);
+  //   const codeDashView = useScreenIntersection(codeDashRef, -100, false, 1);
 
-  const aboutTextView = onScreenIntersection(aboutTextRef, -150, false, 1);
-  const aboutStacksView = onScreenIntersection(aboutStacksRef, -150, false, 1);
+  //   // About Section
+  //   const aboutTextRef = useRef();
+  //   const aboutStacksRef = useRef();
 
-  // About Section
-  const projectTextRef = useRef();
-  const projectTextView = onScreenIntersection(projectTextRef, -150, false, 1);
+  //   const aboutTextView = useScreenIntersection(aboutTextRef, -150, false, 1);
+  //   const aboutStacksView = useScreenIntersection(aboutStacksRef, -150, false, 1);
+
+  //   // About Section
+  //   const projectTextRef = useRef();
+  //   const projectTextView = useScreenIntersection(projectTextRef, -150, false, 1);
 
   ////////////////////////////////
   // NOTE: SCROLL ANIMATIONS
   ////////////////////////////////
 
-  const homeRef = useRef();
   const aboutRef = useRef();
   const projectRef = useRef();
   const contactRef = useRef();
@@ -217,99 +106,33 @@ export default function Index() {
   return (
     <>
       <Seo title="Home" />
-      {isGlobe && <HomeGlobe />}
-      {!isLoaded && <Loading timeLoad={loadTime} />}
+      {/* {isGlobe && <HomeGlobe />} */}
+      {/* {!isLoaded && <Loading timeLoad={loadTime} />} */}
       <ContactDetails />
 
       <div>
-        <Element name="homeSection">
-          <Header id="home" ref={homeRef}>
-            {isLoaded && <NavBar navColor="white" />}
-            <HeroArticle>
-              {isLoaded && (
-                <div>
-                  <motion.h1
-                    initial={{ y: "150%", opacity: 0 }}
-                    animate={{ y: "0%", opacity: 1 }}
-                    transition={{
-                      duration: 0.75,
-                      delay: 0.1,
-                    }}
-                  >
-                    Hello, I'm Ilias. An aspiring software developer.
-                  </motion.h1>
-                  <motion.h3
-                    initial={{ y: "100%", opacity: 0 }}
-                    animate={{ y: "0%", opacity: 1 }}
-                    transition={{
-                      duration: 0.6,
-                      delay: 0.3,
-                    }}
-                  >
-                    I'm just a guy that enjoys programming daily and building
-                    cool stuff — Front-end design and solving problems are my
-                    favourite part. My goal is to always stand out.
-                  </motion.h3>
-                  <div>
-                    <HeroBtn>
-                      {isGlobe ? (
-                        <PlanetImage
-                          image={beyondGlobeImage}
-                          alt="small-planet"
-                          onClick={() => {
-                            setIsGlobe(false);
-                          }}
-                        />
-                      ) : (
-                        <PlanetImage
-                          image={myGlobeImage}
-                          alt="small-globe"
-                          onClick={() => {
-                            window.location.reload();
-                          }}
-                          isgray="true"
-                        />
-                      )}
-                    </HeroBtn>
-                  </div>
-                </div>
-              )}
-              {isGlobe ? (
-                <GlobeContainer>
-                  <GlobeCanvas id="globe_canvas" />
-                </GlobeContainer>
-              ) : (
-                <ExtraPlanetImage
-                  image={beyondImage}
-                  alt="planet with spaceship"
-                />
-              )}
-            </HeroArticle>
-            {isLoaded && (
-              <>
-                <UFOImage image={rocketImage} alt="Ufo" />
-                <Stand />
-              </>
-            )}
-          </Header>
-        </Element>
-
+        <Hero />
         {isLoaded && (
           <main>
-            <CodingSection>
-              <CodingContainer
-                ref={codeContainerRef}
-                animateText={codeContainerView}
-              >
-                <h1>Always coding and working on new projects</h1>
+            {/* <CodingSection>
+              <CodingContainer>
+                <motion.h1
+                  ref={codeInfoRef}
+                  initial={{ y: "200%", opacity: 0 }}
+                  animate={isCodeInfoInView && { opacity: 1, y: 0 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 50,
+                    mass: 0.5,
+                  }}
+                >
+                  Always coding and working on new projects
+                </motion.h1>
                 <CodingBtn to="about" spy smooth offset={-70} duration={500}>
                   About me
                 </CodingBtn>
-                <DeviceContainer
-                  animatePhone={codePhoneView}
-                  animateDash={codeDashView}
-                >
-                  <div ref={codePhoneRef}>
+                <DeviceContainer>
+                  <div>
                     <PhoneImage image={phoneMockupImage} alt="Phone" />
 
                     <video playsInline muted loop autoPlay preload="none">
@@ -319,25 +142,25 @@ export default function Index() {
                       />
                     </video>
                   </div>
-                  <div ref={codeDashRef}>
+                  <div>
                     <DashImage image={dashImages} alt="dashboard" />
                   </div>
                 </DeviceContainer>
               </CodingContainer>
-            </CodingSection>
+            </CodingSection> */}
 
-            <Element name="aboutSection">
+            {/* <Element name="aboutSection">
               <AboutSection id="about" ref={aboutRef}>
                 <AboutContainer
                   animateText={aboutTextView}
                   animateStacks={aboutStacksView}
                 >
                   <div ref={aboutTextRef}>
-                    {/* <ProfileImage
+                    <ProfileImage
                       image={profilePictureImage}
                       alt="my profile picture"
                       animateprofile={aboutTextView ? 1 : 0}
-                    /> */}
+                    />
                     <h1>Ilias Allek</h1>
                     <h3>Aspiring Software Developer</h3>
                     <p>
@@ -378,9 +201,9 @@ export default function Index() {
                   </div>
                 </AboutContainer>
               </AboutSection>
-            </Element>
+            </Element> */}
 
-            <Element name="projectSection">
+            {/* <Element name="projectSection">
               <ProjectSection id="project" ref={projectRef}>
                 <ProjectContainer animateText={projectTextView}>
                   <h1 ref={projectTextRef}>Recent Projects</h1>
@@ -393,7 +216,7 @@ export default function Index() {
               <ContactSection id="contact" ref={contactRef}>
                 <Contact />
               </ContactSection>
-            </Element>
+            </Element> */}
           </main>
         )}
       </div>

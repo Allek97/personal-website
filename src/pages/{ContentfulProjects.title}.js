@@ -25,7 +25,7 @@ import {
 
 import stacks from "../constants/stacks";
 import socials from "../constants/socials";
-import onScreenIntersection from "../utils/onScreenIntersection";
+import { useScreenIntersection } from "../hooks/useScreenIntersection";
 
 export const query = graphql`
   query getSingleProject($id: String) {
@@ -103,7 +103,7 @@ const ProjectTemplate = (props) => {
   ////////////////////////////////
 
   const projectOverviewRef = useRef();
-  const projectOverviewView = onScreenIntersection(
+  const projectOverviewView = useScreenIntersection(
     projectOverviewRef,
     -150,
     true,

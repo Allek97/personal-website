@@ -16,7 +16,7 @@ import {
 } from "./ProjectsStyle";
 
 import stacks from "../../constants/stacks";
-import onScreenIntersection from "../../utils/onScreenIntersection";
+import { useScreenIntersection } from "../../hooks/useScreenIntersection";
 
 const query = graphql`
   {
@@ -68,7 +68,7 @@ const Projects = ({ ignoreProject }) => {
         const projectThumbnail = getImage(gatsbyImageData);
         if (title !== ignoreProject) {
           const projectRef = useRef();
-          const projectView = onScreenIntersection(projectRef, -120, true, 10);
+          const projectView = useScreenIntersection(projectRef, -120, true, 10);
           return (
             <ProjectBox
               key={project.id}

@@ -12,7 +12,7 @@ import {
   MessageAreaSvg,
 } from "./ContactStyle";
 
-import onScreenIntersection from "../../utils/onScreenIntersection";
+import { useScreenIntersection } from "../../hooks/useScreenIntersection";
 
 const Contact = () => {
   const [isNameValid, setIsNameValid] = useState(false);
@@ -33,10 +33,15 @@ const Contact = () => {
   };
 
   const contactTextRef = useRef();
-  const contactView = onScreenIntersection(contactTextRef, -150, false, 10);
+  const contactView = useScreenIntersection(contactTextRef, -150, false, 10);
 
   const contactFormRef = useRef();
-  const contactFormView = onScreenIntersection(contactFormRef, -150, false, 10);
+  const contactFormView = useScreenIntersection(
+    contactFormRef,
+    -150,
+    false,
+    10
+  );
 
   return (
     <ContactContainer animateText={contactView}>

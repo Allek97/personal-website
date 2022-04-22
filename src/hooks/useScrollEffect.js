@@ -6,7 +6,7 @@ import { useScroll, useScrollUpdate } from "../context/ScrollContext";
 
 const isBrowser = typeof window !== "undefined";
 
-export const scrollFunction = (isLoaded) => {
+export const useScrollEffect = (isLoaded) => {
   const scrollSection = useScroll();
   const setScrollSection = useScrollUpdate();
   useEffect(() => {

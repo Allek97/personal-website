@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import styled, { css } from "styled-components";
 
 import { fadeVertically } from "../abstracts/animations";
-import onScreenIntersection from "../utils/onScreenIntersection";
+import { useScreenIntersection } from "../hooks/useScreenIntersection";
 
 const Container = styled.footer`
   padding: 3.5rem 0;
@@ -32,7 +32,7 @@ const Container = styled.footer`
 
 const Footer = () => {
   const contactTextRef = useRef();
-  const contactView = onScreenIntersection(contactTextRef, -20, false, 10);
+  const contactView = useScreenIntersection(contactTextRef, -20, false, 10);
 
   const location = useLocation();
   const { pathname } = location;

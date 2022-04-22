@@ -1,6 +1,7 @@
 import styled, { css, keyframes } from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link as ScrollLink } from "react-scroll";
+import { motion } from "framer-motion";
 
 const fadeVertically = keyframes`
 to {
@@ -28,13 +29,13 @@ export const CodingContainer = styled.article`
   align-items: center;
   flex-direction: column;
 
-  opacity: 0;
+  /* opacity: 0;
   transform: translateY(100%);
   ${(props) =>
     props.animateText &&
     css`
       animation: ${fadeVertically} 0.5s ease-out 1 forwards;
-    `};
+    `}; */
 
   max-width: 169rem;
   width: 95vw;
@@ -73,7 +74,6 @@ export const CodingContainer = styled.article`
     font-size: 5rem;
     font-family: Manrope;
     text-transform: uppercase;
-    line-height: 8.5rem;
     letter-spacing: -0.03em;
 
     @media only screen and (max-width: 65.5em) {
