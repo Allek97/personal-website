@@ -17,7 +17,11 @@ export const MenuBox = styled.div`
 
   border: 1px solid
     ${(props) =>
-      props.isOpen ? "#102a42" : props.isScrolled ? "#102a42" : props.navColor};
+      props.$isOpen
+        ? "#102a42"
+        : props.$isScrolled
+        ? "#102a42"
+        : props.navColor};
 
   cursor: pointer;
 
@@ -48,9 +52,9 @@ export const MenuBox = styled.div`
       width: 100%;
       height: 100%;
       background-color: ${(props) =>
-        props.isOpen
+        props.$isOpen
           ? "#102a42"
-          : props.isScrolled
+          : props.$isScrolled
           ? "#102a42"
           : props.navColor};
 
@@ -98,23 +102,23 @@ export const NavContainer = styled(motion.div)`
   height: max-content;
 
   ${(props) =>
-    props.isOpen
+    props.$isOpen
       ? css`
           box-shadow: none;
         `
       : css`
-          box-shadow: ${props.isScrolled
+          box-shadow: ${props.$isScrolled
             ? "rgb(0 0 0 / 20%) 0px 0px 5px"
             : "none"};
         `}
 
   ${(props) =>
-    props.isOpen
+    props.$isOpen
       ? css`
           background-color: "transparent";
         `
       : css`
-          background-color: ${props.isScrolled
+          background-color: ${props.$isScrolled
             ? "var(--color-grey-main)"
             : "transparent"}; ;
         `}
@@ -151,9 +155,9 @@ export const Nav = styled.div`
 
       border: 3px solid
         ${(props) =>
-          props.isOpen
+          props.$isOpen
             ? "#102a42"
-            : props.isScrolled
+            : props.$isScrolled
             ? "#102a42"
             : props.navColor};
 
@@ -162,9 +166,9 @@ export const Nav = styled.div`
       text-shadow: 0 0 20px rgb(0 0 0 / 10%);
       line-height: 1.8rem;
       color: ${(props) =>
-        props.isOpen
+        props.$isOpen
           ? "#102a42"
-          : props.isScrolled
+          : props.$isScrolled
           ? "#102a42"
           : props.navColor};
     }
@@ -182,9 +186,9 @@ export const Nav = styled.div`
       text-shadow: 0 0 20px rgb(0 0 0 / 10%);
       line-height: 1.8rem;
       color: ${(props) =>
-        props.isOpen
+        props.$isOpen
           ? "#102a42"
-          : props.isScrolled
+          : props.$isScrolled
           ? "#102a42"
           : props.navColor};
     }

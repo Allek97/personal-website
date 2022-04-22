@@ -2,18 +2,12 @@ import React, { useRef } from "react";
 import { Element } from "react-scroll";
 import basics from "../../constants/basics";
 import skills from "../../constants/skills";
-import { useSiteDataImages } from "../../hooks/useSiteDataImages";
-import {
-  AboutContainer,
-  AboutSection,
-  ProfileImage,
-  SkillBox,
-} from "./AboutStyle";
+
+import { AboutContainer, AboutSection, SkillBox } from "./AboutStyle";
 
 const About = () => {
   const aboutRef = useRef();
 
-  const { profilePictureImage } = useSiteDataImages();
   return (
     <Element name="aboutSection">
       <AboutSection id="about" ref={aboutRef}>

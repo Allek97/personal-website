@@ -46,10 +46,10 @@ const NavBar = ({ navColor }) => {
           duration: 0.5,
           ease: "easeIn",
         }}
-        isScrolled={isScrolled}
-        isOpen={isOpen}
+        $isScrolled={isScrolled}
+        $isOpen={isOpen}
       >
-        <Nav isOpen={isOpen} navColor={navColor} isScrolled={isScrolled}>
+        <Nav isOpen={isOpen} navColor={navColor} $isScrolled={isScrolled}>
           <div
             onClick={toggleHome}
             role="button"
@@ -65,9 +65,9 @@ const NavBar = ({ navColor }) => {
           <div>
             <h3>MENU</h3>
             <MenuBox
-              isOpen={isOpen}
+              $isOpen={isOpen}
               navColor={navColor}
-              isScrolled={isScrolled}
+              $isScrolled={isScrolled}
               onClick={() => {
                 setIsOpen(!isOpen);
               }}
