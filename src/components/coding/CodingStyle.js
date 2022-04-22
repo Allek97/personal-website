@@ -1,7 +1,6 @@
 import styled, { css, keyframes } from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link as ScrollLink } from "react-scroll";
-import { motion } from "framer-motion";
 
 const fadeVertically = keyframes`
 to {

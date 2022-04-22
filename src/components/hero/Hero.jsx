@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Element } from "react-scroll";
 import { useGlobe, useGlobeUpdate } from "../../context/GlobeContext";
-import NavBar from "../navBar/NavBar";
+
 import {
   ExtraPlanetImage,
   GlobeCanvas,
@@ -30,7 +30,6 @@ const Hero = () => {
   return (
     <Element name="homeSection">
       <Header id="home" ref={homeRef}>
-        {isLoaded && <NavBar navColor="white" />}
         <HeroArticle>
           {isLoaded && (
             <div>
