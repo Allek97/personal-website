@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Element } from "react-scroll";
@@ -46,12 +47,34 @@ const Hero = () => {
   };
 
   const globeMotion = {
+    initial: {
+      scale: 0,
+    },
+    animate: isLoaded && {
+      scale: 1,
+    },
+    transition: {
+      type: "spring",
+      stiffness: 260,
+      damping: 30,
+      delay: 0.3,
+    },
+  };
+
+  const globeMotion2D = {
     scale: 1.1,
-    filter: "saturate(3.5)",
-    type: "spring",
-    stiffness: 100,
-    mass: 0.5,
-    delay: 0.3,
+    filter: "brightness(1.5)",
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      mass: 0.5,
+      bumping: 40,
+      delay: 0,
+    },
+  };
+  const globeMotion3D = {
+    ...globeMotion2D,
+    filter: "none",
   };
 
   return (
@@ -96,37 +119,51 @@ const Hero = () => {
                   {isGlobe ? (
                     <>
                       <motion.div
-                        whileHover={globeMotion}
-                        whileTap={globeMotion}
+                        whileHover={globeMotion2D}
+                        whileTap={globeMotion2D}
                         style={{ width: "100%", height: "auto" }}
+                        onClick={() => {
+                          setIsGlobe(false);
+                        }}
                       >
-                        <PlanetImage
-                          image={beyondGlobeImage}
-                          alt="small-planet"
-                          onClick={() => {
-                            setIsGlobe(false);
-                          }}
-                        />
+                        <motion.div
+                          {...globeMotion}
+                          style={{ width: "100%", height: "auto" }}
+                        >
+                          <PlanetImage
+                            image={beyondGlobeImage}
+                            alt="small-planet"
+                          />
+                        </motion.div>
                       </motion.div>
                       <GlobeTooltip variants={toolTipMotion}>
-                        Activate 3D Globe
+                        Activate 2D Image
                       </GlobeTooltip>
                     </>
                   ) : (
                     <>
-                      <motion.div style={{ width: "100%", height: "auto" }}>
-                        <PlanetImage
-                          image={myGlobeImage}
-                          alt="small-globe"
-                          onClick={() => {
-                            window.location.reload();
-                          }}
-                          isgray="true"
-                        />
+                      <motion.div
+                        whileHover={globeMotion3D}
+                        whileTap={globeMotion3D}
+                        style={{ width: "100%", height: "auto" }}
+                      >
+                        <motion.div
+                          {...globeMotion}
+                          style={{ width: "100%", height: "auto" }}
+                        >
+                          <PlanetImage
+                            image={myGlobeImage}
+                            alt="small-globe"
+                            onClick={() => {
+                              window.location.reload();
+                            }}
+                            isgray="true"
+                          />
+                        </motion.div>
                       </motion.div>
 
                       <GlobeTooltip variants={toolTipMotion}>
-                        Activate 2D Image
+                        Activate 3D Globe
                       </GlobeTooltip>
                     </>
                   )}
@@ -136,17 +173,7 @@ const Hero = () => {
           )}
           {isGlobe ? (
             <GlobeContainer>
-              <GlobeCanvas
-                initial={{ scale: 0 }}
-                animate={isLoaded && { scale: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 260,
-                  damping: 30,
-                  delay: 0.3,
-                }}
-                id="globe_canvas"
-              />
+              <GlobeCanvas {...globeMotion} id="globe_canvas" />
             </GlobeContainer>
           ) : (
             <ExtraPlanetImage image={beyondImage} alt="planet with spaceship" />

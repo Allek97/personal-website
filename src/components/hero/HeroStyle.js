@@ -233,12 +233,8 @@ export const PlanetImage = styled(GatsbyImage)`
   ${(props) =>
     props.isgray &&
     css`
-      filter: drop-shadow(2px 4px 6px black) grayscale(0.9);
-    `}/* &:hover {
-    transition: all 0.15s ease-in;
-    transform: scale(1.1);
-    filter: hue-rotate(70deg);
-  } */
+      filter: drop-shadow(0px -4px 15px rgba(9, 11, 134, 0.747));
+    `}
 `;
 
 export const GlobeTooltip = styled(motion.span)`
