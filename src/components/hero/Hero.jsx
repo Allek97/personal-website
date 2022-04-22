@@ -10,6 +10,7 @@ import {
   ExtraPlanetImage,
   GlobeCanvas,
   GlobeContainer,
+  GlobeTooltip,
   Header,
   HeroArticle,
   HeroBtn,
@@ -29,6 +30,24 @@ const Hero = () => {
 
   const { beyondGlobeImage, myGlobeImage, beyondImage, rocketImage } =
     useSiteDataImages();
+
+  const toolTipMotion = {
+    rest: { opacity: 0, y: "10px", scale: 0.95 },
+    hover: {
+      opacity: 1,
+      y: "6px",
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        mass: 0.5,
+      },
+    },
+  };
+
+  // initial={{ y: "10px", scale: 0.95 }}
+  // animate={{ y: "6px", scale: 1 }}
+
   return (
     <Element name="homeSection">
       <Header id="home" ref={homeRef}>
@@ -62,24 +81,53 @@ const Hero = () => {
                 part. My goal is to always stand out.
               </motion.h3>
               <div>
-                <HeroBtn>
+                <HeroBtn
+                  aria-label="globe theme toggle"
+                  initial="rest"
+                  whileHover="hover"
+                >
                   {isGlobe ? (
-                    <PlanetImage
-                      image={beyondGlobeImage}
-                      alt="small-planet"
-                      onClick={() => {
-                        setIsGlobe(false);
-                      }}
-                    />
+                    <>
+                      <motion.div
+                        whileHover={{
+                          scale: 1.1,
+                          filter: "saturate(3.5)",
+                          type: "spring",
+                          stiffness: 100,
+                          mass: 0.5,
+                          delay: 0.3,
+                        }}
+                        style={{ width: "100%", height: "auto" }}
+                      >
+                        <PlanetImage
+                          image={beyondGlobeImage}
+                          alt="small-planet"
+                          onClick={() => {
+                            setIsGlobe(false);
+                          }}
+                        />
+                      </motion.div>
+                      <GlobeTooltip variants={toolTipMotion}>
+                        Activate 3D Globe
+                      </GlobeTooltip>
+                    </>
                   ) : (
-                    <PlanetImage
-                      image={myGlobeImage}
-                      alt="small-globe"
-                      onClick={() => {
-                        window.location.reload();
-                      }}
-                      isgray="true"
-                    />
+                    <>
+                      <motion.div style={{ width: "100%", height: "auto" }}>
+                        <PlanetImage
+                          image={myGlobeImage}
+                          alt="small-globe"
+                          onClick={() => {
+                            window.location.reload();
+                          }}
+                          isgray="true"
+                        />
+                      </motion.div>
+
+                      <GlobeTooltip variants={toolTipMotion}>
+                        Activate 2D Image
+                      </GlobeTooltip>
+                    </>
                   )}
                 </HeroBtn>
               </div>

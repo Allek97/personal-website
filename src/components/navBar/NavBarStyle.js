@@ -12,6 +12,8 @@ export const MenuBox = styled.div`
   justify-content: center;
   align-items: center;
 
+  transition: all 0.3s ease-in;
+
   width: 4rem;
   height: 4rem;
 
@@ -51,6 +53,7 @@ export const MenuBox = styled.div`
       position: absolute;
       width: 100%;
       height: 100%;
+      transition: all 0.3s ease-in;
       background-color: ${(props) =>
         props.$isOpen
           ? "#102a42"
@@ -100,6 +103,8 @@ export const NavContainer = styled(motion.div)`
 
   width: 100%;
   height: max-content;
+
+  transition: all 0.3s ease-in;
 
   ${(props) =>
     props.$isOpen
@@ -153,6 +158,8 @@ export const Nav = styled.div`
     h3 {
       padding: 4px;
 
+      transition: all 0.3s ease-in;
+
       border: 3px solid
         ${(props) =>
           props.$isOpen
@@ -179,6 +186,8 @@ export const Nav = styled.div`
     align-items: center;
     h3 {
       margin-right: 2rem;
+
+      transition: all 0.3s ease-in-out;
 
       font-size: 2.3rem;
       font-family: PoppinsBlack;

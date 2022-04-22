@@ -193,9 +193,11 @@ export const Stand = styled(StandSvg)`
   }
 `;
 
-export const HeroBtn = styled.button.attrs({
+export const HeroBtn = styled(motion.button).attrs({
   type: "button",
 })`
+  position: relative;
+
   display: flex;
   align-items: center;
 
@@ -220,20 +222,42 @@ export const HeroBtn = styled.button.attrs({
   white-space: nowrap;
 
   cursor: pointer;
-
-  &:hover {
-    /* box-shadow: rgba(4, 27, 87, 0.6) 0px 0.4rem 1rem 0px; */
-    transform: scale(1.1);
-  }
 `;
 
 export const PlanetImage = styled(GatsbyImage)`
   width: 100%;
   height: auto;
 
+  transition: all 0.15s ease-out;
+
   ${(props) =>
     props.isgray &&
     css`
       filter: drop-shadow(2px 4px 6px black) grayscale(0.9);
-    `}
+    `}/* &:hover {
+    transition: all 0.15s ease-in;
+    transform: scale(1.1);
+    filter: hue-rotate(70deg);
+  } */
+`;
+
+export const GlobeTooltip = styled(motion.span)`
+  position: absolute;
+  left: 50%;
+  bottom: -50%;
+  z-index: 5;
+
+  display: flex;
+  padding: 4px 10px;
+
+  box-shadow: 0 0px 15px -1px rgb(255 255 255);
+  border-radius: 4px;
+
+  background: white;
+  color: black;
+  font-weight: 500;
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
 `;
