@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { animateScroll as scroll } from "react-scroll";
 
@@ -9,8 +9,6 @@ import useScroll from "../../hooks/useScroll";
 const NavBar = ({ navColor }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isScrolled = useScroll(70);
-
-  console.log(isScrolled);
 
   const toggleHome = () => {
     scroll.scrollToTop();

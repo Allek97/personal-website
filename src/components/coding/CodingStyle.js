@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link as ScrollLink } from "react-scroll";
+import { motion } from "framer-motion";
 
 export const CodingSection = styled.section`
   position: relative;
@@ -55,7 +56,7 @@ export const CodingContainer = styled.article`
   }
 `;
 
-export const DeviceContainer = styled.article`
+export const DeviceContainer = styled(motion.article)`
   display: flex;
   justify-content: space-between;
   align-items: center;

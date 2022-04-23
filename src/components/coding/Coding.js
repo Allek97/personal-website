@@ -52,14 +52,14 @@ const Coding = () => {
     },
   };
 
-  const slideIn = (fromLeft) => ({
+  const slideIn = (fromLeft, delay = 0) => ({
     hidden: { x: fromLeft ? "-80vw" : "80vw" },
     visible: {
       x: 0,
       transition: {
-        type: "spring",
-        stiffness: 260,
-        damping: 25,
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
+        delay: delay,
       },
     },
   });
@@ -111,7 +111,7 @@ const Coding = () => {
           <motion.div
             initial="hidden"
             animate={contentControls}
-            variants={slideIn(false)}
+            variants={slideIn(false, 0.2)}
           >
             <DashImage image={dashImages} alt="dashboard" />
           </motion.div>

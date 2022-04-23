@@ -46,13 +46,13 @@ const AnimateLetters = ({ type = "heading1", text = "", version }) => {
   const slideFadeItem = {
     hidden: {
       opacity: 0,
-      y: "0.5em",
+      y: "0.2em",
     },
     visible: {
       opacity: 1,
       y: "0em",
       transition: {
-        ease: "linear",
+        ease: [0.455, 0.03, 0.515, 0.955],
         duration: 0.15,
       },
     },
