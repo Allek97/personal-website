@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -14,15 +14,17 @@ import {
 
 import CodeGitVideo from "../../assets/videos/codingGit.mp4";
 import { useSiteDataImages } from "../../hooks/useSiteDataImages";
+import AnimateText from "../utils/animations/AnimateText";
+
+const headerText = "Always coding and working on new projects";
 
 const Coding = () => {
   const { phoneMockupImage, dashImages } = useSiteDataImages();
 
-  const infoControls = useAnimation();
   const contentControls = useAnimation();
 
   const { ref: codeInfoRef, inView: isCodeInfoInView } = useInView({
-    threshold: 1,
+    threshold: 0.25,
     triggerOnce: true,
   });
   const { ref: codeContentRef, inView: isCodeContentInView } = useInView({
@@ -30,24 +32,23 @@ const Coding = () => {
     triggerOnce: true,
   });
 
+  const animateCodeInfo = useMemo(() => isCodeInfoInView, [isCodeInfoInView]);
+
   const fadeInUp = {
-    hidden: { y: "200%", opacity: 0 },
+    hidden: { y: "100%", opacity: 0 },
     visible: {
       opacity: 1,
       y: 0,
+      filter: "grayscale(0)",
       transition: {
         type: "spring",
         stiffness: 260,
-        damping: 20,
+        damping: 25,
+        opacity: {
+          ease: [1, 0.54, 1, 0.27],
+        },
+        delay: 0.3,
       },
-    },
-  };
-
-  const fadeInUpDelayed = {
-    ...fadeInUp,
-    visible: {
-      ...fadeInUp.visible,
-      transition: { ...fadeInUp.visible.transition, delay: 0.3 },
     },
   };
 
@@ -64,14 +65,6 @@ const Coding = () => {
   });
 
   useEffect(() => {
-    if (isCodeInfoInView) {
-      infoControls.start("visible");
-    } else {
-      infoControls.start("hidden");
-    }
-  }, [infoControls, isCodeInfoInView]);
-
-  useEffect(() => {
     if (isCodeContentInView) {
       contentControls.start("visible");
     } else {
@@ -81,19 +74,18 @@ const Coding = () => {
 
   return (
     <CodingSection>
-      <CodingContainer>
-        <motion.h1
-          ref={codeInfoRef}
-          initial="hidden"
-          animate={infoControls}
-          variants={fadeInUp}
-        >
-          Always coding and working on new projects
-        </motion.h1>
+      <CodingContainer ref={codeInfoRef}>
+        <AnimateText
+          text={headerText}
+          type="heading1"
+          isAnimate={animateCodeInfo}
+          version="slideFade"
+          staggerValue={0.02}
+        />
         <motion.div
           initial="hidden"
-          animate={infoControls}
-          variants={fadeInUpDelayed}
+          animate={animateCodeInfo && "visible"}
+          variants={fadeInUp}
           style={{ padding: "1.4rem 0 1.5rem" }}
         >
           <CodingBtn to="about" spy smooth offset={-70} duration={500}>

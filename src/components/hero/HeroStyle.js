@@ -83,27 +83,28 @@ export const HeroArticle = styled.article`
       font-family: Manrope;
       text-transform: uppercase;
 
-      line-height: 8.5rem;
+      line-height: 7.5rem;
       letter-spacing: -0.03em;
 
       color: white;
 
       @media only screen and (max-width: 25em) {
         font-size: 6rem;
-        line-height: 7rem;
+        line-height: 6.1rem;
       }
     }
 
-    h3 {
+    p {
       font-size: 2.4rem;
       font-family: ManropeLight;
       font-weight: 400;
-      line-height: 3.2rem;
+      line-height: 2.9rem;
       color: var(--color-blue-grey);
+      letter-spacing: -0.03em;
 
       @media only screen and (max-width: 25em) {
         font-size: 2rem;
-        line-height: 2.8rem;
+        line-height: 2.49rem;
       }
     }
   }
@@ -142,8 +143,15 @@ export const ExtraPlanetImage = styled(GatsbyImage)`
 
   @media only screen and (max-width: 65.5em) {
     width: 100%;
-    min-width: 58rem;
+    /* min-width: 58rem; */
     margin-bottom: -22vw;
+  }
+  @media only screen and (max-width: 37.5em) {
+    min-width: 70rem;
+    margin-bottom: -30vw;
+  }
+  @media only screen and (max-width: 28em) {
+    margin-bottom: -45vw;
   }
 `;
 

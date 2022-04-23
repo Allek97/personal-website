@@ -99,12 +99,8 @@ export const NavContainer = styled(motion.div)`
   position: fixed;
   z-index: 40;
 
-  transition: all 0.3s ease-in 0s;
-
   width: 100%;
   height: max-content;
-
-  transition: all 0.3s ease-in;
 
   ${(props) =>
     props.$isOpen

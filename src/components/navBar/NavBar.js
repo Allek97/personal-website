@@ -4,33 +4,13 @@ import { animateScroll as scroll } from "react-scroll";
 
 import MenuList from "../menuList/MenuList";
 import { MenuBox, NavContainer, Nav, CloseMenu } from "./NavBarStyle";
+import useScroll from "../../hooks/useScroll";
 
 const NavBar = ({ navColor }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const isScrolled = useScroll(70);
 
-  const listenScrollEvent = () => {
-    if (window.scrollY > 70) {
-      return setIsScrolled(true);
-    }
-    return setIsScrolled(false);
-  };
-
-  function debounce(method, delay) {
-    clearTimeout(method._tId);
-    method._tId = setTimeout(function () {
-      method();
-    }, delay);
-  }
-
-  useEffect(() => {
-    window.addEventListener("scroll", () => debounce(listenScrollEvent, 1));
-    return () => {
-      window.removeEventListener("scroll", () =>
-        debounce(listenScrollEvent, 1)
-      );
-    };
-  }, []);
+  console.log(isScrolled);
 
   const toggleHome = () => {
     scroll.scrollToTop();
@@ -43,8 +23,9 @@ const NavBar = ({ navColor }) => {
         initial={{ y: "-100%", opacity: 0 }}
         animate={{ y: "0%", opacity: 1 }}
         transition={{
-          duration: 0.4,
-          ease: "easeIn",
+          ease: [0.19, 1, 0.22, 1],
+          duration: 0.5,
+          delay: 0.4,
         }}
         $isScrolled={isScrolled}
         $isOpen={isOpen}

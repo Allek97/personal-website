@@ -20,11 +20,17 @@ import {
   UFOContainer,
   UFOImage,
 } from "./HeroStyle";
-import AnimatedHeader from "./Animations/AnimatedHeader";
+
+import AnimateText from "../utils/animations/AnimateText";
+
+const textHeader = "HELLO, I'M ILIAS. AN ASPIRING SOFTWARE DEVELOPER.";
+const textSecondary =
+  "I'm just a guy that enjoys programming daily and building cool stuff — Front-end design and solving problems are my favourite part. My goal is to always stand out.";
 
 const Hero = () => {
   const homeRef = useRef();
 
+  //   const isGlobe = useGlobeUpdate();
   const isGlobe = true;
   const setIsGlobe = useGlobeUpdate();
 
@@ -85,21 +91,18 @@ const Hero = () => {
         <HeroArticle>
           {isLoaded && (
             <div>
-              <AnimatedHeader />
-              <motion.h3
-                initial={{ y: "150%", opacity: 0 }}
-                animate={{ y: "0%", opacity: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  mass: 0.5,
-                  delay: 0.3,
-                }}
-              >
-                I'm just a guy that enjoys programming daily and building cool
-                stuff — Front-end design and solving problems are my favourite
-                part. My goal is to always stand out.
-              </motion.h3>
+              <AnimateText
+                isAnimate={isLoaded}
+                text={textHeader}
+                type="heading1"
+              />
+              <AnimateText
+                isAnimate={isLoaded}
+                text={textSecondary}
+                type="paragraph"
+                staggerValue={0.01}
+                version="fadeIn"
+              />
               <div>
                 <HeroBtn
                   aria-label="globe theme toggle"
@@ -162,12 +165,17 @@ const Hero = () => {
               </div>
             </div>
           )}
-          {isGlobe ? (
+          {!isGlobe ? (
             <GlobeContainer>
               <GlobeCanvas {...globeMotion} id="globe_canvas" />
             </GlobeContainer>
           ) : (
-            <ExtraPlanetImage image={beyondImage} alt="planet with spaceship" />
+            <motion.div {...globeMotion}>
+              <ExtraPlanetImage
+                image={beyondImage}
+                alt="planet with spaceship"
+              />
+            </motion.div>
           )}
         </HeroArticle>
         {isLoaded && (

@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState } from "react";
 const ScrollContext = createContext();
 const ScrollUpdateContext = createContext();
 
-export function useScroll() {
+export function useScrollContext() {
   return useContext(ScrollContext);
 }
 export function useScrollUpdate() {

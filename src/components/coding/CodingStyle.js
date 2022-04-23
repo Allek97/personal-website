@@ -40,20 +40,14 @@ export const CodingContainer = styled.article`
   h1 {
     margin-bottom: 2rem;
 
-    background-image: linear-gradient(
-      76deg,
-      var(--color-blue-dark),
-      var(--color-blue-darker)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--color-blue-dark);
 
     text-align: center;
     font-size: 5rem;
     font-family: Manrope;
     text-transform: uppercase;
     letter-spacing: -0.03em;
+    line-height: 6rem;
 
     @media only screen and (max-width: 65.5em) {
       width: 95%;

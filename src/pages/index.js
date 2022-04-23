@@ -53,8 +53,8 @@ export default function Index() {
       {/* {isGlobe && <HomeGlobe />}
       {!isLoaded && <Loading timeLoad={loadTime} />} */}
       {isLoaded && <ContactDetails />}
+      {isLoaded && <NavBar navColor="white" />}
       <div>
-        {isLoaded && <NavBar navColor="white" />}
         <Hero />
         {isLoaded && (
           <main>

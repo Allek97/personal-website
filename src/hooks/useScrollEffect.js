@@ -2,12 +2,12 @@
 
 import { useEffect } from "react";
 import { scroller } from "react-scroll";
-import { useScroll, useScrollUpdate } from "../context/ScrollContext";
+import { useScrollContext, useScrollUpdate } from "../context/ScrollContext";
 
 const isBrowser = typeof window !== "undefined";
 
 export const useScrollEffect = (isLoaded) => {
-  const scrollSection = useScroll();
+  const scrollSection = useScrollContext();
   const setScrollSection = useScrollUpdate();
   useEffect(() => {
     if (isBrowser) {
