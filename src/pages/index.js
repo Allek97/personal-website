@@ -52,7 +52,7 @@ export default function Index() {
       <Seo title="Home" />
       {/* {isGlobe && <HomeGlobe />}
       {!isLoaded && <Loading timeLoad={loadTime} />} */}
-      <ContactDetails />
+      {isLoaded && <ContactDetails />}
       <div>
         {isLoaded && <NavBar navColor="white" />}
         <Hero />

@@ -38,7 +38,7 @@ export const HeroArticle = styled.article`
 
   min-height: 70vh;
   height: 70vh;
-  max-width: 165rem;
+  max-width: 170rem;
   margin: 0 auto;
   padding-top: 5rem;
   padding-left: 7.5rem;

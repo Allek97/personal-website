@@ -20,11 +20,12 @@ import {
   UFOContainer,
   UFOImage,
 } from "./HeroStyle";
+import AnimatedHeader from "./Animations/AnimatedHeader";
 
 const Hero = () => {
   const homeRef = useRef();
 
-  const isGlobe = useGlobe();
+  const isGlobe = true;
   const setIsGlobe = useGlobeUpdate();
 
   //   const isLoaded = useLoading();
@@ -84,18 +85,7 @@ const Hero = () => {
         <HeroArticle>
           {isLoaded && (
             <div>
-              <motion.h1
-                initial={{ y: "100%", opacity: 0 }}
-                animate={{ y: "0%", opacity: 1 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  mass: 0.5,
-                  delay: 0.1,
-                }}
-              >
-                Hello, I'm Ilias. An aspiring software developer.
-              </motion.h1>
+              <AnimatedHeader />
               <motion.h3
                 initial={{ y: "150%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
@@ -183,7 +173,7 @@ const Hero = () => {
         {isLoaded && (
           <>
             <UFOContainer
-              initial={{ y: "50rem", scale: 0.9, opacity: 0 }}
+              initial={{ y: "5rem", scale: 0.9, opacity: 0 }}
               animate={isLoaded && { y: "0rem", scale: 1, opacity: 1 }}
               transition={{
                 delay: 0.3,
