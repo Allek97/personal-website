@@ -95,15 +95,14 @@ const Hero = () => {
                 isAnimate={isLoaded}
                 text={textHeader}
                 type="heading1"
-                // staggerValue={0.01}
-                // version="fadeIn"
               />
               <AnimateText
                 isAnimate={isLoaded}
-                text={textHeader}
-                type="heading1"
+                text={textSecondary}
+                type="paragraph"
+                staggerValue={0.01}
+                version="fadeIn"
               />
-
               <div>
                 <HeroBtn
                   aria-label="globe theme toggle"
