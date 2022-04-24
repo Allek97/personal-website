@@ -1,8 +1,7 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
-
-import { fadeVertically } from "../../abstracts/animations";
+import { motion } from "framer-motion";
 
 export const ProjectLink = styled(Link)`
   background-color: transparent;
@@ -15,18 +14,9 @@ export const ProjectsContainer = styled.section`
   flex-direction: column;
 `;
 
-export const ProjectBox = styled.div`
+export const ProjectBox = styled(motion.div)`
   display: flex;
   justify-content: space-between;
-
-  transition: all ease 0.4s;
-  opacity: 0;
-  transform: translateY(100%);
-  ${(props) =>
-    props.animateProject &&
-    css`
-      animation: ${fadeVertically} 0.5s ease-out 1 forwards;
-    `};
 
   box-shadow: var(--shadow-light);
 
@@ -56,13 +46,7 @@ export const ProjectBox = styled.div`
 `;
 
 export const ProjectImage = styled(GatsbyImage)`
-  transition: all ease 0.4s;
-
   overflow: hidden;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 
 export const ProjectContent = styled.article`
@@ -240,9 +224,7 @@ export const ProjectBtn = styled.a`
   }
 `;
 
-export const ProjectMore = styled(Link)`
-  transition: all 0.2s;
-
+export const ProjectMore = styled(motion(Link))`
   border-bottom: 2px solid rgba(25, 14, 66, 1);
 
   color: rgba(25, 14, 66, 1);
@@ -254,8 +236,4 @@ export const ProjectMore = styled(Link)`
   white-space: nowrap;
 
   cursor: pointer;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 `;

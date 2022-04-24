@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
+import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
@@ -16,7 +18,6 @@ import {
 } from "./ProjectsStyle";
 
 import stacks from "../../constants/stacks";
-import { useScreenIntersection } from "../../hooks/useScreenIntersection";
 
 const query = graphql`
   {
@@ -67,13 +68,15 @@ const Projects = ({ ignoreProject }) => {
         } = project;
         const projectThumbnail = getImage(gatsbyImageData);
         if (title !== ignoreProject) {
-          const projectRef = useRef();
-          const projectView = useScreenIntersection(projectRef, -120, true, 10);
+          const { ref: projectRef, inView: isProjectInView } = useInView({
+            triggerOnce: true,
+          });
           return (
             <ProjectBox
               key={project.id}
               ref={projectRef}
-              animateProject={projectView}
+              initial={{ y: "50%", opacity: 0 }}
+              animate={isProjectInView && { y: 0, opacity: 1 }}
             >
               <div>
                 <Link
@@ -82,10 +85,20 @@ const Projects = ({ ignoreProject }) => {
                     setIsGlobe(false);
                   }}
                 >
-                  <ProjectImage
-                    image={projectThumbnail}
-                    alt={`${project.title} thumbnail`}
-                  />
+                  <motion.div
+                    whileHover={{
+                      scale: 1.1,
+                      transition: {
+                        ease: "easeInOut",
+                        duration: 0.25,
+                      },
+                    }}
+                  >
+                    <ProjectImage
+                      image={projectThumbnail}
+                      alt={`${project.title} thumbnail`}
+                    />
+                  </motion.div>
                 </Link>
               </div>
 
@@ -153,6 +166,7 @@ const Projects = ({ ignoreProject }) => {
                       onClick={() => {
                         setIsGlobe(false);
                       }}
+                      whileHover={{ scale: 1.1 }}
                     >
                       Learn More &#8594;
                     </ProjectMore>

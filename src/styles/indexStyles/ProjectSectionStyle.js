@@ -1,11 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
-
-const fadeVertically = keyframes`
-to {
-    opacity: 1;
-    transform: translateY(0);
-}
-`;
+import styled from "styled-components";
 
 export const ProjectSection = styled.section`
   background-color: var(--color-grey-main);
@@ -34,24 +27,9 @@ export const ProjectContainer = styled.article`
   }
 
   h1 {
-    opacity: 0;
-    transform: translateY(100%);
-    ${(props) =>
-      props.animateText &&
-      css`
-        animation: ${fadeVertically} 0.6s ease-out 1 forwards;
-      `};
-
     margin-bottom: 8rem;
 
-    background-image: linear-gradient(
-      76deg,
-      var(--color-blue-dark),
-      var(--color-blue-darker)
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: var(--color-blue-dark);
 
     text-align: center;
     font-size: 5rem;

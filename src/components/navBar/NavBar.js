@@ -23,7 +23,7 @@ const NavBar = ({ navColor }) => {
         transition={{
           ease: [0.19, 1, 0.22, 1],
           duration: 0.5,
-          delay: 0.4,
+          delay: 0.2,
         }}
         $isScrolled={isScrolled}
         $isOpen={isOpen}

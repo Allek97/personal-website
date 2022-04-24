@@ -16,18 +16,30 @@ const tagMap = {
   paragraph: "p",
   heading1: "h1",
   heading2: "h2",
+  heading3: "h3",
 };
 
-const AnimateLetters = ({ type = "heading1", text = "", version }) => {
+const AnimateLetters = ({
+  type = "heading1",
+  text = "",
+  version,
+  letterDuration = 0.2,
+}) => {
   // NOTE Used for big headers
   const slideUpItem = {
     hidden: {
       y: "200%",
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.2 },
+      transition: {
+        ease: [0.455, 0.03, 0.515, 0.955],
+        duration: letterDuration,
+      },
     },
     visible: {
       y: 0,
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.2 },
+      transition: {
+        ease: [0.455, 0.03, 0.515, 0.955],
+        duration: letterDuration,
+      },
     },
   };
 
@@ -39,7 +51,10 @@ const AnimateLetters = ({ type = "heading1", text = "", version }) => {
     visible: {
       opacity: 1,
 
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.2 },
+      transition: {
+        ease: [0.455, 0.03, 0.515, 0.955],
+        duration: letterDuration,
+      },
     },
   };
   // NOTE Used for small font paragraphs
@@ -111,14 +126,16 @@ const AnimateLetters = ({ type = "heading1", text = "", version }) => {
 
 AnimateLetters.propTypes = {
   text: PropTypes.string,
-  type: PropTypes.oneOf(["paragraph", "heading1", "heading2"]),
+  type: PropTypes.oneOf(["paragraph", "heading1", "heading2", "heading3"]),
   version: PropTypes.oneOf(["slideUp", "fadeIn", "slideFade"]),
+  letterDuration: PropTypes.number,
 };
 
 AnimateLetters.defaultProps = {
   text: "",
   type: "heading1",
   version: "slideUp",
+  letterDuration: 0.2,
 };
 
 export default AnimateLetters;

@@ -5,7 +5,16 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import AnimateLetters from "./AnimateLetters";
 
-const AnimateText = ({ isAnimate, type, text, staggerValue, version }) => {
+const AnimateText = ({
+  isAnimate,
+  type,
+  text,
+  staggerValue,
+  delayValue,
+  version,
+  letterDuration,
+  refAnimation,
+}) => {
   // Placeholder text data, as if from API
   const placeholderText = [
     {
@@ -18,6 +27,7 @@ const AnimateText = ({ isAnimate, type, text, staggerValue, version }) => {
     visible: {
       transition: {
         staggerChildren: staggerValue,
+        delayChildren: delayValue ?? 0,
       },
     },
   };
@@ -27,10 +37,18 @@ const AnimateText = ({ isAnimate, type, text, staggerValue, version }) => {
       initial="hidden"
       animate={isAnimate && "visible"}
       variants={container}
+      ref={refAnimation}
     >
       <div>
         {placeholderText.map((item, index) => {
-          return <AnimateLetters {...item} key={index} version={version} />;
+          return (
+            <AnimateLetters
+              {...item}
+              key={index}
+              version={version}
+              letterDuration={letterDuration}
+            />
+          );
         })}
       </div>
     </motion.div>
@@ -40,9 +58,17 @@ const AnimateText = ({ isAnimate, type, text, staggerValue, version }) => {
 AnimateText.propTypes = {
   isAnimate: PropTypes.bool.isRequired,
   text: PropTypes.string,
-  type: PropTypes.oneOf(["paragraph", "heading1", "heading2"]),
+  type: PropTypes.oneOf(["paragraph", "heading1", "heading2", "heading3"]),
   version: PropTypes.oneOf(["slideUp", "fadeIn", "slideFade"]),
   staggerValue: PropTypes.number,
+  // eslint-disable-next-line react/require-default-props
+  refAnimation: PropTypes.oneOfType([
+    PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
+    PropTypes.shape({ current: PropTypes.any }),
+  ]),
+  delayValue: PropTypes.number,
+  letterDuration: PropTypes.number,
 };
 
 AnimateText.defaultProps = {
@@ -50,6 +76,8 @@ AnimateText.defaultProps = {
   type: "heading1",
   staggerValue: 0.025,
   version: "slideUp",
+  delayValue: 0,
+  letterDuration: 0.2,
 };
 
 export default AnimateText;

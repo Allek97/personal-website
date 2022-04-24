@@ -1,12 +1,6 @@
-import styled, { css, keyframes } from "styled-components";
+import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
-
-const fadeVertically = keyframes`
-to {
-    opacity: 1;
-    transform: translateY(0);
-}
-`;
+import { motion } from "framer-motion";
 
 export const AboutSection = styled.section`
   padding: 8rem 0;
@@ -58,28 +52,14 @@ export const AboutContainer = styled.article`
       width: 100%;
     }
 
-    h1,
-    h3,
-    p {
-      opacity: 0;
-      transform: translateY(100%);
-    }
-
     h1 {
       position: relative;
 
       margin: 3.5rem 0;
 
-      font-size: 4rem;
+      font-size: 5rem;
       font-family: Manrope;
       text-align: center;
-
-      ${(props) =>
-        props.animateText &&
-        css`
-          animation: ${fadeVertically} 0.5s cubic-bezier(0.5, 0, 0, 1) 0.1s 1
-            forwards;
-        `};
 
       &:after {
         content: "";
@@ -97,29 +77,18 @@ export const AboutContainer = styled.article`
       }
     }
     h3 {
-      ${(props) =>
-        props.animateText &&
-        css`
-          animation: ${fadeVertically} 0.5s cubic-bezier(0.5, 0, 0, 1) 0.25s 1
-            forwards;
-        `};
-
       margin-bottom: 4rem;
 
-      font-size: 2.7rem;
+      font-size: 3.2rem;
       font-family: ManropeLight;
       font-weight: 300;
       text-align: center;
+
+      letter-spacing: -0.03em;
     }
     p {
-      ${(props) =>
-        props.animateText &&
-        css`
-          animation: ${fadeVertically} 0.5s cubic-bezier(0.5, 0, 0, 1) 0.45s 1
-            forwards;
-        `};
-
-      font-size: 1.8rem;
+      font-size: 2.1rem;
+      line-height: 2.55rem;
       font-family: ManropeLight;
       font-weight: 100;
       text-align: center;
@@ -134,15 +103,6 @@ export const AboutContainer = styled.article`
 
     align-items: center;
     h1 {
-      opacity: 0;
-      transform: translateY(100%);
-      ${(props) =>
-        props.animateStacks &&
-        css`
-          animation: ${fadeVertically} 0.5s cubic-bezier(0.5, 0, 0, 1) 1
-            forwards;
-        `};
-
       margin: 3.5rem 0;
 
       font-size: 4rem;
@@ -153,19 +113,11 @@ export const AboutContainer = styled.article`
 `;
 
 export const ProfileImage = styled(GatsbyImage)`
-  opacity: 0;
-  transform: translateY(100%);
-  ${(props) =>
-    props.animateprofile &&
-    css`
-      animation: ${fadeVertically} 0.5s cubic-bezier(0.5, 0, 0, 1) 1 forwards;
-    `};
-
   width: 25rem;
   border-radius: 50%;
 `;
 
-export const SkillBox = styled.div`
+export const SkillBox = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -173,26 +125,6 @@ export const SkillBox = styled.div`
 
   /* gap: 2rem;
   grid-gap: 2rem; */
-
-  opacity: 0;
-  transform: translateY(100%);
-
-  &:first-of-type {
-    ${(props) =>
-      props.animateStacks &&
-      css`
-        animation: ${fadeVertically} 0.6s cubic-bezier(0.5, 0, 0, 1) 0.25s 1
-          forwards;
-      `};
-  }
-  &:nth-of-type(2) {
-    ${(props) =>
-      props.animateStacks &&
-      css`
-        animation: ${fadeVertically} 0.6s cubic-bezier(0.5, 0, 0, 1) 0.45s 1
-          forwards;
-      `};
-  }
 
   div {
     display: flex;

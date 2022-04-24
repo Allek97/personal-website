@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import loadable from "@loadable/component";
 import { Element } from "react-scroll";
+import { useInView } from "react-intersection-observer";
 
 import Loading from "../components/loading/Loading";
 import NavBar from "../components/navBar/NavBar";
@@ -23,6 +24,7 @@ import { useScrollEffect } from "../hooks/useScrollEffect";
 import Hero from "../components/hero/Hero";
 import Coding from "../components/coding/Coding";
 import About from "../components/about/About";
+import AnimateText from "../components/utils/animations/AnimateText";
 import { useGlobe } from "../context/GlobeContext";
 
 const HomeGlobe = loadable(() => import("../components/HomeGlobe"));
@@ -47,6 +49,15 @@ export default function Index() {
   const projectRef = useRef();
   const contactRef = useRef();
 
+  ////////////////////////////////
+  // NOTE: Animations
+  ////////////////////////////////
+
+  const { ref: projectHeaderRef, inView: isProjectInView } = useInView({
+    threshold: 0.25,
+    triggerOnce: true,
+  });
+
   return (
     <>
       <Seo title="Home" />
@@ -64,7 +75,15 @@ export default function Index() {
             <Element name="projectSection">
               <ProjectSection id="project" ref={projectRef}>
                 <ProjectContainer>
-                  <h1>Recent Projects</h1>
+                  <AnimateText
+                    text="Recent Projects"
+                    type="heading1"
+                    isAnimate={isProjectInView}
+                    version="slideUp"
+                    staggerValue={0.025}
+                    letterDuration={0.5}
+                    refAnimation={projectHeaderRef}
+                  />
                   <Projects />
                 </ProjectContainer>
               </ProjectSection>
