@@ -101,6 +101,7 @@ const About = () => {
               version="slideUp"
               staggerValue={0.025}
               letterDuration={0.5}
+              delayValue={0.2}
             />
             <SkillBox
               ref={skillRef}
@@ -124,6 +125,7 @@ const About = () => {
               version="slideUp"
               staggerValue={0.025}
               letterDuration={0.5}
+              delayValue={0.2}
             />
             <SkillBox
               ref={basicRef}

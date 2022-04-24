@@ -26,6 +26,11 @@
   box-sizing: inherit;
 
   -webkit-tap-highlight-color: transparent;
+
+  // FIX Some mobile browsers apply a text inflation factor if a
+  // mobile-first layout is not detected. I have issues with it in ios.
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
 }
 
 html {

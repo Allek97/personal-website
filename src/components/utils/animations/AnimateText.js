@@ -38,6 +38,7 @@ const AnimateText = ({
       animate={isAnimate && "visible"}
       variants={container}
       ref={refAnimation}
+      style={{ width: "100%" }}
     >
       <div>
         {placeholderText.map((item, index) => {
