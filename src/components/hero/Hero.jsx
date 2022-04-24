@@ -93,7 +93,7 @@ const Hero = () => {
             <div style={{ width: "100%" }}>
               <AnimateText
                 isAnimate={isLoaded}
-                text={textSecondary}
+                text={textHeader}
                 type="heading1"
                 // staggerValue={0.01}
                 // version="fadeIn"
