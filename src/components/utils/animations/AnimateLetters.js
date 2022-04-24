@@ -97,7 +97,7 @@ const AnimateLetters = ({
   };
 
   return (
-    <Tag>
+    <Tag style={{ whiteSpace: "normal" }}>
       {words.map((word, index) => {
         return (
           <Wrapper key={index}>
