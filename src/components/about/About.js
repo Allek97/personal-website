@@ -29,15 +29,15 @@ const About = () => {
     triggerOnce: true,
   });
   const { ref: storyRef, inView: isStoryInView } = useInView({
-    threshold: 0.25,
+    threshold: 0.5,
     triggerOnce: true,
   });
   const { ref: skillRef, inView: isSkillInView } = useInView({
-    threshold: 0.2,
+    threshold: 1,
     triggerOnce: true,
   });
   const { ref: basicRef, inView: isBasicInView } = useInView({
-    threshold: 0.2,
+    threshold: 1,
     triggerOnce: true,
   });
 
