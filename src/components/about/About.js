@@ -76,7 +76,7 @@ const About = () => {
             />
             <AnimateText
               text={aspirations}
-              type="heading3"
+              type="heading2"
               isAnimate={isNameInView}
               version="slideFade"
               staggerValue={0.02}
@@ -85,7 +85,7 @@ const About = () => {
             />
             <AnimateText
               text={story}
-              type="paragraph"
+              type="heading3"
               isAnimate={isStoryInView}
               version="fadeIn"
               staggerValue={0.002}

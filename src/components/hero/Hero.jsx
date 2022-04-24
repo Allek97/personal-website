@@ -90,7 +90,7 @@ const Hero = () => {
       <Header id="home" ref={homeRef}>
         <HeroArticle>
           {isLoaded && (
-            <div>
+            <div style={{ width: "100%" }}>
               <AnimateText
                 isAnimate={isLoaded}
                 text={textHeader}

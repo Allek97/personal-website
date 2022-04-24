@@ -76,7 +76,7 @@ export const AboutContainer = styled.article`
         background-color: white;
       }
     }
-    h3 {
+    h2 {
       margin-bottom: 4rem;
 
       font-size: 3.2rem;
@@ -86,7 +86,7 @@ export const AboutContainer = styled.article`
 
       letter-spacing: -0.03em;
     }
-    p {
+    h3 {
       font-size: 2.1rem;
       line-height: 2.55rem;
       font-family: ManropeLight;
