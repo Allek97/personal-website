@@ -94,9 +94,9 @@ const Hero = () => {
               <AnimateText
                 isAnimate={isLoaded}
                 text={textSecondary}
-                type="paragraph"
-                staggerValue={0.01}
-                version="fadeIn"
+                type="heading1"
+                // staggerValue={0.01}
+                // version="fadeIn"
               />
               <AnimateText
                 isAnimate={isLoaded}
