@@ -2,7 +2,6 @@ import styled, { css } from "styled-components";
 import { VscRequestChanges } from "react-icons/vsc";
 import { MdEmail } from "react-icons/md";
 import { BsFillPersonFill } from "react-icons/bs";
-import { fadeVertically } from "../../abstracts/animations";
 
 export const ContactContainer = styled.article`
   display: flex;
@@ -43,22 +42,7 @@ export const ContactContainer = styled.article`
       }
     }
 
-    h1,
-    h2,
-    h3 {
-      transition: all ease 0.4s;
-
-      opacity: 0;
-      transform: translateY(100%);
-    }
-
     h2 {
-      ${(props) =>
-        props.animateText &&
-        css`
-          animation: ${fadeVertically} 0.6s ease-out 0.1s 1 forwards;
-        `};
-
       margin-bottom: 3.5rem;
 
       font-size: 4rem;
@@ -67,12 +51,6 @@ export const ContactContainer = styled.article`
     }
 
     h3 {
-      ${(props) =>
-        props.animateText &&
-        css`
-          animation: ${fadeVertically} 0.6s ease-out 0.2s 1 forwards;
-        `};
-
       margin-bottom: 3.5rem;
 
       font-size: 2.6rem;
@@ -81,12 +59,6 @@ export const ContactContainer = styled.article`
     }
 
     h1 {
-      ${(props) =>
-        props.animateText &&
-        css`
-          animation: ${fadeVertically} 0.6s ease-out 0.3s 1 forwards;
-        `};
-
       font-size: 4rem;
       font-family: Manrope;
       color: #2b2d42;
@@ -126,14 +98,6 @@ export const ContactContainer = styled.article`
     }
 
     h1 {
-      opacity: 0;
-      transform: translateY(100%);
-      ${(props) =>
-        props.animateText &&
-        css`
-          animation: ${fadeVertically} 0.6s ease-out 0.1s 1 forwards;
-        `};
-
       margin-bottom: 2rem;
 
       font-size: 4rem;
@@ -164,31 +128,10 @@ export const ContactForm = styled.form`
         margin-bottom: 2rem;
       }
     }
-    & > div {
-      transition: all ease 0.4s;
-      opacity: 0;
-      transform: translateY(200%);
-      ${(props) =>
-        props.animateForm &&
-        css`
-          animation: ${fadeVertically} 0.6s linear 0.2s 1 forwards;
-        `};
-    }
 
     & > div:first-of-type {
       margin-right: 2rem;
     }
-  }
-
-  & > div:nth-of-type(2) {
-    transition: all ease 0.4s;
-    opacity: 0;
-    transform: translateY(100%);
-    ${(props) =>
-      props.animateForm &&
-      css`
-        animation: ${fadeVertically} 0.6s linear 0.3s 1 forwards;
-      `};
   }
 `;
 
@@ -259,15 +202,6 @@ export const ResumeLink = styled.a`
   margin-top: 2rem;
   width: 22rem;
 
-  transition: all ease 0.4s;
-  opacity: 0;
-  transform: translateY(100%);
-  ${(props) =>
-    props.animateBtn &&
-    css`
-      animation: ${fadeVertically} 0.6s ease-out 0.5s 1 forwards;
-    `};
-
   box-shadow: rgb(8 84 207 / 60%) 0px 0.65rem 1.6rem 0px;
 
   border: none;
@@ -296,15 +230,6 @@ export const ContactBtn = styled.button`
 
   padding: 1.4rem 3rem 1.5rem;
   margin-top: 2rem;
-
-  transition: all ease 0.4s;
-  opacity: 0;
-  transform: translateY(100%);
-  ${(props) =>
-    props.animateBtn &&
-    css`
-      animation: ${fadeVertically} 0.6s ease-out 0.5s 1 forwards;
-    `};
 
   box-shadow: rgb(8 84 207 / 60%) 0px 0.65rem 1.6rem 0px;
 

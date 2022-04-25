@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 import {
   ContactContainer,
@@ -11,8 +11,6 @@ import {
   EmailSvg,
   MessageAreaSvg,
 } from "./ContactStyle";
-
-import { useScreenIntersection } from "../../hooks/useScreenIntersection";
 
 const Contact = () => {
   const [isNameValid, setIsNameValid] = useState(false);
@@ -32,20 +30,9 @@ const Contact = () => {
     }
   };
 
-  const contactTextRef = useRef();
-  const contactView = useScreenIntersection(contactTextRef, -150, false, 10);
-
-  const contactFormRef = useRef();
-  const contactFormView = useScreenIntersection(
-    contactFormRef,
-    -150,
-    false,
-    10
-  );
-
   return (
-    <ContactContainer animateText={contactView}>
-      <div ref={contactTextRef}>
+    <ContactContainer>
+      <div>
         <h2>
           Contact details<span>:</span>
         </h2>
@@ -54,7 +41,6 @@ const Contact = () => {
           For employers<span>:</span>
         </h1>
         <ResumeLink
-          animateBtn={contactView}
           style={{ alignSelf: "flex-start" }}
           href="Ilias_Allek_SWE_Resume_EN.pdf"
           target="_blank"
@@ -65,7 +51,6 @@ const Contact = () => {
           DOWNLOAD CV
         </ResumeLink>
         <ResumeLink
-          animateBtn={contactView}
           style={{ alignSelf: "flex-start" }}
           href="Ilias_Allek_SWE_Resume_FR.pdf"
           target="_blank"
@@ -79,12 +64,7 @@ const Contact = () => {
       <div>
         <h1>Say Hello</h1>
         <div>
-          <ContactForm
-            ref={contactFormRef}
-            animateForm={contactFormView}
-            action="https://formspree.io/f/xvoddwlj"
-            method="POST"
-          >
+          <ContactForm action="https://formspree.io/f/xvoddwlj" method="POST">
             <div>
               <div>
                 <ContactInput
@@ -133,9 +113,7 @@ const Contact = () => {
               />
               <MessageAreaSvg isvalid={isTextValid ? 1 : 0} />
             </div>
-            <ContactBtn type="submit" animateBtn={contactFormView}>
-              SUBMIT
-            </ContactBtn>
+            <ContactBtn type="submit">SUBMIT</ContactBtn>
           </ContactForm>
         </div>
       </div>

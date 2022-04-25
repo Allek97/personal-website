@@ -54,7 +54,7 @@ export default function Index() {
   ////////////////////////////////
 
   const { ref: projectHeaderRef, inView: isProjectInView } = useInView({
-    threshold: 0.25,
+    threshold: 1,
     triggerOnce: true,
   });
 
