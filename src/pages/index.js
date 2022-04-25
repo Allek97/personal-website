@@ -38,8 +38,8 @@ export default function Index() {
   const isGlobe = useGlobe();
 
   const loadTime = 20000;
-  //   const isLoaded = useLoading();
-  const isLoaded = true;
+  const isLoaded = useLoading();
+  //   const isLoaded = true;
   useScrollEffect(isLoaded);
 
   ////////////////////////////////
@@ -61,8 +61,8 @@ export default function Index() {
   return (
     <>
       <Seo title="Home" />
-      {/* {isGlobe && <HomeGlobe />}
-      {!isLoaded && <Loading timeLoad={loadTime} />} */}
+      {isGlobe && <HomeGlobe />}
+      {!isLoaded && <Loading timeLoad={loadTime} />}
       {isLoaded && <ContactDetails />}
       {isLoaded && <NavBar navColor="white" />}
       <div>

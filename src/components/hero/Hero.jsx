@@ -30,12 +30,12 @@ const textSecondary =
 const Hero = () => {
   const homeRef = useRef();
 
-  //   const isGlobe = useGlobeUpdate();
-  const isGlobe = true;
+  const isGlobe = useGlobeUpdate();
+  //   const isGlobe = true;
   const setIsGlobe = useGlobeUpdate();
 
-  //   const isLoaded = useLoading();
-  const isLoaded = true;
+  const isLoaded = useLoading();
+  //   const isLoaded = true;
 
   const { beyondGlobeImage, myGlobeImage, beyondImage, rocketImage } =
     useSiteDataImages();
@@ -165,7 +165,7 @@ const Hero = () => {
               </div>
             </div>
           )}
-          {!isGlobe ? (
+          {isGlobe ? (
             <GlobeContainer>
               <GlobeCanvas {...globeMotion} id="globe_canvas" />
             </GlobeContainer>
