@@ -30,7 +30,7 @@ const textSecondary =
 const Hero = () => {
   const homeRef = useRef();
 
-  const isGlobe = useGlobeUpdate();
+  const isGlobe = useGlobe();
   //   const isGlobe = true;
   const setIsGlobe = useGlobeUpdate();
 
