@@ -96,7 +96,7 @@ const Contact = () => {
           version="fadeIn"
           staggerValue={0.04}
           letterDuration={0.6}
-          delayValue={0.2}
+          delayValue={0.1}
         />
         <AnimateText
           text="For employers:"
@@ -105,13 +105,13 @@ const Contact = () => {
           version="slideUp"
           staggerValue={0.02}
           letterDuration={0.6}
-          delayValue={0.4}
+          delayValue={0.2}
         />
 
         <ResumeLink
           initial="hidden"
           animate={isContactInView && "visible"}
-          variants={fadeInUp(0.6)}
+          variants={fadeInUp(0.3)}
           whileHover={{
             backgroundColor: "var(--color-blue-dark)",
             transition: {
@@ -130,7 +130,7 @@ const Contact = () => {
         <ResumeLink
           initial="hidden"
           animate={isContactInView && "visible"}
-          variants={fadeInUp(0.8)}
+          variants={fadeInUp(0.4)}
           whileHover={{
             backgroundColor: "var(--color-blue-dark)",
             transition: {
@@ -182,7 +182,7 @@ const Contact = () => {
               <motion.div
                 initial="hidden"
                 animate={isFormInView && "visible"}
-                variants={fadeUp(0.2)}
+                variants={fadeUp(0.1)}
               >
                 <ContactInput
                   id="email-input"
@@ -201,7 +201,7 @@ const Contact = () => {
             <motion.div
               initial="hidden"
               animate={isFormInView && "visible"}
-              variants={fadeUp(0.4)}
+              variants={fadeUp(0.2)}
             >
               <ContactTextArea
                 id="input-message"
@@ -221,7 +221,7 @@ const Contact = () => {
             <ContactBtn
               initial="hidden"
               animate={isFormInView && "visible"}
-              variants={fadeInUp(0.6)}
+              variants={fadeInUp(0.3)}
               whileHover={{
                 backgroundColor: "var(--color-blue-dark)",
                 transition: {
