@@ -21,14 +21,19 @@ const headerText = "Always coding and working on new projects";
 const Coding = () => {
   const { phoneMockupImage, dashImages } = useSiteDataImages();
 
-  const contentControls = useAnimation();
+  const phoneControls = useAnimation();
+  const dashControls = useAnimation();
 
   const { ref: codeInfoRef, inView: isCodeInfoInView } = useInView({
-    threshold: 0.25,
+    threshold: 1,
     triggerOnce: true,
   });
-  const { ref: codeContentRef, inView: isCodeContentInView } = useInView({
-    threshold: 0.5,
+  const { ref: phoneRef, inView: isPhoneInView } = useInView({
+    threshold: 0.7,
+    triggerOnce: true,
+  });
+  const { ref: dashRef, inView: isDashInView } = useInView({
+    threshold: 0.7,
     triggerOnce: true,
   });
 
@@ -47,13 +52,12 @@ const Coding = () => {
         opacity: {
           ease: [1, 0.54, 1, 0.27],
         },
-        delay: 0.3,
       },
     },
   };
 
   const slideIn = (fromLeft, delay = 0) => ({
-    hidden: { x: fromLeft ? "-80vw" : "80vw" },
+    hidden: { x: fromLeft ? "-100vw" : "100vw" },
     visible: {
       x: 0,
       transition: {
@@ -65,16 +69,23 @@ const Coding = () => {
   });
 
   useEffect(() => {
-    if (isCodeContentInView) {
-      contentControls.start("visible");
+    if (isPhoneInView) {
+      phoneControls.start("visible");
     } else {
-      contentControls.start("hidden");
+      phoneControls.start("hidden");
     }
-  }, [contentControls, isCodeContentInView]);
+  }, [phoneControls, isPhoneInView]);
+  useEffect(() => {
+    if (isDashInView) {
+      dashControls.start("visible");
+    } else {
+      dashControls.start("hidden");
+    }
+  }, [dashControls, isDashInView]);
 
   return (
     <CodingSection>
-      <CodingContainer ref={codeInfoRef}>
+      <CodingContainer>
         <AnimateText
           text={headerText}
           type="heading1"
@@ -87,34 +98,40 @@ const Coding = () => {
           animate={animateCodeInfo && "visible"}
           variants={fadeInUp}
           style={{ padding: "1.4rem 0 1.5rem" }}
+          ref={codeInfoRef}
         >
           <CodingBtn to="about" spy smooth offset={-70} duration={500}>
             About me
           </CodingBtn>
         </motion.div>
 
-        <DeviceContainer ref={codeContentRef}>
-          <motion.div
-            initial="hidden"
-            animate={contentControls}
-            variants={slideIn(true)}
-          >
-            <PhoneImage image={phoneMockupImage} alt="Phone" />
+        <DeviceContainer>
+          <div ref={phoneRef}>
+            <motion.div
+              initial="hidden"
+              animate={phoneControls}
+              variants={slideIn(true)}
+            >
+              <PhoneImage image={phoneMockupImage} alt="Phone" />
 
-            <video playsInline muted loop autoPlay preload="none">
-              <source
-                src={CodeGitVideo}
-                type="video/mp4; codecs=avc1.4D401E,mp4a.40.2"
-              />
-            </video>
-          </motion.div>
-          <motion.div
-            initial="hidden"
-            animate={contentControls}
-            variants={slideIn(false, 0.2)}
-          >
-            <DashImage image={dashImages} alt="dashboard" />
-          </motion.div>
+              <video playsInline muted loop autoPlay preload="none">
+                <source
+                  src={CodeGitVideo}
+                  type="video/mp4; codecs=avc1.4D401E,mp4a.40.2"
+                />
+              </video>
+            </motion.div>
+          </div>
+
+          <div ref={dashRef}>
+            <motion.div
+              initial="hidden"
+              animate={dashControls}
+              variants={slideIn(false, 0)}
+            >
+              <DashImage image={dashImages} alt="dashboard" />
+            </motion.div>
+          </div>
         </DeviceContainer>
       </CodingContainer>
     </CodingSection>
