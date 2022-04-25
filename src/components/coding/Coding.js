@@ -97,8 +97,10 @@ const Coding = () => {
           initial="hidden"
           animate={animateCodeInfo && "visible"}
           variants={fadeInUp}
-          style={{ padding: "1.4rem 0 1.5rem" }}
           ref={codeInfoRef}
+          style={{
+            padding: "1.4rem 0 1.5rem",
+          }}
         >
           <CodingBtn to="about" spy smooth offset={-70} duration={500}>
             About me

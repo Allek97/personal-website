@@ -14,6 +14,7 @@ const AnimateText = ({
   version,
   letterDuration,
   refAnimation,
+  // eslint-disable-next-line react/prop-types
 }) => {
   // Placeholder text data, as if from API
   const placeholderText = [

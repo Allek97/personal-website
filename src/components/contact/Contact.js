@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import AnimateText from "../utils/animations/AnimateText";
 
 import {
   ContactContainer,
@@ -30,17 +33,91 @@ const Contact = () => {
     }
   };
 
+  const { ref: contactRef, inView: isContactInView } = useInView({
+    threshold: 0.8,
+    triggerOnce: true,
+  });
+  const { ref: formRef, inView: isFormInView } = useInView({
+    threshold: 0.8,
+    triggerOnce: true,
+  });
+
+  const fadeInUp = (delay) => ({
+    hidden: {
+      y: "100%",
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 260,
+        damping: 25,
+        opacity: {
+          ease: [1, 0.54, 1, 0.27],
+        },
+        delay: delay,
+      },
+    },
+  });
+
+  const fadeUp = (delay) => ({
+    hidden: {
+      y: "100%",
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: "easeIn",
+        duration: 0.75,
+        delay: delay,
+      },
+    },
+  });
+
   return (
     <ContactContainer>
-      <div>
-        <h2>
-          Contact details<span>:</span>
-        </h2>
-        <h3>iliasallek.aek@gmail.com</h3>
-        <h1>
-          For employers<span>:</span>
-        </h1>
+      <div ref={contactRef}>
+        <AnimateText
+          text="Contact details:"
+          type="heading1"
+          isAnimate={isContactInView}
+          version="slideUp"
+          staggerValue={0.02}
+          letterDuration={0.6}
+        />
+        <AnimateText
+          text="iliasallek.aek@gmail.com"
+          type="heading3"
+          isAnimate={isContactInView}
+          version="fadeIn"
+          staggerValue={0.04}
+          letterDuration={0.6}
+          delayValue={0.2}
+        />
+        <AnimateText
+          text="For employers:"
+          type="heading1"
+          isAnimate={isContactInView}
+          version="slideUp"
+          staggerValue={0.02}
+          letterDuration={0.6}
+          delayValue={0.4}
+        />
+
         <ResumeLink
+          initial="hidden"
+          animate={isContactInView && "visible"}
+          variants={fadeInUp(0.6)}
+          whileHover={{
+            backgroundColor: "var(--color-blue-dark)",
+            transition: {
+              duration: 0.2,
+            },
+          }}
           style={{ alignSelf: "flex-start" }}
           href="Ilias_Allek_SWE_Resume_EN.pdf"
           target="_blank"
@@ -51,6 +128,15 @@ const Contact = () => {
           DOWNLOAD CV
         </ResumeLink>
         <ResumeLink
+          initial="hidden"
+          animate={isContactInView && "visible"}
+          variants={fadeInUp(0.8)}
+          whileHover={{
+            backgroundColor: "var(--color-blue-dark)",
+            transition: {
+              duration: 0.2,
+            },
+          }}
           style={{ alignSelf: "flex-start" }}
           href="Ilias_Allek_SWE_Resume_FR.pdf"
           target="_blank"
@@ -61,12 +147,23 @@ const Contact = () => {
           TÉLÉCHARGER CV
         </ResumeLink>
       </div>
-      <div>
-        <h1>Say Hello</h1>
+      <div ref={formRef}>
+        <AnimateText
+          text="Say Hello"
+          type="heading1"
+          isAnimate={isFormInView}
+          version="slideUp"
+          staggerValue={0.02}
+          letterDuration={0.6}
+        />
         <div>
           <ContactForm action="https://formspree.io/f/xvoddwlj" method="POST">
             <div>
-              <div>
+              <motion.div
+                initial="hidden"
+                animate={isFormInView && "visible"}
+                variants={fadeUp()}
+              >
                 <ContactInput
                   id="name-input"
                   name="name"
@@ -81,8 +178,12 @@ const Contact = () => {
                   required
                 />
                 <NameSvg isvalid={isNameValid ? 1 : 0} />
-              </div>
-              <div>
+              </motion.div>
+              <motion.div
+                initial="hidden"
+                animate={isFormInView && "visible"}
+                variants={fadeUp(0.2)}
+              >
                 <ContactInput
                   id="email-input"
                   name="email"
@@ -94,10 +195,14 @@ const Contact = () => {
                   required
                 />
                 <EmailSvg isvalid={isEmailValid ? 1 : 0} />
-              </div>
+              </motion.div>
             </div>
 
-            <div>
+            <motion.div
+              initial="hidden"
+              animate={isFormInView && "visible"}
+              variants={fadeUp(0.4)}
+            >
               <ContactTextArea
                 id="input-message"
                 spellCheck="false"
@@ -112,8 +217,21 @@ const Contact = () => {
                 required
               />
               <MessageAreaSvg isvalid={isTextValid ? 1 : 0} />
-            </div>
-            <ContactBtn type="submit">SUBMIT</ContactBtn>
+            </motion.div>
+            <ContactBtn
+              initial="hidden"
+              animate={isFormInView && "visible"}
+              variants={fadeInUp(0.6)}
+              whileHover={{
+                backgroundColor: "var(--color-blue-dark)",
+                transition: {
+                  duration: 0.2,
+                },
+              }}
+              type="submit"
+            >
+              SUBMIT
+            </ContactBtn>
           </ContactForm>
         </div>
       </div>

@@ -138,7 +138,9 @@ export const CodingBtn = styled(ScrollLink)`
 
   cursor: pointer;
 
-  &:hover {
-    box-shadow: rgb(8 84 207 / 90%) 0px 0.4rem 1rem 0px;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      box-shadow: rgb(8 84 207 / 90%) 0px 0.4rem 1rem 0px;
+    }
   }
 `;

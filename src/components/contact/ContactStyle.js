@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { VscRequestChanges } from "react-icons/vsc";
 import { MdEmail } from "react-icons/md";
 import { BsFillPersonFill } from "react-icons/bs";
+import { motion } from "framer-motion";
 
 export const ContactContainer = styled.article`
   display: flex;
@@ -33,7 +34,7 @@ export const ContactContainer = styled.article`
     width: 50%;
 
     @media only screen and (max-width: 59.5em) {
-      align-items: center;
+      text-align: center;
       margin-bottom: 10rem;
       width: 100%;
       button,
@@ -46,6 +47,7 @@ export const ContactContainer = styled.article`
       margin-bottom: 3.5rem;
 
       font-size: 4rem;
+      line-height: 4rem;
       font-family: Manrope;
       color: #2b2d42;
     }
@@ -62,11 +64,6 @@ export const ContactContainer = styled.article`
       font-size: 4rem;
       font-family: Manrope;
       color: #2b2d42;
-    }
-
-    span {
-      color: var(--color-blue-special);
-      font-family: NexaBold;
     }
   }
   & > div:nth-of-type(2) {
@@ -195,7 +192,7 @@ export const ContactTextArea = styled.textarea.attrs({
   }
 `;
 
-export const ResumeLink = styled.a`
+export const ResumeLink = styled(motion.a)`
   align-self: center;
 
   padding: 1.2rem 0 1.3rem;
@@ -219,13 +216,9 @@ export const ResumeLink = styled.a`
   text-align: center;
 
   cursor: pointer;
-
-  &:hover {
-    box-shadow: rgb(8 84 207 / 90%) 0px 0rem 2.1rem 0px;
-  }
 `;
 
-export const ContactBtn = styled.button`
+export const ContactBtn = styled(motion.button)`
   align-self: center;
 
   padding: 1.4rem 3rem 1.5rem;
@@ -246,10 +239,6 @@ export const ContactBtn = styled.button`
   white-space: nowrap;
 
   cursor: pointer;
-
-  &:hover {
-    box-shadow: rgb(8 84 207 / 90%) 0px 0rem 2.1rem 0px;
-  }
 `;
 
 export const NameSvg = styled(BsFillPersonFill)`
