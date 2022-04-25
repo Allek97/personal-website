@@ -1,29 +1,22 @@
 /* eslint-disable react/prop-types */
-import { useLocation } from "@reach/router";
-import React, { useRef } from "react";
-import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
+import React from "react";
+import { useInView } from "react-intersection-observer";
 
-import { fadeVertically } from "../abstracts/animations";
-import { useScreenIntersection } from "../hooks/useScreenIntersection";
+import styled from "styled-components";
 
-const Container = styled.footer`
+import AnimateText from "./utils/animations/AnimateText";
+
+const Container = styled(motion.footer)`
   padding: 3.5rem 0;
   margin: 0 auto;
 
   background-color: var(--color-grey-main);
 
-  h4 {
-    transition: all ease 0.4s;
-    opacity: 0;
-    transform: translateY(100%);
-    ${(props) =>
-      props.animateText &&
-      css`
-        animation: ${fadeVertically} 0.6s ease-out 0.1s 1 forwards;
-      `};
-
-    font-size: 1.8rem;
-    font-family: NexaBold;
+  h1 {
+    font-size: 1.95rem;
+    /* line-height: 3rem; */
+    font-family: Manrope;
     font-weight: 400;
     color: #2b2d42;
     text-align: center;
@@ -31,19 +24,23 @@ const Container = styled.footer`
 `;
 
 const Footer = () => {
-  const contactTextRef = useRef();
-  const contactView = useScreenIntersection(contactTextRef, -20, false, 10);
+  const { ref: footerRef, inView: isFooterInView } = useInView({
+    threshold: 0,
+    triggerOnce: false,
+  });
 
-  const location = useLocation();
-  const { pathname } = location;
-
-  const is404 = pathname.includes("404");
+  const contentText = `&copy; by Ilias Allek. All rights reserved.`;
 
   return (
-    <Container ref={contactTextRef} animateText={is404 ? true : contactView}>
-      <h4>
-        &copy; {new Date().getFullYear()} by Ilias Allek. All rights reserved.
-      </h4>
+    <Container ref={footerRef}>
+      <AnimateText
+        text={contentText}
+        type="heading1"
+        isAnimate={isFooterInView}
+        version="fadeIn"
+        staggerValue={0.02}
+        letterDuration={0.3}
+      />
     </Container>
   );
 };

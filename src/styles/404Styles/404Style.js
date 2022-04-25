@@ -1,12 +1,6 @@
+import { motion } from "framer-motion";
 import { Link } from "gatsby";
-import styled, { keyframes } from "styled-components";
-
-const fadeVertically = keyframes`
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-`;
+import styled from "styled-components";
 
 export const Container = styled.div`
   position: relative;
@@ -54,25 +48,14 @@ export const Container = styled.div`
     }
   }
 
-  h1,
-  h3,
-  a {
-    transition: all 0.3s ease-in 0s;
-    opacity: 0;
-    transform: translateY(-150%);
-  }
-
   h1 {
-    animation: ${fadeVertically} 0.5s ease-in 1 0.1s forwards;
-
     font-size: 30rem;
+    line-height: 30rem;
     color: white;
     text-align: center;
   }
 
   h3 {
-    animation: ${fadeVertically} 0.5s ease-in 1 0.2s forwards;
-
     font-size: 3rem;
     color: white;
     text-align: center;
@@ -86,21 +69,16 @@ export const Space404 = styled.div`
     left: 50%;
     z-index: 10;
 
-    transition: all 0.3s ease-in 0s;
-    opacity: 1;
     transform: translateX(-50%);
 
-    max-width: 40rem;
+    max-width: 35rem;
     width: 90vw;
   }
 `;
 
-export const HomeBtn = styled(Link)`
+export const HomeBtn = styled(motion(Link))`
   margin-top: 5rem;
   padding: 1.2rem 3rem;
-
-  transition: all 0.3s;
-  animation: ${fadeVertically} 0.5s ease-in 1 0.3s forwards;
 
   box-shadow: rgb(255 255 255 /30%) 0px 0.4rem 1rem 0px;
 
@@ -118,7 +96,10 @@ export const HomeBtn = styled(Link)`
 
   cursor: pointer;
 
-  &:hover {
-    box-shadow: rgb(255 255 255 / 60%) 0px 0.4rem 1rem 0px;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transition: box-shadow ease 0.2;
+      box-shadow: rgb(255 255 255 / 60%) 0px 0.4rem 1rem 0px;
+    }
   }
 `;

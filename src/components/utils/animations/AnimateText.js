@@ -36,7 +36,7 @@ const AnimateText = ({
   return (
     <motion.div
       initial="hidden"
-      animate={isAnimate && "visible"}
+      animate={isAnimate ? "visible" : "hidden"}
       variants={container}
       ref={refAnimation}
       style={{ width: "100%" }}
@@ -58,7 +58,7 @@ const AnimateText = ({
 };
 
 AnimateText.propTypes = {
-  isAnimate: PropTypes.bool.isRequired,
+  isAnimate: PropTypes.bool,
   text: PropTypes.string,
   type: PropTypes.oneOf(["paragraph", "heading1", "heading2", "heading3"]),
   version: PropTypes.oneOf(["slideUp", "fadeIn", "slideFade"]),
@@ -80,6 +80,7 @@ AnimateText.defaultProps = {
   version: "slideUp",
   delayValue: 0,
   letterDuration: 0.2,
+  isAnimate: true,
 };
 
 export default AnimateText;

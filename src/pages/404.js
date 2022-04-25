@@ -5,6 +5,7 @@ import Seo from "../components/Seo";
 import NavBar from "../components/navBar/NavBar";
 
 import { Container, Space404, HomeBtn } from "../styles/404Styles/404Style";
+import AnimateText from "../components/utils/animations/AnimateText";
 
 const errorPage = () => {
   return (
@@ -21,10 +22,27 @@ const errorPage = () => {
                 placeholder="blurred"
               />
             </Space404>
-
-            <h1>404</h1>
-            <h3>Page Not Found</h3>
-            <HomeBtn to="/">Back Home</HomeBtn>
+            <AnimateText
+              text="404"
+              type="heading1"
+              version="slideUp"
+              staggerValue={0.1}
+              letterDuration={1}
+            />
+            <AnimateText
+              text="Page Not Found"
+              type="heading3"
+              version="slideUp"
+              staggerValue={0.02}
+              letterDuration={0.6}
+            />
+            <HomeBtn
+              to="/"
+              initial={{ opacity: 0, y: "200%" }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              Back Home
+            </HomeBtn>
           </article>
         </Container>
       </main>
