@@ -1,82 +1,53 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 
-import { useScrollUpdate } from "../../context/ScrollContext";
-
-import {
-  FixedBox,
-  List,
-  SideLink,
-  SocialList,
-  SideLinkSvg,
-} from "./MenuListStyle";
+import { FixedBox, List, SocialList, SideLinkSvg } from "./MenuListStyle";
 import socials from "../../constants/socials";
 
+import MenuLink from "./MenuLink";
+import { container, menuVariant, socialVariant } from "./animation";
+
 const MenuList = ({ isOpen, setIsOpen }) => {
-  const setScollSection = useScrollUpdate();
   return (
     <div>
-      <FixedBox isOpen={isOpen}>
-        {/* <IoClose
-          style={CloseSvgStyle}
-          onClick={() => {
-            setIsOpen(false);
-          }}
-        /> */}
+      <FixedBox
+        initial="hidden"
+        animate={isOpen ? "visible" : "hidden"}
+        variants={menuVariant}
+      >
         <div>
-          <List isOpen={isOpen}>
-            <li>
-              <SideLink
-                to="/"
-                onClick={() => {
-                  setIsOpen(false);
-                  setScollSection("homeSection");
-                }}
-              >
-                Home
-              </SideLink>
-            </li>
-
-            <li>
-              <SideLink
-                to="/"
-                onClick={() => {
-                  setIsOpen(false);
-                  setScollSection("aboutSection");
-                }}
-              >
-                About
-              </SideLink>
-            </li>
-
-            <li>
-              <SideLink
-                to="/"
-                onClick={() => {
-                  setIsOpen(false);
-                  setScollSection("projectSection");
-                }}
-              >
-                Projects
-              </SideLink>
-            </li>
-            <li>
-              <SideLink
-                to="/"
-                onClick={() => {
-                  setIsOpen(false);
-                  setScollSection("contactSection");
-                }}
-              >
-                Contact
-              </SideLink>
-            </li>
+          <List
+            initial="menuHidden"
+            animate={isOpen ? "menuVisible" : "menuHidden"}
+            variants={container}
+          >
+            <MenuLink setIsOpen={setIsOpen} sectionLink="sectionLink">
+              Home
+            </MenuLink>
+            <MenuLink setIsOpen={setIsOpen} sectionLink="aboutSection">
+              About
+            </MenuLink>
+            <MenuLink setIsOpen={setIsOpen} sectionLink="projectSection">
+              Projects
+            </MenuLink>
+            <MenuLink setIsOpen={setIsOpen} sectionLink="contactSection">
+              Contact
+            </MenuLink>
           </List>
 
-          <SocialList isOpen={isOpen}>
+          <SocialList
+            initial="menuHidden"
+            animate={isOpen ? "menuVisible" : "menuHidden"}
+            variants={container}
+          >
             {socials.map((social) => {
               return (
-                <li key={social.id}>
+                <motion.li
+                  key={social.id}
+                  variants={socialVariant}
+                  whileHover={{ scale: 1.3 }}
+                >
                   <SideLinkSvg
                     href={social.link}
                     target="_blank"
@@ -84,7 +55,7 @@ const MenuList = ({ isOpen, setIsOpen }) => {
                   >
                     {social.icon}
                   </SideLinkSvg>
-                </li>
+                </motion.li>
               );
             })}
           </SocialList>
