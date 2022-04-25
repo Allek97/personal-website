@@ -49,7 +49,6 @@ export const HeroArticle = styled.article`
   overflow: hidden;
 
   @media only screen and (max-width: 65.5em) {
-    display: flex;
     flex-direction: column;
 
     padding: 14rem 8.5rem 0;
@@ -70,6 +69,8 @@ export const HeroArticle = styled.article`
   & > div:first-of-type {
     display: block;
     min-width: 60rem;
+
+    box-sizing: border-box !important;
 
     @media only screen and (max-width: 65.5em) {
       min-width: 0;

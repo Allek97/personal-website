@@ -6,7 +6,14 @@ import { motion } from "framer-motion";
 // eslint-disable-next-line react/prop-types
 const Wrapper = ({ children }) => {
   return (
-    <span className="animated-text-wrapper" style={{ whiteSpace: "nowrap" }}>
+    <span
+      className="animated-text-wrapper"
+      style={{
+        whiteSpace: "nowrap",
+        width: "max-content",
+        display: "inline-block",
+      }}
+    >
       {children}
     </span>
   );
