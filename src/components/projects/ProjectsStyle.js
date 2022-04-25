@@ -10,8 +10,18 @@ export const ProjectLink = styled(Link)`
 `;
 
 export const ProjectsContainer = styled.section`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  row-gap: 10rem;
+
+  @media only screen and (max-width: 65.5em) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 5rem;
+  }
+  @media only screen and (max-width: 47.5em) {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    column-gap: 0;
+  }
 `;
 
 export const ProjectBox = styled(motion.div)`
@@ -23,11 +33,11 @@ export const ProjectBox = styled(motion.div)`
   border-radius: 1rem;
   overflow: hidden;
 
-  &:not(:last-child) {
+  /* &:not(:last-child) {
     margin-bottom: 10rem;
-  }
+  } */
 
-  @media only screen and (max-width: 65em) {
+  @media only screen and (max-width: 65.5em) {
     display: flex;
     flex-direction: column;
   }
@@ -39,7 +49,7 @@ export const ProjectBox = styled(motion.div)`
 
     overflow: hidden;
 
-    @media only screen and (max-width: 65em) {
+    @media only screen and (max-width: 65.5em) {
       width: 100%;
     }
   }
@@ -62,7 +72,7 @@ export const ProjectContent = styled.article`
 
   overflow: hidden;
 
-  @media only screen and (max-width: 65em) {
+  @media only screen and (max-width: 65.5em) {
     width: 100%;
     margin-left: 0;
 
@@ -78,7 +88,7 @@ export const ProjectContent = styled.article`
     justify-content: space-between;
     align-items: center;
 
-    @media only screen and (max-width: 31.5em) {
+    @media only screen and (max-width: 65.5em) {
       flex-direction: column;
       justify-content: space-around;
 
@@ -136,7 +146,7 @@ export const ProjectContent = styled.article`
     display: flex;
     align-items: center;
 
-    @media only screen and (max-width: 31.5em) {
+    @media only screen and (max-width: 65.5em) {
       flex-direction: column;
 
       .projects-stacks {

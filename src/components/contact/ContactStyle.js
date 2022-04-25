@@ -15,7 +15,7 @@ export const ContactContainer = styled.article`
   padding: 10rem 0;
 
   @media only screen and (max-width: 93.75em) {
-    width: calc(100vw - 15rem);
+    width: calc(100vw - 17rem);
   }
 
   @media only screen and (max-width: 37.5em) {
@@ -71,14 +71,6 @@ export const ContactContainer = styled.article`
     flex-direction: column;
 
     width: 72.5rem;
-
-    @media only screen and (max-width: 93.75em) {
-      width: calc(100vw - 15rem);
-    }
-
-    @media only screen and (max-width: 65.5em) {
-      width: calc(100vw - 17rem);
-    }
 
     @media only screen and (max-width: 59.5em) {
       /* width: 72.5rem; */
