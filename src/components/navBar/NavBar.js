@@ -28,7 +28,7 @@ const NavBar = ({ navColor }) => {
         $isScrolled={isScrolled}
         $isOpen={isOpen}
       >
-        <Nav isOpen={isOpen} navColor={navColor} $isScrolled={isScrolled}>
+        <Nav $isOpen={isOpen} navColor={navColor} $isScrolled={isScrolled}>
           <div
             onClick={toggleHome}
             role="button"

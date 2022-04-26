@@ -2,30 +2,23 @@
 /* eslint-disable react/prop-types */
 //NOTE: https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
-import moment from "moment";
 
 import NavBar from "../components/navBar/NavBar";
-import ContentfulAbout from "../components/ContentfulAbout";
+
 import Projects from "../components/projects/Projects";
 import Seo from "../components/Seo";
+
+import ProjectOverview from "../components/projectOverview/ProjectOverview";
+import ProjectContent from "../components/projectContent/ProjectContent";
 
 import {
   ProjectPage,
   ProjectPageContent,
-  ProjectPageImage,
-  ProjectPageOverview,
-  ProjectPageMore,
-  ProjectPageStory,
   ProjectPageOthers,
-  ProjectPageBtn,
 } from "../styles/projectPageStyles/ProjectPageStyle";
-
-import stacks from "../constants/stacks";
-import socials from "../constants/socials";
-import { useScreenIntersection } from "../hooks/useScreenIntersection";
 
 export const query = graphql`
   query getSingleProject($id: String) {
@@ -98,18 +91,6 @@ const ProjectTemplate = (props) => {
 
   useEffect(() => window.scrollTo(0, 0), []);
 
-  ////////////////////////////////
-  // NOTE: SCROLL ANIMATIONS
-  ////////////////////////////////
-
-  const projectOverviewRef = useRef();
-  const projectOverviewView = useScreenIntersection(
-    projectOverviewRef,
-    -150,
-    true,
-    10
-  );
-
   return (
     <>
       <Seo
@@ -121,127 +102,25 @@ const ProjectTemplate = (props) => {
       <NavBar navColor="#102a42" />
       <ProjectPage>
         <ProjectPageContent>
-          <ProjectPageOverview
-            ref={projectOverviewRef}
-            animateOverview={projectOverviewView}
-          >
-            <article className="projectPage-overview-content">
-              <h1>{projectName}</h1>
-              <p>{projectDescription}</p>
-              <div>
-                {projectStacks.map((stack) => {
-                  return (
-                    <span key={stack} id={stack}>
-                      {
-                        stacks.find(
-                          (stackObject) => stackObject.title === stack
-                        ).icon
-                      }
-                    </span>
-                  );
-                })}
-              </div>
-              <div>
-                {projectTags.map((tag) => {
-                  return <span key={tag}>{tag}</span>;
-                })}
-              </div>
-              <ProjectPageMore
-                href={projectAppLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View the site
-              </ProjectPageMore>
-            </article>
-            <ProjectPageImage
-              image={projectThumbnail}
-              alt={`${projectName} thumbnail`}
-            />
-          </ProjectPageOverview>
+          <ProjectOverview
+            projectName={projectName}
+            projectDescription={projectDescription}
+            projectStacks={projectStacks}
+            projectAppLink={projectAppLink}
+            projectTags={projectTags}
+            projectThumbnail={projectThumbnail}
+          />
 
-          <ProjectPageStory>
-            <div>
-              <h1>What I made 💁‍♂️</h1>
-              <p>{projectResume && projectResume.resume}</p>
-              <h1>What I used 🔷</h1>
+          <ProjectContent
+            projectResume={projectResume}
+            projectUsed={projectUsed}
+            projectName={projectName}
+            projectLesson={projectLesson}
+            projectConclusion={projectConclusion}
+            projectGithubLink={projectGithubLink}
+            projectAppLink={projectAppLink}
+          />
 
-              <div className="projectPage-used">
-                {projectUsed &&
-                  projectUsed.map((el, idx) => {
-                    if (idx % 2 === 0) {
-                      return <h3 key={el}>{el}</h3>;
-                    }
-                    return <p key={el}>{el}</p>;
-                  })}
-              </div>
-
-              <h1>About this production 🥳</h1>
-
-              <div>
-                <ContentfulAbout title={projectName} />
-              </div>
-
-              <h1>What I learned ✅</h1>
-
-              <div className="projectPage-lesson">
-                {projectLesson &&
-                  projectLesson.map((el, idx) => {
-                    if (idx % 2 === 0) {
-                      return <p key={el}>{el}</p>;
-                    }
-                    return null;
-                  })}
-              </div>
-
-              <h1>Finally 😎</h1>
-
-              <div className="projectPage-conclusion">
-                {projectConclusion &&
-                  projectConclusion.map((el, idx) => {
-                    if (idx % 2 === 0) {
-                      return <p key={el}>{el}</p>;
-                    }
-                    return null;
-                  })}
-              </div>
-            </div>
-
-            <div>
-              <h1>{projectName}</h1>
-              <span>{moment().format("MMM Do, YYYY")}</span>
-
-              <ProjectPageBtn
-                href={projectAppLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View the site
-              </ProjectPageBtn>
-
-              <ProjectPageBtn
-                href={projectGithubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Github
-              </ProjectPageBtn>
-              <h2>Share</h2>
-              <h3>If you like this work, please share.</h3>
-              <ul>
-                {socials.map((social) => (
-                  <a
-                    key={social.id}
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </ul>
-            </div>
-          </ProjectPageStory>
           <ProjectPageOthers>
             <h1>Other Works</h1>
             <Projects ignoreProject={projectName} />

@@ -192,7 +192,7 @@ export const Nav = styled.div`
       line-height: 1.8rem;
       color: ${(props) =>
         props.$isOpen
-          ? "#102a42 !important"
+          ? "#102a42"
           : props.$isScrolled
           ? "#102a42"
           : props.navColor};

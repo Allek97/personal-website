@@ -69,14 +69,6 @@ export const ProjectPageOverview = styled.div`
       padding: 0;
     }
 
-    h1,
-    p,
-    & > div {
-      transition: all ease 0.4s;
-      opacity: 0;
-      transform: translateY(100%);
-    }
-
     h1 {
       animation: ${fadeVertically} 0.75s cubic-bezier(0.5, 0, 0, 1) 0.1s
         forwards;
@@ -84,30 +76,25 @@ export const ProjectPageOverview = styled.div`
       margin-bottom: 2rem;
 
       font-size: 4rem;
+      line-height: 4rem;
       font-family: Manrope;
       font-weight: 600;
       color: black;
     }
 
     p {
-      animation: ${fadeVertically} 0.75s cubic-bezier(0.5, 0, 0, 1) 0.2s
-        forwards;
-
       margin-bottom: 2rem;
 
       font-size: 2rem;
       font-family: PoppinsRegular;
       font-weight: 400;
-      line-height: 2.5rem;
+      line-height: 2.3rem;
       color: var(--color-grey-dark);
     }
 
-    & > div:first-of-type {
+    .projectPage-stacks {
       display: flex;
       align-items: center;
-
-      animation: ${fadeVertically} 0.75s cubic-bezier(0.5, 0, 0, 1) 0.8s
-        forwards;
 
       margin-bottom: 2rem;
 
@@ -132,7 +119,7 @@ export const ProjectPageOverview = styled.div`
       }
     }
 
-    & > div:nth-of-type(2) {
+    .projectPage-tags {
       display: flex;
 
       animation: ${fadeVertically} 0.75s cubic-bezier(0.5, 0, 0, 1) 0.8s
@@ -240,6 +227,7 @@ export const ProjectPageStory = styled.div`
       margin-bottom: 2rem;
 
       font-size: 3.2rem;
+
       font-family: ManropeMedium;
 
       &:not(:first-child) {
@@ -249,6 +237,7 @@ export const ProjectPageStory = styled.div`
 
     p {
       font-size: 2rem;
+
       font-family: PoppinsRegular;
       font-weight: 400;
       color: #555454;

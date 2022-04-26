@@ -13,6 +13,8 @@ const Container = styled(motion.footer)`
 
   background-color: var(--color-grey-main);
 
+  color: #2b2d42;
+
   h1 {
     font-size: 1.95rem;
     /* line-height: 3rem; */
@@ -29,7 +31,7 @@ const Footer = () => {
     triggerOnce: false,
   });
 
-  const contentText = `&copy; by Ilias Allek. All rights reserved.`;
+  const contentText = `© by Ilias Allek. All rights reserved.`;
 
   return (
     <Container ref={footerRef}>
