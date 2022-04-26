@@ -134,9 +134,10 @@ export const ProjectAd = styled.div`
         height: 3.2rem;
 
         fill: rgba(25, 14, 66, 1);
-
-        &:hover {
-          transform: scale(1.1);
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            transform: scale(1.1);
+          }
         }
       }
     }

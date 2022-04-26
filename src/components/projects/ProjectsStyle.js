@@ -226,11 +226,12 @@ export const ProjectBtn = styled.a`
   &:not(:last-child) {
     margin-right: 2rem;
   }
-
-  &:hover {
-    /* box-shadow: rgb(25 14 66 / 90%) 0px 0.4rem 1rem 0px; */
-    background-color: rgba(25, 14, 66, 1);
-    color: white;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      /* box-shadow: rgb(25 14 66 / 90%) 0px 0.4rem 1rem 0px; */
+      background-color: rgba(25, 14, 66, 1);
+      color: white;
+    }
   }
 `;
 

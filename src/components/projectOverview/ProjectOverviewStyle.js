@@ -130,7 +130,6 @@ export const ProjectPageImage = styled(GatsbyImage)`
   height: max-content;
   object-fit: contain;
 
-  transition: all easeIn 0.4s;
   opacity: 0;
   transform: translateY(50%);
 
