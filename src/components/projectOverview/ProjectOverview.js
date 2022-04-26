@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
 import React from "react";
-import stacks from "../../constants/stacks";
+
 import AnimateText from "../utils/animations/AnimateText";
+
+import stacks from "../../constants/stacks";
+
 import {
   ProjectPageImage,
   ProjectPageMore,
@@ -17,6 +20,44 @@ const ProjectOverview = ({
   projectTags,
   projectThumbnail,
 }) => {
+  const stacksContainer = {
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+  const tagsContainer = {
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const slideStack = {
+    hidden: {
+      x: "-50%",
+      opacity: 0,
+    },
+    visible: {
+      x: 0,
+      opacity: 1,
+    },
+  };
+  const fadeUp = {
+    hidden: {
+      y: "100%",
+      opacity: 0,
+    },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+      },
+    },
+  };
   return (
     <ProjectPageOverview>
       <article className="projectPage-overview-content">
@@ -35,28 +76,53 @@ const ProjectOverview = ({
           delayValue={0.2}
         />
 
-        <motion.div className="projectPage-stacks">
+        <motion.div
+          className="projectPage-stacks"
+          initial="hidden"
+          animate="visible"
+          variants={stacksContainer}
+        >
           {projectStacks.map((stack) => {
             return (
-              <span key={stack} id={stack}>
+              <motion.span key={stack} id={stack} variants={slideStack}>
                 {stacks.find((stackObject) => stackObject.title === stack).icon}
-              </span>
+              </motion.span>
             );
           })}
         </motion.div>
-        <div className="projectPage-tags">
+        <motion.div
+          className="projectPage-tags"
+          initial="hidden"
+          animate="visible"
+          variants={tagsContainer}
+        >
           {projectTags.map((tag) => {
-            return <span key={tag}>{tag}</span>;
+            return (
+              <motion.span variants={fadeUp} key={tag}>
+                {tag}
+              </motion.span>
+            );
           })}
-        </div>
+        </motion.div>
         <ProjectPageMore
           href={projectAppLink}
           target="_blank"
           rel="noopener noreferrer"
+          initial="hidden"
+          animate="visible"
+          transition={{ visible: { delay: 0.4 } }}
+          variants={fadeUp}
+          whileHover={{
+            scale: 1.1,
+            transition: { ease: "easeInOut", duration: 0.2, delay: 0 },
+          }}
         >
           View the site
         </ProjectPageMore>
       </article>
+
+      {/* <ProjectPageImage initial="hidden" animate="visible" variants={fadeUp}>
+          </ProjectPageImage> */}
       <ProjectPageImage
         image={projectThumbnail}
         alt={`${projectName} thumbnail`}

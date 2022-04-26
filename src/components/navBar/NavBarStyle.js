@@ -86,12 +86,13 @@ export const MenuBox = styled.div`
       transition-delay: 150ms;
     }
   }
-
-  &:hover span:before {
-    transform: translateX(200%);
-  }
-  &:hover span:after {
-    transform: translateX(0);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover span:before {
+      transform: translateX(200%);
+    }
+    &:hover span:after {
+      transform: translateX(0);
+    }
   }
 `;
 
@@ -210,7 +211,9 @@ export const CloseMenu = styled(GrClose)`
 
   transition: all 0.4s ease;
 
-  &:hover {
-    transform: scale(1.3);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: scale(1.3);
+    }
   }
 `;

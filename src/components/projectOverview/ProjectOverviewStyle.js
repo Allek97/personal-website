@@ -1,5 +1,8 @@
+import { motion } from "framer-motion";
 import { GatsbyImage } from "gatsby-plugin-image";
 import styled from "styled-components";
+
+import { fadeVertically } from "../../abstracts/animations";
 
 export const ProjectPageOverview = styled.div`
   display: flex;
@@ -108,7 +111,7 @@ export const ProjectPageOverview = styled.div`
   }
 `;
 
-export const ProjectPageMore = styled.a`
+export const ProjectPageMore = styled(motion.a)`
   width: max-content;
 
   border-bottom: 2px solid rgba(8, 84, 207, 1);
@@ -120,10 +123,6 @@ export const ProjectPageMore = styled.a`
   text-decoration: none;
 
   cursor: pointer;
-
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 
 export const ProjectPageImage = styled(GatsbyImage)`
@@ -131,12 +130,17 @@ export const ProjectPageImage = styled(GatsbyImage)`
   height: max-content;
   object-fit: contain;
 
+  transition: all ease 0.2s;
+  opacity: 0;
+  transform: translateY(50%);
+
+  animation: ${fadeVertically} 0.75s cubic-bezier(0.5, 0, 0, 1) 0.8s forwards;
+
   border-radius: 1rem;
 
   @media only screen and (max-width: 58em) {
     align-items: center;
     width: 100%;
     max-width: 80rem;
-    /* margin-bottom: 5rem; */
   }
 `;
