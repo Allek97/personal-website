@@ -53,7 +53,7 @@ export const ProjectPageOverview = styled.div`
       font-size: 2rem;
       font-family: PoppinsRegular;
       font-weight: 400;
-      line-height: 2.3rem;
+      line-height: 2.4rem;
       color: var(--color-grey-dark);
     }
 

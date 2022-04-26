@@ -22,7 +22,7 @@ const MenuList = ({ isOpen, setIsOpen }) => {
             animate={isOpen ? "menuVisible" : "menuHidden"}
             variants={container}
           >
-            <MenuLink setIsOpen={setIsOpen} sectionLink="sectionLink">
+            <MenuLink setIsOpen={setIsOpen} sectionLink="homeSection">
               Home
             </MenuLink>
             <MenuLink setIsOpen={setIsOpen} sectionLink="aboutSection">
