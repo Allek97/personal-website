@@ -45,6 +45,10 @@ export const ProjectPageOverview = styled.div`
       font-family: Manrope;
       font-weight: 600;
       color: black;
+
+      @media only screen and (max-width: 58em) {
+        text-align: center;
+      }
     }
 
     p {
