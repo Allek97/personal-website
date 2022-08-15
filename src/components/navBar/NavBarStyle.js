@@ -103,6 +103,47 @@ export const NavContainer = styled(motion.div)`
   width: 100%;
   height: max-content;
 
+  transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+
+  &:after {
+    content: "";
+
+    position: absolute;
+    height: 4px;
+
+    left: 2.6666666667vw;
+    right: 2.6666666667vw;
+
+    box-shadow: rgb(8 84 207 / 60%) 0px 0.4rem 1rem 0px;
+    background-color: rgba(8, 84, 207, 1);
+
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+
+    ${({ $isScrolled }) =>
+      $isScrolled
+        ? css`
+            transform: scaleX(1);
+          `
+        : css`
+            transform: scaleX(0);
+            transition: transform 0.1s cubic-bezier(0.19, 1, 0.22, 1);
+            transform-origin: left;
+          `}
+
+    @media only screen and (max-width: 37.5em) {
+      left: 4vw;
+      right: 4vw;
+    }
+  }
+
+  ${({ $isHidden }) =>
+    $isHidden &&
+    css`
+      transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+      transform: translateY(-100%) !important;
+    `}
+
   ${(props) =>
     props.$isOpen
       ? css`

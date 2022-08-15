@@ -5,10 +5,14 @@ import { animateScroll as scroll } from "react-scroll";
 import MenuList from "../menuList/MenuList";
 import { MenuBox, NavContainer, Nav, CloseMenu } from "./NavBarStyle";
 import useScroll from "../../hooks/useScroll";
+import useScrollDirectionGatsby from "../../hooks/useScrollDirectionGatsby";
 
 const NavBar = ({ navColor }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isScrolled = useScroll(70);
+
+  const isHidden = useScroll(300);
+  const { direction } = useScrollDirectionGatsby();
 
   const toggleHome = () => {
     scroll.scrollToTop();
@@ -27,6 +31,7 @@ const NavBar = ({ navColor }) => {
         }}
         $isScrolled={isScrolled}
         $isOpen={isOpen}
+        $isHidden={isHidden && direction === "down"}
       >
         <Nav $isOpen={isOpen} navColor={navColor} $isScrolled={isScrolled}>
           <div
