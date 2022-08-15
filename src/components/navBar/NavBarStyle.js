@@ -120,8 +120,8 @@ export const NavContainer = styled(motion.div)`
     transform-origin: left;
     transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 
-    ${({ $isScrolled }) =>
-      $isScrolled
+    ${({ $isScrolled, $isOpen }) =>
+      $isScrolled && !$isOpen
         ? css`
             transform: scaleX(1);
           `
@@ -137,8 +137,9 @@ export const NavContainer = styled(motion.div)`
     }
   }
 
-  ${({ $isHidden }) =>
+  ${({ $isHidden, $isOpen }) =>
     $isHidden &&
+    !$isOpen &&
     css`
       transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
       transform: translateY(-100%) !important;

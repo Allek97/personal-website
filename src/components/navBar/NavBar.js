@@ -18,6 +18,8 @@ const NavBar = ({ navColor }) => {
     scroll.scrollToTop();
   };
 
+  console.log(isOpen);
+
   return (
     <>
       <MenuList isOpen={isOpen} setIsOpen={setIsOpen} />
