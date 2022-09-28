@@ -53,7 +53,6 @@ const Hero = () => {
       type: "spring",
       stiffness: 260,
       damping: 30,
-      delay: 0.3,
     },
   };
 
@@ -65,7 +64,6 @@ const Hero = () => {
       stiffness: 100,
       mass: 0.5,
       bumping: 40,
-      delay: 0,
     },
   };
   const globeMotion3D = {
