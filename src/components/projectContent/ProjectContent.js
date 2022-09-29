@@ -36,23 +36,26 @@ const ProjectContent = ({
             })}
         </div>
 
-        <h1>About this production 🥳</h1>
+        {projectName !== "Hiempsal Shopify E-commerce" && (
+          <h1>About this production 🥳</h1>
+        )}
 
         <div>
           <ContentfulAbout title={projectName} />
         </div>
 
-        <h1>What I learned ✅</h1>
+        {projectLesson && <h1>What I learned ✅</h1>}
 
-        <div className="projectPage-lesson">
-          {projectLesson &&
-            projectLesson.map((el, idx) => {
+        {projectLesson && (
+          <div className="projectPage-lesson">
+            {projectLesson.map((el, idx) => {
               if (idx % 2 === 0) {
                 return <p key={el}>{el}</p>;
               }
               return null;
             })}
-        </div>
+          </div>
+        )}
 
         <h1>Finally 😎</h1>
 

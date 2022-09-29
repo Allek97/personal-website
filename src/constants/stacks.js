@@ -20,7 +20,14 @@ import {
   SiWebgl,
   SiNetlify,
   SiHeroku,
+  SiTypescript,
+  SiTailwindcss,
+  SiVercel,
+  SiCypress,
+  SiJest,
+  SiTestinglibrary,
 } from "react-icons/si";
+import { TbBrandNextjs } from "react-icons/tb";
 import ExpressJsIcon from "../assets/svgs/expressjs-icon.svg";
 import ContentfulIcon from "../assets/svgs/contentful-logo.svg";
 
@@ -120,6 +127,43 @@ const stacks = [
     id: 19,
     icon: <SiHeroku />,
     title: "Heroku",
+  },
+  {
+    id: 20,
+    icon: <SiVercel />,
+    title: "Vercel",
+  },
+  {
+    id: 21,
+    icon: <TbBrandNextjs />,
+    title: "Nextjs",
+  },
+  {
+    id: 22,
+    icon: <SiTypescript />,
+    title: "Typescript",
+  },
+  {
+    id: 23,
+    icon: <SiTailwindcss />,
+    title: "Tailwind",
+  },
+
+  {
+    id: 23,
+    icon: <SiCypress />,
+    title: "Cypress",
+  },
+
+  {
+    id: 24,
+    icon: <SiJest />,
+    title: "Jest",
+  },
+  {
+    id: 25,
+    icon: <SiTestinglibrary />,
+    title: "React Testing Library",
   },
 ];
 

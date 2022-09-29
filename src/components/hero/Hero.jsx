@@ -9,11 +9,9 @@ import { useSiteDataImages } from "../../hooks/useSiteDataImages";
 
 import {
   ExtraPlanetImage,
-  GlobeTooltip,
   Header,
   HeroArticle,
   PorjectLink,
-  PlanetImage,
   Stand,
   UFOContainer,
   UFOImage,
@@ -74,16 +72,16 @@ const Hero = () => {
     },
   };
 
-  const globeMotion2D = {
-    scale: 1.1,
-    filter: "brightness(1.5)",
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      mass: 0.5,
-      bumping: 40,
-    },
-  };
+  //   const globeMotion2D = {
+  //     scale: 1.1,
+  //     filter: "brightness(1.5)",
+  //     transition: {
+  //       type: "spring",
+  //       stiffness: 100,
+  //       mass: 0.5,
+  //       bumping: 40,
+  //     },
+  //   };
   //   const globeMotion3D = {
   //     ...globeMotion2D,
   //     filter: "none",
@@ -118,7 +116,7 @@ const Hero = () => {
                 whileHover={{
                   filter: "brightness(1.25)",
                   transition: {
-                    duration: 0.2,
+                    duration: 0.1,
                     ease: "easeIn",
                   },
                 }}

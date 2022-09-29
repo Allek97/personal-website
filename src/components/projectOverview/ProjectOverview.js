@@ -84,9 +84,15 @@ const ProjectOverview = ({
         >
           {projectStacks.map((stack) => {
             return (
-              <motion.span key={stack} id={stack} variants={slideStack}>
-                {stacks.find((stackObject) => stackObject.title === stack).icon}
-              </motion.span>
+              stacks.find((stackObject) => stackObject.title === stack)
+                ?.icon && (
+                <motion.span key={stack} id={stack} variants={slideStack}>
+                  {
+                    stacks.find((stackObject) => stackObject.title === stack)
+                      ?.icon
+                  }
+                </motion.span>
+              )
             );
           })}
         </motion.div>

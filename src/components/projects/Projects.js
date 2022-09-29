@@ -116,7 +116,11 @@ const Projects = ({ ignoreProject }) => {
                       onClick={() => {
                         setIsGlobe(false);
                       }}
-                      style={{ textDecoration: "none", color: "inherit" }}
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                        display: "block",
+                      }}
                     >
                       {project.title}
                     </Link>
@@ -142,13 +146,17 @@ const Projects = ({ ignoreProject }) => {
                   <div className="projects-stacks">
                     {projectStacks.map((stack) => {
                       return (
-                        <span key={stack} id={stack}>
-                          {
-                            stacks.find(
-                              (stackObject) => stackObject.title === stack
-                            ).icon
-                          }
-                        </span>
+                        stacks.find(
+                          (stackObject) => stackObject.title === stack
+                        )?.icon && (
+                          <span key={stack} id={stack}>
+                            {
+                              stacks.find(
+                                (stackObject) => stackObject.title === stack
+                              )?.icon
+                            }
+                          </span>
+                        )
                       );
                     })}
                   </div>

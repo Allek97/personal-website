@@ -95,6 +95,10 @@ export const ProjectContent = styled.article`
       h2 {
         margin: 2rem 0;
         margin-right: 0 !important;
+
+        & > a {
+          text-align: center;
+        }
       }
 
       div {
