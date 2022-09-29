@@ -3,6 +3,8 @@ import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { Element } from "react-scroll";
 
+import { SiShopify } from "react-icons/si";
+
 import { useSiteDataImages } from "../../hooks/useSiteDataImages";
 
 import {
@@ -10,7 +12,7 @@ import {
   GlobeTooltip,
   Header,
   HeroArticle,
-  HeroBtn,
+  PorjectLink,
   PlanetImage,
   Stand,
   UFOContainer,
@@ -26,21 +28,25 @@ const textSecondary =
 const Hero = () => {
   const homeRef = useRef();
 
-  const { myGlobeImage, beyondImage, rocketImage } = useSiteDataImages();
+  const { beyondImage, rocketImage } = useSiteDataImages();
 
-  const toolTipMotion = {
-    rest: { opacity: 0, y: "10px", scale: 0.95 },
-    hover: {
-      opacity: 1,
-      y: "6px",
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        mass: 0.5,
-      },
-    },
-  };
+  //   const toolTipMotion = {
+  //     rest: {
+  //       opacity: 0,
+  //       y: "10px",
+  //       scale: 0.95,
+  //     },
+  //     hover: {
+  //       opacity: 1,
+  //       y: "6px",
+  //       scale: 1,
+  //       transition: {
+  //         type: "spring",
+  //         stiffness: 400,
+  //         mass: 0.5,
+  //       },
+  //     },
+  //   };
 
   const globeMotion = {
     initial: {
@@ -56,6 +62,18 @@ const Hero = () => {
     },
   };
 
+  const ProjectVariant = {
+    initial: {
+      x: "-200%",
+    },
+    animate: {
+      x: "0%",
+    },
+    transition: {
+      type: "just",
+    },
+  };
+
   const globeMotion2D = {
     scale: 1.1,
     filter: "brightness(1.5)",
@@ -66,10 +84,10 @@ const Hero = () => {
       bumping: 40,
     },
   };
-  const globeMotion3D = {
-    ...globeMotion2D,
-    filter: "none",
-  };
+  //   const globeMotion3D = {
+  //     ...globeMotion2D,
+  //     filter: "none",
+  //   };
 
   return (
     <Element name="homeSection">
@@ -84,37 +102,49 @@ const Hero = () => {
               staggerValue={0.01}
               version="fadeIn"
             />
-            <div>
-              <HeroBtn
+            <div
+              style={{
+                width: "max-content",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
+              <PorjectLink
                 aria-label="globe theme toggle"
-                initial="rest"
-                whileHover="hover"
-                whileTap="hover"
+                {...ProjectVariant}
+                href="https://hiempsal.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{
+                  filter: "brightness(1.25)",
+                  transition: {
+                    duration: 0.2,
+                    ease: "easeIn",
+                  },
+                }}
               >
                 <motion.div
-                  whileHover={globeMotion3D}
-                  whileTap={globeMotion3D}
-                  style={{ width: "100%", height: "auto" }}
+                  //   {...globeMotion}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "auto",
+                  }}
                 >
-                  <motion.div
-                    {...globeMotion}
-                    style={{ width: "100%", height: "auto" }}
-                  >
-                    <PlanetImage
-                      image={myGlobeImage}
-                      alt="small-globe"
-                      onClick={() => {
-                        window.location.reload();
-                      }}
-                      isgray="true"
-                    />
-                  </motion.div>
+                  <SiShopify
+                    style={{
+                      width: "2.3rem",
+                      height: "2.3rem",
+                      marginRight: "1rem",
+                    }}
+                  />
+                  Take A Look On My Lastest App
                 </motion.div>
-
-                <GlobeTooltip variants={toolTipMotion}>
-                  Activate 3D Globe
-                </GlobeTooltip>
-              </HeroBtn>
+              </PorjectLink>
+              {/* <GlobeTooltip variants={toolTipMotion}>
+                E-commerce Website with shopify API
+              </GlobeTooltip> */}
             </div>
           </div>
 

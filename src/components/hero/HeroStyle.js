@@ -208,11 +208,38 @@ export const Stand = styled(StandSvg)`
   }
 `;
 
-export const HeroBtn = styled(motion.button).attrs({
-  type: "button",
-})`
+export const PorjectLink = styled(motion.a)`
   position: relative;
 
+  display: block;
+
+  overflow: visible;
+
+  padding: 2rem 3rem 2rem;
+
+  margin-top: 2rem;
+
+  transition: all 0.3s;
+
+  /* box-shadow: rgb(8 84 207 / 60%) 0px 0.4rem 1rem 0px; */
+
+  border: none;
+  /* border-radius: 0.6rem; */
+
+  background-image: linear-gradient(76deg, #b40929, #4c0713);
+
+  clip-path: polygon(0 0, 95% 0, 100% 35%, 100% 100%, 5% 100%, 0% 65%);
+
+  color: white;
+  font-family: ManropeMedium;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  /* 
   display: flex;
   align-items: center;
 
@@ -223,7 +250,6 @@ export const HeroBtn = styled(motion.button).attrs({
 
   transition: all 0.3s;
 
-  /* box-shadow: rgba(4, 27, 87, 0.6) 0px 0.4rem 1rem 0px; */
 
   border: none;
   border-radius: 0.6rem;
@@ -236,7 +262,7 @@ export const HeroBtn = styled(motion.button).attrs({
   letter-spacing: 1px;
   white-space: nowrap;
 
-  cursor: pointer;
+  cursor: pointer; */
 `;
 
 export const PlanetImage = styled(GatsbyImage)`
@@ -256,7 +282,7 @@ export const GlobeTooltip = styled(motion.span)`
   position: absolute;
   left: 50%;
   bottom: -50%;
-  z-index: 5;
+  z-index: 10;
 
   display: flex;
   padding: 5px 11px;
@@ -271,4 +297,31 @@ export const GlobeTooltip = styled(motion.span)`
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
+`;
+
+export const ProjectBtn = styled(motion.button)`
+  padding: 1.4rem 3rem 1.5rem;
+
+  transition: all 0.3s;
+
+  box-shadow: rgb(8 84 207 / 60%) 0px 0.4rem 1rem 0px;
+
+  border: none;
+  border-radius: 0.6rem;
+
+  background-color: rgba(8, 84, 207, 1);
+
+  color: white;
+  font-family: ManropeMedium;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      box-shadow: rgb(8 84 207 / 90%) 0px 0.4rem 1rem 0px;
+    }
+  }
 `;
