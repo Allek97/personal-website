@@ -90,6 +90,10 @@ export const ProjectAd = styled.div`
 
     font-size: 3.2rem;
     font-family: ManropeMedium;
+
+    @media only screen and (max-width: 58em) {
+      text-align: center;
+    }
   }
 
   span {
