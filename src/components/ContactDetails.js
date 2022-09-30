@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import { FaLinkedinIn } from "react-icons/fa";
-import { RiGithubLine } from "react-icons/ri";
+import { ImGithub } from "react-icons/im";
+import { SiLeetcode } from "react-icons/si";
+import { GrLinkedinOption } from "react-icons/gr";
 
 const Container = styled.div`
   position: fixed;
@@ -20,6 +21,7 @@ const Container = styled.div`
   }
 
   a:nth-of-type(2) {
+    margin-bottom: 2rem;
     svg {
       width: 1.6rem;
       height: 1.6rem;
@@ -49,7 +51,7 @@ const SideLinkSvg = styled.a`
   } */
 
   svg {
-    transition: all 0.2s linear;
+    transition: all 0.15s ease-in;
     width: 2rem;
     height: 2rem;
 
@@ -63,18 +65,25 @@ const ContactDetails = () => {
   return (
     <Container>
       <SideLinkSvg
+        href="https://leetcode.com/AmazighFennec/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <SiLeetcode />
+      </SideLinkSvg>
+      <SideLinkSvg
         href="https://github.com/Allek97"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <RiGithubLine />
+        <ImGithub />
       </SideLinkSvg>
       <SideLinkSvg
         href="https://www.linkedin.com/in/ilias-allek"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <FaLinkedinIn />
+        <GrLinkedinOption />
       </SideLinkSvg>
     </Container>
   );
