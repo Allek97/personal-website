@@ -68,7 +68,8 @@ const Hero = () => {
       x: "0%",
     },
     transition: {
-      type: "just",
+      ease: "easeInOut",
+      duration: 0.45,
     },
   };
 

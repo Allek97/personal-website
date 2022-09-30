@@ -91,15 +91,7 @@ const Projects = ({ ignoreProject }) => {
                     setIsGlobe(false);
                   }}
                 >
-                  <motion.div
-                    whileHover={{
-                      scale: 1.1,
-                      transition: {
-                        ease: "easeInOut",
-                        duration: 0.25,
-                      },
-                    }}
-                  >
+                  <motion.div>
                     <ProjectImage
                       image={projectThumbnail}
                       alt={`${project.title} thumbnail`}
