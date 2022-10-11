@@ -5,6 +5,7 @@ import { SiWebpack } from "react-icons/si";
 import JuliaIcon from "../assets/svgs/julia-icon.svg";
 import RIcon from "../assets/svgs/r-icon.svg";
 import SasIcon from "../assets/svgs/sas-icon.svg";
+import ContentfulIcon from "../assets/svgs/contentful-svg.svg";
 
 const basics = [
   {
@@ -36,6 +37,11 @@ const basics = [
     id: 6,
     icon: <FaAws />,
     title: "AWS",
+  },
+  {
+    id: 11,
+    icon: <ContentfulIcon />,
+    title: "Contentful",
   },
 ];
 
