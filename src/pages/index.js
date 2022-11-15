@@ -50,7 +50,6 @@ export default function Index() {
     <>
       <Seo title="Home" />
 
-      {/* {!isLoaded && <Loading timeLoad={loadTime} />} */}
       <ContactDetails />
       <NavBar navColor="white" />
       <div>
