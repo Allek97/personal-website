@@ -1,24 +1,28 @@
 {
-  "compilerOptions": {
-    "baseUrl": "src/",
-    "target": "es5",
-    "lib": ["dom", "dom.iterable"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "paths": {
-      "@components/*": ["components/*"]
-    }
-  },
-  "include": ["**/*.ts", "**/*.tsx", "test.ts"],
-  "exclude": ["node_modules"]
+    "compilerOptions": {
+        "baseUrl": "src/",
+        "target": "es5",
+        "lib": ["dom", "dom.iterable"],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "jsx": "preserve",
+        "incremental": true,
+        "paths": {
+            "@components/*": ["components/*"]
+        }
+    },
+    "include": ["**/*.ts", "**/*.tsx", "test.ts"],
+    "exclude": [
+        "node_modules",
+        "getContentfulEnvironment.js",
+        "gatsby-config.js"
+    ]
 }

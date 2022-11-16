@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { MutableRefObject, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Element } from "react-scroll";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
@@ -11,22 +11,20 @@ import {
     ExtraPlanetImage,
     Header,
     HeroArticle,
-    PorjectLink,
+    ProjectLink,
     Stand,
-    UFOContainer,
-    UFOImage,
-} from "./HeroStyle";
+} from "./Hero.styled";
 
 import AnimateText from "../utils/animations/AnimateText";
 
 const textHeader = "HELLO, I'M ILIAS. A DEDICATED SOFTWARE DEVELOPER.";
-const textSecondary =
-    "I'm just a guy that enjoys programming daily and building cool stuff — Front-end design and solving problems are my favourite part. My goal is to always stand out and deliver on my tasks.";
+const textSecondary = `I'm just a guy that enjoys programming daily and building cool stuff — 
+Front-end design and solving problems are my favourite part. My goal is to always stand out and deliver on my tasks.`;
 
 const Hero = () => {
     const homeRef = useRef() as MutableRefObject<HTMLDivElement>;
 
-    const { beyondImage, rocketImage } = useSiteDataImages();
+    const { beyondImage } = useSiteDataImages();
 
     const globeMotion = {
         initial: {
@@ -34,24 +32,24 @@ const Hero = () => {
         },
         animate: {
             scale: 1,
-        },
-        transition: {
-            type: "spring",
-            stiffness: 260,
-            damping: 30,
+            transition: {
+                type: "spring",
+                stiffness: 260,
+                damping: 30,
+            },
         },
     };
 
-    const ProjectVariant = {
+    const ProjectVariant: Variants = {
         initial: {
             x: "-200%",
         },
         animate: {
             x: "0%",
-        },
-        transition: {
-            ease: "easeInOut",
-            duration: 0.45,
+            transition: {
+                ease: "easeInOut",
+                duration: 0.45,
+            },
         },
     };
 
@@ -79,7 +77,7 @@ const Hero = () => {
                                 overflow: "hidden",
                             }}
                         >
-                            <PorjectLink
+                            <ProjectLink
                                 aria-label="globe theme toggle"
                                 {...ProjectVariant}
                                 href="https://hiempsal.vercel.app/"
@@ -111,7 +109,7 @@ const Hero = () => {
                                     />
                                     Take A Look On My Lastest App
                                 </motion.div>
-                            </PorjectLink>
+                            </ProjectLink>
                         </div>
                     </div>
 
@@ -123,7 +121,7 @@ const Hero = () => {
                     </motion.div>
                 </HeroArticle>
 
-                <UFOContainer
+                {/* <UFOContainer
                     initial={{ y: "5rem", scale: 0.9, opacity: 0 }}
                     animate={{ y: "0rem", scale: 1, opacity: 1 }}
                     transition={{
@@ -134,7 +132,7 @@ const Hero = () => {
                         image={rocketImage as IGatsbyImageData}
                         alt="Ufo"
                     />
-                </UFOContainer>
+                </UFOContainer> */}
 
                 <Stand />
             </Header>

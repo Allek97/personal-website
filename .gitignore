@@ -59,6 +59,7 @@ typings/
 .env.production.local
 .env
 .env/
+.env.*
 
 # gatsby files
 .cache/

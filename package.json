@@ -12,7 +12,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "codegen": "contentful-typescript-codegen --output @types/generated/contentful.d.ts"
   },
   "dependencies": {
     "@contentful/rich-text-types": "^15.1.0",
@@ -28,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "babel-plugin-styled-components": "^1.13.2",
+    "contentful-management": "^10.20.1",
     "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -74,6 +76,7 @@
   "devDependencies": {
     "@types/react-scroll": "^1.8.5",
     "@types/styled-components": "^5.1.26",
+    "contentful-typescript-codegen": "^3.2.3",
     "eslint-config-react-app": "^7.0.1",
     "eslint-loader": "^4.0.2",
     "gatsby-plugin-eslint": "^4.0.3",
