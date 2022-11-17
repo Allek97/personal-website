@@ -2,92 +2,92 @@
 @import "./_dashboardAnimate";
 
 :root {
-  --color-blue-dark: rgba(17, 15, 46, 1);
-  --color-blue-darker: rgba(1, 0, 40, 1);
-  --color-blue-special: rgba(8, 84, 207, 1);
+    --color-blue-dark: rgba(17, 15, 46, 1);
+    --color-blue-darker: rgba(1, 0, 40, 1);
+    --color-blue-special: rgba(8, 84, 207, 1);
 
-  --color-grey-main: rgba(237, 242, 244, 1);
+    --color-grey-main: rgba(237, 242, 244, 1);
 
-  --color-blue-grey: rgba(129, 147, 178, 1);
-  --color-grey-dark: rgb(85, 84, 84);
+    --color-blue-grey: rgba(129, 147, 178, 1);
+    --color-grey-dark: rgb(85, 84, 84);
 
-  --shadow-light: 0 2rem 6rem rgba(0, 0, 0, 0.3);
-  --shadow-dark: 0 2rem 5rem rgba(0, 0, 0, 0.6);
+    --shadow-light: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+    --shadow-dark: 0 2rem 5rem rgba(0, 0, 0, 0.6);
 }
 
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 
-  -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
 
-  // FIX Some mobile browsers apply a text inflation factor if a
-  // mobile-first layout is not detected. I have issues with it in ios.
-  text-size-adjust: none;
-  -webkit-text-size-adjust: none;
+    // FIX Some mobile browsers apply a text inflation factor if a
+    // mobile-first layout is not detected. I have issues with it in ios.
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
 }
 
 html {
-  box-sizing: border-box;
-  font-size: 50%; // 1rem = 8px
+    box-sizing: border-box;
+    font-size: 50%; // 1rem = 8px
 
-  @include respond(tab-land) {
-    // width < 1200?
-    font-size: 47%; //1 rem = 9px, 9/16 = 50%
-  }
+    @include respond(tab-land) {
+        // width < 1200?
+        font-size: 47%; //1 rem = 9px, 9/16 = 50%
+    }
 
-  @include respond(tab-port) {
-    // width < 900?
-    font-size: 45%; //1 rem = 8px, 8/16 = 50%
-  }
+    @include respond(tab-port) {
+        // width < 900?
+        font-size: 45%; //1 rem = 8px, 8/16 = 50%
+    }
 
-  @include respond(big-desktop) {
-    font-size: 75%; //1rem = 12, 12/16
-  }
+    @include respond(big-desktop) {
+        font-size: 75%; //1rem = 12, 12/16
+    }
 }
 
 body {
-  box-sizing: border-box;
+    box-sizing: border-box;
 
-  font-family: "ManropeLight", sans-serif;
-  font-weight: 300;
-  line-height: 1.6;
+    font-family: "ManropeLight", sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
 
-  -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-font-smoothing: subpixel-antialiased;
 
-  &::-webkit-scrollbar {
-    width: 8px;
-    border-radius: 8rem;
-  }
+    &::-webkit-scrollbar {
+        width: 8px;
+        border-radius: 8rem;
+    }
 
-  &::-webkit-scrollbar-track {
-    background-color: #fff;
-  }
+    &::-webkit-scrollbar-track {
+        background-color: #fff;
+    }
 
-  &::-webkit-scrollbar-thumb {
-    //#226f91;
-    //  -webkit-border-radius: 10px;
-    //  border-radius: 10px;
-    background-color: RGBA(var(--color-blue-special));
-    box-shadow: inset 0 0 6px RGBA(0, 0, 0, 0.5);
-    border-radius: 8rem;
-  }
+    &::-webkit-scrollbar-thumb {
+        //#226f91;
+        //  -webkit-border-radius: 10px;
+        //  border-radius: 10px;
+        background-color: RGBA(var(--color-blue-special));
+        box-shadow: inset 0 0 6px RGBA(0, 0, 0, 0.5);
+        border-radius: 8rem;
+    }
 
-  &::-webkit-scrollbar-thumb:window-inactive {
-    background-color: RGBA(var(--color-blue-special));
-  }
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background-color: RGBA(var(--color-blue-special));
+    }
 
-  // -webkit-font-smoothing: antialiased;
+    // -webkit-font-smoothing: antialiased;
 }
 
 body,
 html {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }

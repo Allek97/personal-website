@@ -5,6 +5,7 @@
 import { useEffect } from "react";
 import { graphql, PageProps } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
+import { IProjectFields } from "@contentful/types";
 
 import NavBar from "../components/navBar/NavBar";
 
@@ -19,7 +20,6 @@ import {
     ProjectPageContent,
     ProjectPageOthers,
 } from "../styles/projectPageStyles/ProjectPageStyle";
-import { IProjectFields } from "../../@types/generated/contentful";
 
 export const contentfulProjectPageQuery = graphql`
     query getSingleProject($id: String) {

@@ -233,7 +233,7 @@ export const ProjectLink = styled(motion.a)`
     border: none;
     /* border-radius: 0.6rem; */
 
-    background-image: linear-gradient(76deg, #032364, #03112e);
+    background-image: linear-gradient(76deg, #032364, #06183d);
 
     clip-path: polygon(0 0, 95% 0, 100% 35%, 100% 100%, 5% 100%, 0% 65%);
 

@@ -4,7 +4,16 @@ import styled, { css } from "styled-components";
 import { GrClose } from "react-icons/gr";
 import { motion } from "framer-motion";
 
-export const MenuBox = styled.div`
+interface MenuBoxProps {
+    $isOpen: boolean;
+    $isScrolled: boolean;
+    navColor: string;
+}
+type NavContainerProps = Omit<MenuBoxProps, "navColor"> & {
+    $isHidden: boolean;
+};
+
+export const MenuBox = styled.div<MenuBoxProps>`
     position: relative;
 
     display: flex;
@@ -96,7 +105,7 @@ export const MenuBox = styled.div`
     }
 `;
 
-export const NavContainer = styled(motion.div)`
+export const NavContainer = styled(motion.div)<NavContainerProps>`
     position: fixed;
     z-index: 40;
 
@@ -168,7 +177,7 @@ export const NavContainer = styled(motion.div)`
               `}
 `;
 
-export const Nav = styled.div`
+export const Nav = styled.div<MenuBoxProps>`
     display: flex;
     justify-content: space-between;
     align-items: center;

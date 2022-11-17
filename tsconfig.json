@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "baseUrl": "src/",
+        "baseUrl": ".",
         "target": "es5",
         "lib": ["dom", "dom.iterable"],
         "allowJs": true,
@@ -16,7 +16,8 @@
         "jsx": "preserve",
         "incremental": true,
         "paths": {
-            "@components/*": ["components/*"]
+            "@components/*": ["src/components/*"],
+            "@contentful/*": ["src/contentful/*"]
         }
     },
     "include": ["**/*.ts", "**/*.tsx", "test.ts"],

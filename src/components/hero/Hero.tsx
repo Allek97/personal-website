@@ -3,6 +3,7 @@ import { MutableRefObject, useRef } from "react";
 import { motion, Variants } from "framer-motion";
 import { Element } from "react-scroll";
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import { useInView } from "react-intersection-observer";
 
 import { SiShopify } from "react-icons/si";
 import { useSiteDataImages } from "../../hooks/useSiteDataImages";
@@ -23,6 +24,15 @@ Front-end design and solving problems are my favourite part. My goal is to alway
 
 const Hero = () => {
     const homeRef = useRef() as MutableRefObject<HTMLDivElement>;
+
+    const { ref: primaryTextRef, inView: isPrimaryTextInView } = useInView({
+        threshold: 0.3,
+        triggerOnce: true,
+    });
+    const { ref: secondaryTextRef, inView: isSecondaryTextInView } = useInView({
+        threshold: 0.3,
+        triggerOnce: true,
+    });
 
     const { beyondImage } = useSiteDataImages();
 
@@ -59,16 +69,18 @@ const Hero = () => {
                 <HeroArticle>
                     <div style={{ width: "100%" }}>
                         <AnimateText
-                            isAnimate
                             text={textHeader}
                             type="heading1"
+                            isAnimate={isPrimaryTextInView}
+                            refAnimation={primaryTextRef}
                         />
                         <AnimateText
-                            isAnimate
                             text={textSecondary}
                             type="paragraph"
                             staggerValue={0.01}
                             version="fadeIn"
+                            isAnimate={isSecondaryTextInView}
+                            refAnimation={secondaryTextRef}
                         />
                         <div
                             style={{
