@@ -10,7 +10,17 @@ import {
     ProjectPageImage,
     ProjectPageMore,
     ProjectPageOverview,
-} from "./ProjectOverviewStyle";
+} from "./ProjectOverview.styled";
+import { IGatsbyImageData } from "gatsby-plugin-image";
+
+interface Props {
+    projectName: string;
+    projectDescription: string;
+    projectStacks: string[];
+    projectAppLink: string;
+    projectTags: string[];
+    projectThumbnail: IGatsbyImageData;
+}
 
 const ProjectOverview = ({
     projectName,
@@ -19,7 +29,7 @@ const ProjectOverview = ({
     projectAppLink,
     projectTags,
     projectThumbnail,
-}) => {
+}: Props) => {
     const stacksContainer = {
         visible: {
             transition: {

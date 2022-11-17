@@ -86,7 +86,7 @@ const ProjectTemplate = ({
         conclusion,
     } = contentfulProjects;
 
-    const projectThumbnail = getImage(gatsbyImageData);
+    const projectThumbnail = getImage(gatsbyImageData)!;
 
     const projectUsed = used && used.used.split("\n");
     const projectLesson = lesson && lesson.lesson.split("\n");

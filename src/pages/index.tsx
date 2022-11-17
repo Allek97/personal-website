@@ -3,8 +3,9 @@ import { MutableRefObject, useEffect, useRef } from "react";
 import { Element } from "react-scroll";
 import { useInView } from "react-intersection-observer";
 
+import { Projects } from "../components/projects";
 import NavBar from "../components/navBar/NavBar";
-import Projects from "../components/projects/Projects";
+
 import Contact from "../components/contact/Contact";
 import ContactDetails from "../components/ContactDetails";
 import Seo from "../components/Seo";
@@ -21,8 +22,6 @@ import Hero from "../components/hero/Hero";
 import Coding from "../components/coding/Coding";
 import About from "../components/about/About";
 import AnimateText from "../components/utils/animations/AnimateText";
-
-// import { HomeGlobe } from "../components/HomeGlobe";
 
 export default function Index() {
     // Gatsby Link component retaining scroll position and not resetting to top

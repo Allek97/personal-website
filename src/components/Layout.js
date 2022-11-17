@@ -10,16 +10,16 @@ import { LoadingProvider } from "../context/LoadingContext";
 import { ScrollProvider } from "../context/ScrollContext";
 
 const Layout = ({ children }) => {
-  return (
-    <ScrollProvider>
-      <LoadingProvider>
-        <GlobeProvider>
-          {children}
-          <Footer />
-        </GlobeProvider>
-      </LoadingProvider>
-    </ScrollProvider>
-  );
+    return (
+        <ScrollProvider>
+            <LoadingProvider>
+                <GlobeProvider>
+                    {children}
+                    <Footer />
+                </GlobeProvider>
+            </LoadingProvider>
+        </ScrollProvider>
+    );
 };
 
 export default Layout;

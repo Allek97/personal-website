@@ -15,7 +15,7 @@ import {
     ProjectContent,
     ProjectBtn,
     ProjectMore,
-} from "./Project.styled";
+} from "./Projects.styled";
 
 import stacks from "../../constants/stacks";
 
