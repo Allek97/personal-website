@@ -122,12 +122,5 @@
         "browser": true,
         "es6": true,
         "jest/globals": true
-    },
-    "import/resolver": {
-        "node": {
-            "extensions": [".js", ".jsx", ".ts", ".tsx"],
-            "paths": ["./src"]
-        },
-        "alias": [["@components", "./src/components"]]
     }
 }

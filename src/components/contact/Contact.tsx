@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import AnimateText from "../utils/animations/AnimateText";
 
@@ -13,14 +13,14 @@ import {
     NameSvg,
     EmailSvg,
     MessageAreaSvg,
-} from "./ContactStyle";
+} from "./Contact.styled";
 
 const Contact = () => {
     const [isNameValid, setIsNameValid] = useState(false);
     const [isEmailValid, setIsEmailValid] = useState(false);
     const [isTextValid, setIsTextValid] = useState(false);
 
-    const handleEmailValidity = (email) => {
+    const handleEmailValidity = (email: string): void => {
         // don't remember from where i copied this code, but this works.
         const re =
             // eslint-disable-next-line no-useless-escape
@@ -42,7 +42,7 @@ const Contact = () => {
         triggerOnce: true,
     });
 
-    const fadeInUp = (delay) => ({
+    const fadeInUp = (delay: number) => ({
         hidden: {
             y: "100%",
             opacity: 0,
@@ -62,7 +62,7 @@ const Contact = () => {
         },
     });
 
-    const fadeUp = (delay) => ({
+    const fadeUp = (delay = 0): Variants => ({
         hidden: {
             y: "100%",
             opacity: 0,
@@ -119,7 +119,7 @@ const Contact = () => {
                     href="Ilias_Allek_SWE_Resume_EN.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    alt="my resume in english"
+                    aria-label="my resume in english"
                     download
                 >
                     DOWNLOAD CV
@@ -135,7 +135,7 @@ const Contact = () => {
                     href="Ilias_Allek_SWE_Resume_FR.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    alt="my resume in french"
+                    aria-label="my resume in french"
                     download
                 >
                     TÉLÉCHARGER CV

@@ -9,7 +9,7 @@ import { IProjectFields } from "@contentful/types";
 
 import NavBar from "../components/navBar/NavBar";
 
-import Projects from "../components/projects/Projects";
+import { Works } from "../components/works";
 import Seo from "../components/Seo";
 
 import ProjectOverview from "../components/projectOverview/ProjectOverview";
@@ -126,7 +126,7 @@ const ProjectTemplate = ({
 
                     <ProjectPageOthers>
                         <h1>Other Works</h1>
-                        <Projects ignoreProject={projectName} />
+                        <Works ignoreProject={projectName} />
                     </ProjectPageOthers>
                 </ProjectPageContent>
             </ProjectPage>

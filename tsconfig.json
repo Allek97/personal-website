@@ -17,7 +17,8 @@
         "incremental": true,
         "paths": {
             "@components/*": ["src/components/*"],
-            "@contentful/*": ["src/contentful/*"]
+            "@contentful/*": ["src/contentful/*"],
+            "@styles/*": ["src/styles/*"]
         }
     },
     "include": ["**/*.ts", "**/*.tsx", "test.ts"],

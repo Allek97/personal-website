@@ -3,7 +3,7 @@ import { MutableRefObject, useEffect, useRef } from "react";
 import { Element } from "react-scroll";
 import { useInView } from "react-intersection-observer";
 
-import { Projects } from "../components/projects";
+import { Works } from "../components/works";
 import NavBar from "../components/navBar/NavBar";
 
 import Contact from "../components/contact/Contact";
@@ -13,7 +13,7 @@ import Seo from "../components/Seo";
 import {
     ProjectSection,
     ProjectContainer,
-} from "../styles/indexStyles/ProjectSectionStyle";
+} from "../styles/indexStyles/ProjectSection.styled";
 
 import { ContactSection } from "../styles/indexStyles/ContactSectionStyle";
 
@@ -33,6 +33,7 @@ export default function Index() {
     // NOTE: SCROLL ANIMATIONS
     ////////////////////////////////
 
+    const freelanceRef = useRef() as MutableRefObject<HTMLDivElement>;
     const projectRef = useRef() as MutableRefObject<HTMLDivElement>;
     const contactRef = useRef() as MutableRefObject<HTMLDivElement>;
 
@@ -40,6 +41,10 @@ export default function Index() {
     // NOTE: Animations
     ////////////////////////////////
 
+    const { ref: freelanceHeaderRef, inView: isFreelanceInView } = useInView({
+        threshold: 1,
+        triggerOnce: true,
+    });
     const { ref: projectHeaderRef, inView: isProjectInView } = useInView({
         threshold: 1,
         triggerOnce: true,
@@ -58,8 +63,12 @@ export default function Index() {
                     <About />
 
                     <Element name="projectSection">
-                        <ProjectSection id="project" ref={projectRef}>
-                            <ProjectContainer>
+                        <ProjectSection
+                            variant="project"
+                            id="project"
+                            ref={projectRef}
+                        >
+                            <ProjectContainer variant="project">
                                 <AnimateText
                                     text="Recent Projects"
                                     type="heading1"
@@ -69,7 +78,28 @@ export default function Index() {
                                     letterDuration={0.5}
                                     refAnimation={projectHeaderRef}
                                 />
-                                <Projects />
+                                <Works />
+                            </ProjectContainer>
+                        </ProjectSection>
+                    </Element>
+
+                    <Element name="freelanceSection">
+                        <ProjectSection
+                            variant="freelance"
+                            id="freelance"
+                            ref={freelanceRef}
+                        >
+                            <ProjectContainer variant="freelance">
+                                <AnimateText
+                                    text="Freelance Work"
+                                    type="heading1"
+                                    isAnimate={isFreelanceInView}
+                                    version="slideUp"
+                                    staggerValue={0.025}
+                                    letterDuration={0.5}
+                                    refAnimation={freelanceHeaderRef}
+                                />
+                                <Works />
                             </ProjectContainer>
                         </ProjectSection>
                     </Element>

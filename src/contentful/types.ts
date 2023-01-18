@@ -96,6 +96,7 @@ export interface ContentfulProject {
     description: {
         description: string;
     };
+    isFreelanceWork: boolean;
 }
 export interface ContentfulProjectObject {
     allContentfulProjects: {

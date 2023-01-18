@@ -4,6 +4,10 @@ import { MdEmail } from "react-icons/md";
 import { BsFillPersonFill } from "react-icons/bs";
 import { motion } from "framer-motion";
 
+interface Props {
+    isvalid: number;
+}
+
 export const ContactContainer = styled.article`
     display: flex;
     justify-content: space-between;
@@ -233,7 +237,7 @@ export const ContactBtn = styled(motion.button)`
     cursor: pointer;
 `;
 
-export const NameSvg = styled(BsFillPersonFill)`
+export const NameSvg = styled(BsFillPersonFill)<Props>`
     position: absolute;
 
     bottom: 1rem;
@@ -252,7 +256,7 @@ export const NameSvg = styled(BsFillPersonFill)`
         `}
 `;
 
-export const EmailSvg = styled(MdEmail)`
+export const EmailSvg = styled(MdEmail)<Props>`
     position: absolute;
 
     bottom: 1rem;
@@ -271,7 +275,7 @@ export const EmailSvg = styled(MdEmail)`
         `}
 `;
 
-export const MessageAreaSvg = styled(VscRequestChanges)`
+export const MessageAreaSvg = styled(VscRequestChanges)<Props>`
     position: absolute;
 
     bottom: 1rem;

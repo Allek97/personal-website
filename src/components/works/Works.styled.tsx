@@ -1,0 +1,270 @@
+import styled, { css } from "styled-components";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { Link } from "gatsby";
+import { motion } from "framer-motion";
+
+export const ProjectLink = styled(Link)`
+    background-color: transparent;
+    text-decoration: none;
+    color: #141414;
+`;
+
+export const ProjectsContainer = styled.section`
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    row-gap: 10rem;
+
+    @media only screen and (max-width: 65.5em) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 5rem;
+    }
+    @media only screen and (max-width: 47.5em) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        column-gap: 0;
+    }
+`;
+
+interface Props {
+    variant: "freelance" | "project";
+}
+
+export const ProjectBox = styled(motion.div)<Props>`
+    display: flex;
+    justify-content: space-between;
+
+    box-shadow: ${({ variant }) =>
+        variant === "project"
+            ? "var(--shadow-light)"
+            : "0 0.5rem 4rem rgb(241 241 241 / 20%)"};
+
+    border-radius: 1rem;
+    overflow: hidden;
+
+    /* &:not(:last-child) {
+    margin-bottom: 10rem;
+  } */
+
+    @media only screen and (max-width: 65.5em) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    & > div:first-of-type {
+        width: 48%;
+        height: max-content;
+        object-fit: contain;
+
+        overflow: hidden;
+
+        @media only screen and (max-width: 65.5em) {
+            width: 100%;
+        }
+    }
+`;
+
+export const ProjectImage = styled(GatsbyImage)`
+    overflow: hidden;
+`;
+
+export const ProjectContent = styled.article<Props>`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: 52%;
+    margin-left: auto;
+    padding: 0 4rem;
+
+    font-size: 3rem;
+
+    overflow: hidden;
+
+    ${({ variant }) =>
+        variant === "project"
+            ? css`
+                  background-color: transparent;
+              `
+            : css`
+                  background-color: var(--color-grey-main);
+              `};
+
+    @media only screen and (max-width: 65.5em) {
+        width: 100%;
+        margin-left: 0;
+
+        min-height: 35rem;
+    }
+
+    @media only screen and (max-width: 37.5em) {
+        min-height: 60rem;
+    }
+
+    & > div:first-of-type {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media only screen and (max-width: 65.5em) {
+            flex-direction: column;
+            justify-content: space-around;
+
+            h2 {
+                margin: 2rem 0;
+                margin-right: 0 !important;
+
+                & > a {
+                    text-align: center;
+                }
+            }
+
+            div {
+                margin-bottom: 2rem;
+                flex-wrap: wrap;
+                align-self: center;
+            }
+        }
+
+        h2 {
+            margin-right: 1rem;
+
+            font-size: 3rem;
+            font-family: ManropeMedium;
+            color: black;
+        }
+        div {
+            display: flex;
+            justify-content: center;
+
+            span {
+                display: inline-block;
+
+                margin: 0.4rem;
+                padding: 0.4rem 0.8rem;
+
+                background: #190e42;
+
+                border-radius: 4px;
+
+                font-size: 1.3rem;
+                font-family: ManropeLight;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: white;
+            }
+        }
+    }
+
+    p {
+        font-size: 2rem;
+        font-family: PoppinsRegular;
+        font-weight: 400;
+        line-height: 2.5rem;
+        color: var(--color-grey-dark);
+    }
+
+    & > div:nth-of-type(2) {
+        display: flex;
+        align-items: center;
+
+        @media only screen and (max-width: 65.5em) {
+            flex-direction: column;
+
+            .projects-stacks {
+                margin: 2rem 0;
+                justify-content: center;
+            }
+
+            .projects-btns {
+                margin-left: 0 !important;
+                margin-bottom: 2rem;
+            }
+        }
+
+        .projects-stacks {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+
+            flex-wrap: wrap;
+            /* gap: 0.8rem;
+      grid-gap: 0.8rem; */
+
+            #WebGL {
+                svg {
+                    width: 4.2rem;
+                    height: 4.2rem;
+                }
+            }
+
+            span {
+                display: flex;
+                margin-top: 0.8rem;
+                margin-bottom: 0.8rem;
+
+                &:not(:last-child) {
+                    margin-right: 0.8rem;
+                }
+
+                svg {
+                    width: 3rem;
+                    height: 3rem;
+
+                    fill: #190e42;
+                }
+            }
+        }
+
+        .projects-btns {
+            display: flex;
+            margin-left: auto;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+    }
+`;
+
+export const ProjectBtn = styled.a`
+    padding: 0.8rem 2.5rem;
+
+    transition: all 0.3s;
+
+    border: 1px solid rgba(25, 14, 66, 1);
+
+    color: black;
+    font-family: ManropeMedium;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    &:first-of-type {
+        margin-left: auto;
+    }
+
+    &:not(:last-child) {
+        margin-right: 2rem;
+    }
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            /* box-shadow: rgb(25 14 66 / 90%) 0px 0.4rem 1rem 0px; */
+            background-color: rgba(25, 14, 66, 1);
+            color: white;
+        }
+    }
+`;
+
+export const ProjectMore = styled(motion(Link))`
+    border-bottom: 2px solid rgba(25, 14, 66, 1);
+
+    color: rgba(25, 14, 66, 1);
+    font-family: ManropeMedium;
+    font-size: 1.7rem;
+    line-height: 2.2rem;
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+`;

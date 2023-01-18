@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
+import { Link } from "gatsby";
+import { useLocation } from "@reach/router";
 
 import MenuList from "../menuList/MenuList";
 import { MenuBox, NavContainer, Nav, CloseMenu } from "./NavBar.styled";
@@ -20,6 +22,8 @@ const NavBar = ({ navColor = "var(--color-blue-dark)" }: Props) => {
     const toggleHome = () => {
         scroll.scrollToTop();
     };
+
+    const { pathname } = useLocation();
 
     return (
         <>
@@ -43,15 +47,25 @@ const NavBar = ({ navColor = "var(--color-blue-dark)" }: Props) => {
                 >
                     <div
                         onClick={toggleHome}
-                        role="button"
                         onKeyPress={toggleHome}
                         tabIndex={0}
+                        role="button"
                     >
-                        <h3>
-                            AEK
-                            <br />
-                            ILIAS.
-                        </h3>
+                        <Link
+                            to="/"
+                            role="button"
+                            className={
+                                pathname === "/"
+                                    ? "pointer-events-none"
+                                    : "pointer-events-auto"
+                            }
+                        >
+                            <h3>
+                                AEK
+                                <br />
+                                ILIAS.
+                            </h3>
+                        </Link>
                     </div>
                     <div>
                         <h3>MENU</h3>
