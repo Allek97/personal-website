@@ -1,0 +1,10 @@
+mutation Query {
+    Sys {
+        id
+        spaceId
+        environmentId
+        publishedAt
+        firstPublishedAt
+        publishedVersion
+    }
+}

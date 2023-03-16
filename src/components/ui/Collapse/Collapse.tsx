@@ -6,12 +6,14 @@ interface Props {
     handleExpand: () => void;
     isExpanded?: boolean;
     theme?: "white" | "darkBlue";
+    variant: "project" | "freelance";
 }
 
 const Collapse = ({
     handleExpand,
     isExpanded = false,
     theme = "darkBlue",
+    variant = "project",
 }: Props) => {
     return (
         <Root
@@ -21,7 +23,7 @@ const Collapse = ({
             onClick={() => handleExpand()}
         >
             <div />
-            <Content>
+            <Content variant={variant}>
                 <span>
                     {!isExpanded ? "Load more projects" : "Collapse projects"}
                 </span>

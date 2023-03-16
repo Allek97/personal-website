@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
-import React from "react";
 
+import { IGatsbyImageData } from "gatsby-plugin-image";
 import AnimateText from "../utils/animations/AnimateText";
 
 import stacks from "../../constants/stacks";
@@ -11,7 +11,6 @@ import {
     ProjectPageMore,
     ProjectPageOverview,
 } from "./ProjectOverview.styled";
-import { IGatsbyImageData } from "gatsby-plugin-image";
 
 interface Props {
     projectName: string;

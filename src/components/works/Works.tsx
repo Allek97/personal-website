@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useState } from "react";
+import { ReactNode, useMemo } from "react";
 import { IntersectionOptions, useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
@@ -7,7 +7,6 @@ import { getImage } from "gatsby-plugin-image";
 import slugify from "slugify";
 
 import { ContentfulProjectObject } from "@contentful/types";
-import { Collapse } from "../ui/Collapse";
 
 import {
     ProjectsContainer,
@@ -19,6 +18,36 @@ import {
 } from "./Works.styled";
 
 import stacks from "../../constants/stacks";
+
+interface ProjectProps {
+    inViewOptions: IntersectionOptions;
+    children: ReactNode | ReactNode[];
+    isHidden?: boolean;
+}
+
+const ProjectHolder = ({
+    inViewOptions,
+    children,
+    isHidden = false,
+}: ProjectProps) => {
+    const { ref: projectRef, inView: isProjectInView } =
+        useInView(inViewOptions);
+
+    return !isHidden ? (
+        <ProjectBox
+            ref={projectRef}
+            initial={{ y: "50%", opacity: 0 }}
+            animate={isProjectInView && { y: 0, opacity: 1 }}
+            transition={{
+                stiffness: 100,
+                damping: 8,
+                mass: 0.5,
+            }}
+        >
+            {children}
+        </ProjectBox>
+    ) : null;
+};
 
 const query = graphql`
     {
@@ -45,113 +74,97 @@ const query = graphql`
     }
 `;
 
-interface ProjectProps {
-    inViewOptions: IntersectionOptions;
-    children: ReactNode | ReactNode[];
-    isHidden?: boolean;
+interface Props {
+    ignoreProject?: string;
     variant: "freelance" | "project";
 }
 
-const ProjectHolder = ({
-    inViewOptions,
-    children,
-    isHidden = false,
-    variant = "project",
-}: ProjectProps) => {
-    const { ref: projectRef, inView: isProjectInView } =
-        useInView(inViewOptions);
-
-    return !isHidden ? (
-        <ProjectBox
-            ref={projectRef}
-            initial={{ y: "50%", opacity: 0 }}
-            animate={isProjectInView && { y: 0, opacity: 1 }}
-            transition={{
-                stiffness: 100,
-                damping: 8,
-                mass: 0.5,
-            }}
-            variant={variant}
-        >
-            {children}
-        </ProjectBox>
-    ) : null;
-};
-
-interface Props {
-    ignoreProject?: string;
-}
-
-const Works = ({ ignoreProject = "" }: Props) => {
-    const [isExpanded, setIsExpanded] = useState<boolean>(false);
+const Works = ({ ignoreProject = "", variant }: Props) => {
+    // const [isExpanded, setIsExpanded] = useState<boolean>(false);
+    const isWork: boolean = useMemo(() => variant === "freelance", [variant]);
 
     const data = useStaticQuery<ContentfulProjectObject>(query);
     const {
         allContentfulProjects: { nodes: projects },
     } = data;
 
-    const handleExpand = useCallback(
-        () => setIsExpanded((previous) => !previous),
-        []
-    );
-
     return (
         <div>
             <ProjectsContainer>
-                {projects.map((project, projectIdx) => {
-                    const {
-                        title,
-                        thumbnail: { gatsbyImageData },
-                        content: {
-                            stacks: projectStacks,
-                            tags: projectTags,
-                            github_link: projectGithubLink,
-                            app_link: projectAppLink,
-                        },
-                        description: { description: projectDescription },
-                        isFreelanceWork,
-                    } = project;
-                    const projectThumbnail = getImage(gatsbyImageData);
-                    if (title !== ignoreProject) {
-                        return (
-                            <ProjectHolder
-                                key={project.id}
-                                inViewOptions={{
-                                    triggerOnce: true,
-                                }}
-                                isHidden={
-                                    (projectIdx === projects.length - 2 ||
-                                        projectIdx === projects.length - 1) &&
-                                    !isExpanded
-                                }
-                                variant={
-                                    !isFreelanceWork ? "freelance" : "project"
-                                }
-                            >
-                                <div>
-                                    <Link
-                                        to={`/${slugify(project.title, {
-                                            lower: true,
-                                        })}`}
-                                    >
-                                        <motion.div>
-                                            <ProjectImage
-                                                image={projectThumbnail!}
-                                                alt={`${project.title} thumbnail`}
-                                            />
-                                        </motion.div>
-                                    </Link>
-                                </div>
-
-                                <ProjectContent
-                                    variant={
-                                        !isFreelanceWork
-                                            ? "freelance"
-                                            : "project"
+                {projects
+                    .filter((project) => project.isFreelanceWork === isWork)
+                    .map((project) => {
+                        const {
+                            title,
+                            thumbnail: { gatsbyImageData },
+                            content: {
+                                stacks: projectStacks,
+                                tags: projectTags,
+                                github_link: projectGithubLink,
+                                app_link: projectAppLink,
+                            },
+                            description: { description: projectDescription },
+                        } = project;
+                        const projectThumbnail = getImage(gatsbyImageData);
+                        if (title !== ignoreProject) {
+                            return (
+                                <ProjectHolder
+                                    key={project.id}
+                                    inViewOptions={{
+                                        triggerOnce: true,
+                                    }}
+                                    isHidden={
+                                        // (projectIdx === projects.length - 2 ||
+                                        //     projectIdx === projects.length - 1) &&
+                                        // !isExpanded
+                                        false
                                     }
                                 >
                                     <div>
-                                        <h2>
+                                        <Link
+                                            to={`/${slugify(project.title, {
+                                                lower: true,
+                                            })}`}
+                                        >
+                                            <motion.div>
+                                                <ProjectImage
+                                                    image={projectThumbnail!}
+                                                    alt={`${project.title} thumbnail`}
+                                                />
+                                            </motion.div>
+                                        </Link>
+                                    </div>
+
+                                    <ProjectContent>
+                                        <div>
+                                            <h2>
+                                                <Link
+                                                    to={`/${slugify(
+                                                        project.title,
+                                                        {
+                                                            lower: true,
+                                                        }
+                                                    )}`}
+                                                    style={{
+                                                        textDecoration: "none",
+                                                        color: "inherit",
+                                                        display: "block",
+                                                    }}
+                                                >
+                                                    {project.title}
+                                                </Link>
+                                            </h2>
+                                            <div>
+                                                {projectTags.map((tag) => {
+                                                    return (
+                                                        <span key={tag}>
+                                                            {tag}
+                                                        </span>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+                                        <p>
                                             <Link
                                                 to={`/${slugify(project.title, {
                                                     lower: true,
@@ -159,93 +172,73 @@ const Works = ({ ignoreProject = "" }: Props) => {
                                                 style={{
                                                     textDecoration: "none",
                                                     color: "inherit",
-                                                    display: "block",
                                                 }}
                                             >
-                                                {project.title}
+                                                {projectDescription}
                                             </Link>
-                                        </h2>
+                                        </p>
                                         <div>
-                                            {projectTags.map((tag) => {
-                                                return (
-                                                    <span key={tag}>{tag}</span>
-                                                );
-                                            })}
+                                            <div className="projects-stacks">
+                                                {projectStacks.map((stack) => {
+                                                    return (
+                                                        stacks.find(
+                                                            (stackObject) =>
+                                                                stackObject.title ===
+                                                                stack
+                                                        )?.icon && (
+                                                            <span
+                                                                key={stack}
+                                                                id={stack}
+                                                            >
+                                                                {
+                                                                    stacks.find(
+                                                                        (
+                                                                            stackObject
+                                                                        ) =>
+                                                                            stackObject.title ===
+                                                                            stack
+                                                                    )?.icon
+                                                                }
+                                                            </span>
+                                                        )
+                                                    );
+                                                })}
+                                            </div>
+                                            <div className="projects-btns">
+                                                <ProjectBtn
+                                                    href={projectAppLink}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    Live
+                                                </ProjectBtn>
+                                                <ProjectBtn
+                                                    href={projectGithubLink}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    Code
+                                                </ProjectBtn>
+                                                <ProjectMore
+                                                    to={`/${slugify(
+                                                        project.title,
+                                                        {
+                                                            lower: true,
+                                                        }
+                                                    )}`}
+                                                    whileHover={{ scale: 1.1 }}
+                                                >
+                                                    Learn More &#8594;
+                                                </ProjectMore>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <p>
-                                        <Link
-                                            to={`/${slugify(project.title, {
-                                                lower: true,
-                                            })}`}
-                                            style={{
-                                                textDecoration: "none",
-                                                color: "inherit",
-                                            }}
-                                        >
-                                            {projectDescription}
-                                        </Link>
-                                    </p>
-                                    <div>
-                                        <div className="projects-stacks">
-                                            {projectStacks.map((stack) => {
-                                                return (
-                                                    stacks.find(
-                                                        (stackObject) =>
-                                                            stackObject.title ===
-                                                            stack
-                                                    )?.icon && (
-                                                        <span
-                                                            key={stack}
-                                                            id={stack}
-                                                        >
-                                                            {
-                                                                stacks.find(
-                                                                    (
-                                                                        stackObject
-                                                                    ) =>
-                                                                        stackObject.title ===
-                                                                        stack
-                                                                )?.icon
-                                                            }
-                                                        </span>
-                                                    )
-                                                );
-                                            })}
-                                        </div>
-                                        <div className="projects-btns">
-                                            <ProjectBtn
-                                                href={projectAppLink}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                Live
-                                            </ProjectBtn>
-                                            <ProjectBtn
-                                                href={projectGithubLink}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                Code
-                                            </ProjectBtn>
-                                            <ProjectMore
-                                                to={`/${slugify(project.title, {
-                                                    lower: true,
-                                                })}`}
-                                                whileHover={{ scale: 1.1 }}
-                                            >
-                                                Learn More &#8594;
-                                            </ProjectMore>
-                                        </div>
-                                    </div>
-                                </ProjectContent>
-                            </ProjectHolder>
-                        );
-                    }
-                    return null;
-                })}
+                                    </ProjectContent>
+                                </ProjectHolder>
+                            );
+                        }
+                        return null;
+                    })}
             </ProjectsContainer>
-            <Collapse handleExpand={handleExpand} isExpanded={isExpanded} />
         </div>
     );
 };

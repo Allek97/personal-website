@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import { motion } from "framer-motion";
@@ -24,18 +24,11 @@ export const ProjectsContainer = styled.section`
     }
 `;
 
-interface Props {
-    variant: "freelance" | "project";
-}
-
-export const ProjectBox = styled(motion.div)<Props>`
+export const ProjectBox = styled(motion.div)`
     display: flex;
     justify-content: space-between;
 
-    box-shadow: ${({ variant }) =>
-        variant === "project"
-            ? "var(--shadow-light)"
-            : "0 0.5rem 4rem rgb(241 241 241 / 20%)"};
+    box-shadow: var(--shadow-light);
 
     border-radius: 1rem;
     overflow: hidden;
@@ -66,7 +59,7 @@ export const ProjectImage = styled(GatsbyImage)`
     overflow: hidden;
 `;
 
-export const ProjectContent = styled.article<Props>`
+export const ProjectContent = styled.article`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -79,14 +72,7 @@ export const ProjectContent = styled.article<Props>`
 
     overflow: hidden;
 
-    ${({ variant }) =>
-        variant === "project"
-            ? css`
-                  background-color: transparent;
-              `
-            : css`
-                  background-color: var(--color-grey-main);
-              `};
+    background-color: var(--color-grey-main);
 
     @media only screen and (max-width: 65.5em) {
         width: 100%;

@@ -62,34 +62,9 @@ export default function Index() {
                     <Coding />
                     <About />
 
-                    <Element name="projectSection">
-                        <ProjectSection
-                            variant="project"
-                            id="project"
-                            ref={projectRef}
-                        >
-                            <ProjectContainer variant="project">
-                                <AnimateText
-                                    text="Recent Projects"
-                                    type="heading1"
-                                    isAnimate={isProjectInView}
-                                    version="slideUp"
-                                    staggerValue={0.025}
-                                    letterDuration={0.5}
-                                    refAnimation={projectHeaderRef}
-                                />
-                                <Works />
-                            </ProjectContainer>
-                        </ProjectSection>
-                    </Element>
-
                     <Element name="freelanceSection">
-                        <ProjectSection
-                            variant="freelance"
-                            id="freelance"
-                            ref={freelanceRef}
-                        >
-                            <ProjectContainer variant="freelance">
+                        <ProjectSection id="freelance" ref={freelanceRef}>
+                            <ProjectContainer>
                                 <AnimateText
                                     text="Freelance Work"
                                     type="heading1"
@@ -99,7 +74,24 @@ export default function Index() {
                                     letterDuration={0.5}
                                     refAnimation={freelanceHeaderRef}
                                 />
-                                <Works />
+                                <Works variant="freelance" />
+                            </ProjectContainer>
+                        </ProjectSection>
+                    </Element>
+
+                    <Element name="projectSection">
+                        <ProjectSection id="project" ref={projectRef}>
+                            <ProjectContainer>
+                                <AnimateText
+                                    text="Personal Projects"
+                                    type="heading1"
+                                    isAnimate={isProjectInView}
+                                    version="slideUp"
+                                    staggerValue={0.025}
+                                    letterDuration={0.5}
+                                    refAnimation={projectHeaderRef}
+                                />
+                                <Works variant="project" />
                             </ProjectContainer>
                         </ProjectSection>
                     </Element>

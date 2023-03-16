@@ -126,7 +126,10 @@ const ProjectTemplate = ({
 
                     <ProjectPageOthers>
                         <h1>Other Works</h1>
-                        <Works ignoreProject={projectName} />
+                        <Works
+                            variant="freelance"
+                            ignoreProject={projectName}
+                        />
                     </ProjectPageOthers>
                 </ProjectPageContent>
             </ProjectPage>
