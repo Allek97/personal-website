@@ -1,7 +1,16 @@
-/* eslint-disable react/prop-types */
-import React from "react";
 import moment from "moment";
-import ContentfulAbout from "../ContentfulAbout";
+import {
+    ContentfulAssetConnection,
+    ContentfulProjectsCore,
+    Maybe,
+} from "@contentful/types/gatsby-contentful-types";
+import {
+    ContentfulRichTextGatsbyReference,
+    renderRichText,
+    RenderRichTextData,
+} from "gatsby-source-contentful/rich-text";
+
+import { richTextOptions } from "@contentful/richTextIntegration";
 import {
     Content,
     ProjectAd,
@@ -10,19 +19,30 @@ import {
 } from "./ProjectContentStyle";
 import socials from "../../constants/socials";
 
+interface Props {
+    projectName?: Maybe<string>;
+    projectGithubLink?: Maybe<string>;
+    projectAppLink?: Maybe<string>;
+    assets?: ContentfulAssetConnection;
+    core?: Maybe<ContentfulProjectsCore>;
+}
+
 const ProjectContent = ({
-    projectResume,
-    projectUsed,
     projectName,
-    projectLesson,
-    projectConclusion,
     projectGithubLink,
     projectAppLink,
-}) => {
+    assets,
+    core,
+}: Props) => {
     return (
         <ProjectPageStory>
             <Content>
-                <h1>What I made 💁‍♂️</h1>
+                {core &&
+                    renderRichText(
+                        core?.raw as unknown as RenderRichTextData<ContentfulRichTextGatsbyReference>,
+                        richTextOptions(assets?.nodes)
+                    )}
+                {/* <h1>What I made 💁‍♂️</h1>
                 <p>{projectResume && projectResume.resume}</p>
                 <h1>What I used 🔷</h1>
 
@@ -67,7 +87,7 @@ const ProjectContent = ({
                             }
                             return null;
                         })}
-                </div>
+                </div> */}
             </Content>
 
             <ProjectAd>

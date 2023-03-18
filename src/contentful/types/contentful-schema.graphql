@@ -241,6 +241,7 @@ type Project implements Entry {
   lesson(locale: String): String
   conclusion(locale: String): String
   isFreelanceWork(locale: String): Boolean
+  core(locale: String): ProjectCore
 }
 
 type ProjectLinkingCollections {
@@ -260,6 +261,27 @@ type AssetCollection {
   skip: Int!
   limit: Int!
   items: [Asset]!
+}
+
+type ProjectCore {
+  json: JSON!
+  links: ProjectCoreLinks!
+}
+
+type ProjectCoreLinks {
+  entries: ProjectCoreEntries!
+  assets: ProjectCoreAssets!
+}
+
+type ProjectCoreEntries {
+  inline: [Entry]!
+  hyperlink: [Entry]!
+  block: [Entry]!
+}
+
+type ProjectCoreAssets {
+  hyperlink: [Asset]!
+  block: [Asset]!
 }
 
 input AssetFilter {
@@ -462,6 +484,9 @@ input ProjectFilter {
   isFreelanceWork_exists: Boolean
   isFreelanceWork: Boolean
   isFreelanceWork_not: Boolean
+  core_exists: Boolean
+  core_contains: String
+  core_not_contains: String
   OR: [ProjectFilter]
   AND: [ProjectFilter]
 }

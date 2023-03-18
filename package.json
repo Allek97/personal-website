@@ -49,6 +49,7 @@
     "gatsby": "^3.11.1",
     "gatsby-alias-imports": "^1.0.6",
     "gatsby-plugin-alias-imports": "^1.0.5",
+    "gatsby-plugin-extract-schema": "^0.2.1",
     "gatsby-plugin-image": "^1.12.0",
     "gatsby-plugin-react-helmet": "^4.13.0",
     "gatsby-plugin-react-svg": "^3.0.1",
@@ -80,6 +81,7 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "3.2.2",
+    "@graphql-codegen/client-preset": "2.1.1",
     "@graphql-codegen/typescript": "3.0.2",
     "@graphql-codegen/typescript-resolvers": "^3.1.1",
     "@types/react-scroll": "^1.8.5",
@@ -93,8 +95,7 @@
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.27",
     "postcss": "^8.4.19",
     "prettier": "^2.7.1",
-    "tailwindcss": "^3.2.4",
-    "@graphql-codegen/client-preset": "2.1.1"
+    "tailwindcss": "^3.2.4"
   },
   "repository": {
     "type": "git",

@@ -5,8 +5,11 @@
 import { useEffect } from "react";
 import { graphql, PageProps } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
-import { IProjectFields } from "@contentful/types";
 
+import {
+    ContentfulAssetConnection,
+    ContentfulProjects,
+} from "@contentful/types/gatsby-contentful-types";
 import NavBar from "../components/navBar/NavBar";
 
 import { Works } from "../components/works";
@@ -26,6 +29,9 @@ export const contentfulProjectPageQuery = graphql`
         contentfulProjects(id: { eq: $id }) {
             id
             title
+            core {
+                raw
+            }
             content {
                 tags
                 stacks
@@ -41,56 +47,43 @@ export const contentfulProjectPageQuery = graphql`
                     url
                 }
             }
-            resume {
-                resume
-            }
-            used {
-                used
-            }
-            aboutImages {
-                gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
-            }
-            lesson {
-                lesson
-            }
-            conclusion {
-                conclusion
+        }
+        assets: allContentfulAsset {
+            nodes {
+                id
+                gatsbyImageData
             }
         }
     }
 `;
 
 type DataProps = {
-    contentfulProjects: IProjectFields;
+    contentfulProjects: ContentfulProjects;
+    assets: ContentfulAssetConnection;
 };
 
 const ProjectTemplate = ({
-    data: { contentfulProjects },
+    data: { contentfulProjects, assets },
 }: PageProps<DataProps>) => {
     const {
         title: projectName,
-        description: { description: projectDescription },
-        content: {
-            stacks: projectStacks,
-            tags: projectTags,
-            github_link: projectGithubLink,
-            app_link: projectAppLink,
-        },
-        thumbnail: {
-            gatsbyImageData,
-            file: { url: projectUrl },
-        },
-        resume: projectResume,
-        used,
-        lesson,
-        conclusion,
+        description,
+        content,
+        thumbnail,
+        core,
     } = contentfulProjects;
 
-    const projectThumbnail = getImage(gatsbyImageData)!;
+    const { description: projectDescription } = description || {};
+    const {
+        stacks: projectStacks,
+        tags: projectTags,
+        github_link: projectGithubLink,
+        app_link: projectAppLink,
+    } = { ...content };
+    const { gatsbyImageData, file } = { ...thumbnail };
 
-    const projectUsed = used && used.used.split("\n");
-    const projectLesson = lesson && lesson.lesson.split("\n");
-    const projectConclusion = conclusion && conclusion.conclusion.split("\n");
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const projectThumbnail = getImage(gatsbyImageData)!;
 
     useEffect(() => window.scrollTo(0, 0), []);
 
@@ -99,7 +92,7 @@ const ProjectTemplate = ({
             <Seo
                 title={projectName}
                 description={projectDescription}
-                image={projectUrl}
+                image={file?.url ?? ""}
             />
 
             <NavBar navColor="#102a42" />
@@ -107,21 +100,19 @@ const ProjectTemplate = ({
                 <ProjectPageContent>
                     <ProjectOverview
                         projectName={projectName}
-                        projectDescription={projectDescription}
-                        projectStacks={projectStacks}
-                        projectAppLink={projectAppLink}
-                        projectTags={projectTags}
+                        projectDescription={projectDescription ?? ""}
+                        projectStacks={projectStacks ?? []}
+                        projectAppLink={projectAppLink ?? ""}
+                        projectTags={projectTags ?? []}
                         projectThumbnail={projectThumbnail}
                     />
 
                     <ProjectContent
-                        projectResume={projectResume}
-                        projectUsed={projectUsed}
                         projectName={projectName}
-                        projectLesson={projectLesson}
-                        projectConclusion={projectConclusion}
                         projectGithubLink={projectGithubLink}
                         projectAppLink={projectAppLink}
+                        assets={assets}
+                        core={core}
                     />
 
                     <ProjectPageOthers>

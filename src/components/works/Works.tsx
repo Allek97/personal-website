@@ -6,7 +6,8 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import slugify from "slugify";
 
-import { ContentfulProjectObject } from "@contentful/types";
+import { ContentfulProjectObject } from "@contentful/typess";
+import { Maybe } from "@contentful/types/gatsby-contentful-types";
 
 import {
     ProjectsContainer,
@@ -75,7 +76,7 @@ const query = graphql`
 `;
 
 interface Props {
-    ignoreProject?: string;
+    ignoreProject?: Maybe<string>;
     variant: "freelance" | "project";
 }
 

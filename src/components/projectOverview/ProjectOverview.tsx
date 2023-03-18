@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import { Maybe } from "@contentful/types/gatsby-contentful-types";
 import AnimateText from "../utils/animations/AnimateText";
 
 import stacks from "../../constants/stacks";
@@ -13,19 +14,19 @@ import {
 } from "./ProjectOverview.styled";
 
 interface Props {
-    projectName: string;
-    projectDescription: string;
-    projectStacks: string[];
-    projectAppLink: string;
-    projectTags: string[];
+    projectName?: Maybe<string>;
+    projectDescription?: Maybe<string>;
+    projectStacks?: Maybe<string>[];
+    projectAppLink?: Maybe<string>;
+    projectTags?: Maybe<string>[];
     projectThumbnail: IGatsbyImageData;
 }
 
 const ProjectOverview = ({
-    projectName,
-    projectDescription,
+    projectName = "",
+    projectDescription = "",
     projectStacks,
-    projectAppLink,
+    projectAppLink = "",
     projectTags,
     projectThumbnail,
 }: Props) => {
@@ -91,26 +92,27 @@ const ProjectOverview = ({
                     animate="visible"
                     variants={stacksContainer}
                 >
-                    {projectStacks.map((stack) => {
-                        return (
-                            stacks.find(
-                                (stackObject) => stackObject.title === stack
-                            )?.icon && (
-                                <motion.span
-                                    key={stack}
-                                    id={stack}
-                                    variants={slideStack}
-                                >
-                                    {
-                                        stacks.find(
-                                            (stackObject) =>
-                                                stackObject.title === stack
-                                        )?.icon
-                                    }
-                                </motion.span>
-                            )
-                        );
-                    })}
+                    {projectStacks &&
+                        projectStacks.map((stack) => {
+                            return (
+                                stacks.find(
+                                    (stackObject) => stackObject.title === stack
+                                )?.icon && (
+                                    <motion.span
+                                        key={stack}
+                                        id={stack!}
+                                        variants={slideStack}
+                                    >
+                                        {
+                                            stacks.find(
+                                                (stackObject) =>
+                                                    stackObject.title === stack
+                                            )?.icon
+                                        }
+                                    </motion.span>
+                                )
+                            );
+                        })}
                 </motion.div>
                 <motion.div
                     className="projectPage-tags"
@@ -118,16 +120,17 @@ const ProjectOverview = ({
                     animate="visible"
                     variants={tagsContainer}
                 >
-                    {projectTags.map((tag) => {
-                        return (
-                            <motion.span variants={fadeUp} key={tag}>
-                                {tag}
-                            </motion.span>
-                        );
-                    })}
+                    {projectTags &&
+                        projectTags.map((tag) => {
+                            return (
+                                <motion.span variants={fadeUp} key={tag}>
+                                    {tag}
+                                </motion.span>
+                            );
+                        })}
                 </motion.div>
                 <ProjectPageMore
-                    href={projectAppLink}
+                    href={projectAppLink!}
                     target="_blank"
                     rel="noopener noreferrer"
                     initial="hidden"
