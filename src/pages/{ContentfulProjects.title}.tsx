@@ -6,10 +6,7 @@ import { useEffect } from "react";
 import { graphql, PageProps } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 
-import {
-    ContentfulAssetConnection,
-    ContentfulProjects,
-} from "@contentful/types/gatsby-contentful-types";
+import { ContentfulProjects } from "@contentful/types/gatsby-contentful-types";
 import NavBar from "../components/navBar/NavBar";
 
 import { Works } from "../components/works";
@@ -31,6 +28,15 @@ export const contentfulProjectPageQuery = graphql`
             title
             core {
                 raw
+                references {
+                    ... on ContentfulAsset {
+                        contentful_id
+                        title
+                        description
+                        gatsbyImageData(width: 1000)
+                        __typename
+                    }
+                }
             }
             content {
                 tags
@@ -48,22 +54,15 @@ export const contentfulProjectPageQuery = graphql`
                 }
             }
         }
-        assets: allContentfulAsset {
-            nodes {
-                id
-                gatsbyImageData
-            }
-        }
     }
 `;
 
 type DataProps = {
     contentfulProjects: ContentfulProjects;
-    assets: ContentfulAssetConnection;
 };
 
 const ProjectTemplate = ({
-    data: { contentfulProjects, assets },
+    data: { contentfulProjects },
 }: PageProps<DataProps>) => {
     const {
         title: projectName,
@@ -111,7 +110,6 @@ const ProjectTemplate = ({
                         projectName={projectName}
                         projectGithubLink={projectGithubLink}
                         projectAppLink={projectAppLink}
-                        assets={assets}
                         core={core}
                     />
 

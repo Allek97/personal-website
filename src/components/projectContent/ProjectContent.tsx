@@ -1,16 +1,17 @@
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import moment from "moment";
 import {
-    ContentfulAssetConnection,
     ContentfulProjectsCore,
     Maybe,
 } from "@contentful/types/gatsby-contentful-types";
 import {
     ContentfulRichTextGatsbyReference,
-    renderRichText,
     RenderRichTextData,
+    renderRichText,
 } from "gatsby-source-contentful/rich-text";
 
-import { richTextOptions } from "@contentful/richTextIntegration";
+import { richTextOptions } from "../../contentful/richTextIntegration";
 import {
     Content,
     ProjectAd,
@@ -23,7 +24,6 @@ interface Props {
     projectName?: Maybe<string>;
     projectGithubLink?: Maybe<string>;
     projectAppLink?: Maybe<string>;
-    assets?: ContentfulAssetConnection;
     core?: Maybe<ContentfulProjectsCore>;
 }
 
@@ -31,7 +31,6 @@ const ProjectContent = ({
     projectName,
     projectGithubLink,
     projectAppLink,
-    assets,
     core,
 }: Props) => {
     return (
@@ -39,9 +38,10 @@ const ProjectContent = ({
             <Content>
                 {core &&
                     renderRichText(
-                        core?.raw as unknown as RenderRichTextData<ContentfulRichTextGatsbyReference>,
-                        richTextOptions(assets?.nodes)
+                        core! as RenderRichTextData<ContentfulRichTextGatsbyReference>,
+                        richTextOptions
                     )}
+
                 {/* <h1>What I made 💁‍♂️</h1>
                 <p>{projectResume && projectResume.resume}</p>
                 <h1>What I used 🔷</h1>
@@ -95,7 +95,7 @@ const ProjectContent = ({
                 <span>{moment().format("MMM Do, YYYY")}</span>
 
                 <ProjectPageBtn
-                    href={projectAppLink}
+                    href={projectAppLink!}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -103,7 +103,7 @@ const ProjectContent = ({
                 </ProjectPageBtn>
 
                 <ProjectPageBtn
-                    href={projectGithubLink}
+                    href={projectGithubLink!}
                     target="_blank"
                     rel="noopener noreferrer"
                 >

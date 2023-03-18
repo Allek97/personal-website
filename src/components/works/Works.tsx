@@ -6,8 +6,10 @@ import { useStaticQuery, graphql, Link } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import slugify from "slugify";
 
-import { ContentfulProjectObject } from "@contentful/typess";
-import { Maybe } from "@contentful/types/gatsby-contentful-types";
+import {
+    ContentfulProjectsConnection,
+    Maybe,
+} from "@contentful/types/gatsby-contentful-types";
 
 import {
     ProjectsContainer,
@@ -84,7 +86,9 @@ const Works = ({ ignoreProject = "", variant }: Props) => {
     // const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const isWork: boolean = useMemo(() => variant === "freelance", [variant]);
 
-    const data = useStaticQuery<ContentfulProjectObject>(query);
+    const data = useStaticQuery<{
+        allContentfulProjects: ContentfulProjectsConnection;
+    }>(query);
     const {
         allContentfulProjects: { nodes: projects },
     } = data;

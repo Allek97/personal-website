@@ -11,18 +11,18 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
                     },
                 ],
             },
-            resolve: {
-                alias: {
-                    "@components/*": path.resolve(
-                        __dirname,
-                        "src/components/*"
-                    ),
-                    "@contentful/*": path.resolve(
-                        __dirname,
-                        "src/contentful/*"
-                    ),
-                },
-            },
+            // resolve: {
+            //     alias: {
+            //         "@components/*": path.resolve(
+            //             __dirname,
+            //             "src/components/*"
+            //         ),
+            //         "@contentful/*": path.resolve(
+            //             __dirname,
+            //             "src/contentful/*"
+            //         ),
+            //     },
+            // },
         });
     }
 };

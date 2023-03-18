@@ -56,14 +56,11 @@ module.exports = {
             },
         },
         {
-            resolve: `gatsby-plugin-alias-imports`,
+            resolve: "gatsby-plugin-root-import",
             options: {
-                alias: {
-                    "@components": ["src/components"],
-                    "@contentful": ["src/contentful"],
-                },
+                "@components": ["src/components"],
+                "@contentful": ["src/contentful"],
             },
-            extensions: ["ts", "tsx"],
         },
         `gatsby-plugin-react-helmet`,
         "gatsby-plugin-webpack-bundle-analyser-v2",

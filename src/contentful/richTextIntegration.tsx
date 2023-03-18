@@ -6,7 +6,6 @@ import {
     Options,
 } from "@contentful/rich-text-react-renderer";
 import { ReactNode } from "react";
-import { ContentfulAsset } from "./types/gatsby-contentful-types";
 
 type Children = {
     children: ReactNode;
@@ -43,58 +42,45 @@ const Img = styled(GatsbyImage)`
     }
 `;
 
-const richTextOptions = (assets?: ContentfulAsset[]): Options => {
-    return {
-        renderMark: {
-            [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
-            [MARKS.ITALIC]: (text) => <ITALIC>{text}</ITALIC>,
-            [MARKS.UNDERLINE]: (text) => <UNDERLINE>{text}</UNDERLINE>,
-        },
-        renderNode: {
-            [BLOCKS.PARAGRAPH]: (_, children) => <p>{children}</p>,
-            [BLOCKS.HEADING_1]: (_, children) => <h1>{children}</h1>,
-            [BLOCKS.HEADING_2]: (_, children) => <h2>{children}</h2>,
-            [BLOCKS.HEADING_3]: (_, children) => <h3>{children}</h3>,
-            [BLOCKS.HEADING_4]: (_, children) => <h4>{children}</h4>,
-            [BLOCKS.HEADING_5]: (_, children) => <h5>{children}</h5>,
-            [BLOCKS.HEADING_6]: (_, children) => <h6>{children}</h6>,
-            [INLINES.HYPERLINK]: ({ data }, children) => (
-                <a href={data.uri} target="_blank" rel="noopener noreferrer">
-                    {children}
-                </a>
-            ),
-            [BLOCKS.QUOTE]: (_, children) => (
-                <div className="quote">
-                    <p>{children}</p>
-                </div>
-            ),
-            [BLOCKS.UL_LIST]: (_, children) => <ul>{children}</ul>,
-            [BLOCKS.OL_LIST]: (_, children) => <ol>{children}</ol>,
-            [BLOCKS.LIST_ITEM]: (main: any) => {
-                const UnTaggedChildren = documentToReactComponents(main, {
-                    renderNode: {
-                        [BLOCKS.LIST_ITEM]: (_, children) => (
-                            <LI>{children}</LI>
-                        ),
-                        [MARKS.BOLD]: (_, children) => <h3>{children}</h3>,
-                    },
-                });
+export const richTextOptions: Options = {
+    renderMark: {
+        [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
+        [MARKS.ITALIC]: (text) => <ITALIC>{text}</ITALIC>,
+        [MARKS.UNDERLINE]: (text) => <UNDERLINE>{text}</UNDERLINE>,
+    },
+    renderNode: {
+        [BLOCKS.PARAGRAPH]: (_, children) => <p>{children}</p>,
+        [BLOCKS.HEADING_1]: (_, children) => <h1>{children}</h1>,
+        [BLOCKS.HEADING_2]: (_, children) => <h2>{children}</h2>,
+        [BLOCKS.HEADING_3]: (_, children) => <h3>{children}</h3>,
+        [BLOCKS.HEADING_4]: (_, children) => <h4>{children}</h4>,
+        [BLOCKS.HEADING_5]: (_, children) => <h5>{children}</h5>,
+        [BLOCKS.HEADING_6]: (_, children) => <h6>{children}</h6>,
+        [INLINES.HYPERLINK]: ({ data }, children) => (
+            <a href={data.uri} target="_blank" rel="noopener noreferrer">
+                {children}
+            </a>
+        ),
+        [BLOCKS.QUOTE]: (_, children) => (
+            <div className="quote">
+                <p>{children}</p>
+            </div>
+        ),
+        [BLOCKS.UL_LIST]: (_, children) => <ul>{children}</ul>,
+        [BLOCKS.OL_LIST]: (_, children) => <ol>{children}</ol>,
+        [BLOCKS.LIST_ITEM]: (main: any) => {
+            const UnTaggedChildren = documentToReactComponents(main, {
+                renderNode: {
+                    [BLOCKS.LIST_ITEM]: (_, children) => <LI>{children}</LI>,
+                    [MARKS.BOLD]: (_, children) => <h3>{children}</h3>,
+                },
+            });
 
-                return UnTaggedChildren;
-            },
-            [BLOCKS.EMBEDDED_ASSET]: ({ data }) => {
-                const image =
-                    assets &&
-                    assets.find((asset) => asset.id === data.target.sys.id);
-                return (
-                    <Img
-                        image={getImage(image?.gatsbyImageData)!}
-                        alt={image?.title ?? ""}
-                    />
-                );
-            },
+            return UnTaggedChildren;
         },
-    };
+        [BLOCKS.EMBEDDED_ASSET]: ({ data }) => {
+            const { gatsbyImageData, description } = data.target;
+            return <Img image={getImage(gatsbyImageData)!} alt={description} />;
+        },
+    },
 };
-
-export { richTextOptions };
