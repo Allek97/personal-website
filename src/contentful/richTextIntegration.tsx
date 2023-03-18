@@ -81,7 +81,7 @@ export const richTextOptions: Options = {
             return UnTaggedChilren;
         },
         [BLOCKS.UL_LIST]: (_, children) => <ul>{children}</ul>,
-        [BLOCKS.OL_LIST]: (_, children) => <ol>{children}</ol>,
+        [BLOCKS.OL_LIST]: (_, children) => <ol className="ml-4">{children}</ol>,
         [BLOCKS.LIST_ITEM]: (main: any) => {
             const UnTaggedChildren = documentToReactComponents(main, {
                 renderNode: {
@@ -89,7 +89,8 @@ export const richTextOptions: Options = {
                     [BLOCKS.PARAGRAPH]: (_, children) => children,
                 },
                 renderMark: {
-                    [MARKS.BOLD]: (text) => (
+                    [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
+                    [MARKS.ITALIC]: (text) => (
                         <h6 style={{ color: "black !important" }}>{text}</h6>
                     ),
                 },
