@@ -70,7 +70,7 @@ export const Content = styled.div`
 
     li,
     ol {
-        h3 {
+        h6 {
             margin-bottom: 0 !important;
         }
     }
@@ -78,18 +78,6 @@ export const Content = styled.div`
     a {
         text-decoration: none;
         color: var(--color-blue-special);
-    }
-
-    .quote {
-        padding: 2.2rem;
-        background: #2a2a2a;
-        margin-top: 2rem;
-        padding-left: 80px;
-        position: relative;
-        border-top-right-radius: 2rem;
-        border-bottom-right-radius: 2rem;
-        border-bottom-left-radius: 2rem;
-        margin-bottom: 2rem;
     }
 `;
 export const ProjectAd = styled.div`

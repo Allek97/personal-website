@@ -22,15 +22,12 @@ const UNDERLINE = ({ children }: Children) => (
 );
 
 const LI = styled.li`
-    list-style-position: inside;
-
     font-size: 2rem;
-    font-family: ManropeMedium;
+    font-family: PoppinsRegular;
+    font-weight: 400;
     color: #555454;
-
-    &:not(:last-child) {
-        margin-bottom: 1rem;
-    }
+    list-style: none;
+    margin-bottom: 1rem;
 `;
 
 const Img = styled(GatsbyImage)`
@@ -39,6 +36,15 @@ const Img = styled(GatsbyImage)`
 
     @media only screen and (max-width: 65em) {
         width: 100%;
+    }
+`;
+
+const Quote = styled.div`
+    margin-bottom: 2rem;
+    border-left: 2px solid #264b94;
+    color: #12306a;
+    h6 {
+        margin-left: 3rem;
     }
 `;
 
@@ -61,18 +67,31 @@ export const richTextOptions: Options = {
                 {children}
             </a>
         ),
-        [BLOCKS.QUOTE]: (_, children) => (
-            <div className="quote">
-                <p>{children}</p>
-            </div>
-        ),
+        [BLOCKS.QUOTE]: (main) => {
+            const UnTaggedChilren = documentToReactComponents(main, {
+                renderNode: {
+                    [BLOCKS.PARAGRAPH]: (_, children) => (
+                        <Quote>
+                            <h6>{children}</h6>
+                        </Quote>
+                    ),
+                },
+            });
+
+            return UnTaggedChilren;
+        },
         [BLOCKS.UL_LIST]: (_, children) => <ul>{children}</ul>,
         [BLOCKS.OL_LIST]: (_, children) => <ol>{children}</ol>,
         [BLOCKS.LIST_ITEM]: (main: any) => {
             const UnTaggedChildren = documentToReactComponents(main, {
                 renderNode: {
                     [BLOCKS.LIST_ITEM]: (_, children) => <LI>{children}</LI>,
-                    [MARKS.BOLD]: (_, children) => <h3>{children}</h3>,
+                    [BLOCKS.PARAGRAPH]: (_, children) => children,
+                },
+                renderMark: {
+                    [MARKS.BOLD]: (text) => (
+                        <h6 style={{ color: "black !important" }}>{text}</h6>
+                    ),
                 },
             });
 
