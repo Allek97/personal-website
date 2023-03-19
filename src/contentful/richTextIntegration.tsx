@@ -21,13 +21,21 @@ const UNDERLINE = ({ children }: Children) => (
     <span className="underline">{children}</span>
 );
 
+const OL = styled.ol`
+    margin-bottom: 3rem;
+    margin-left: 2rem;
+`;
+
 const LI = styled.li`
     font-size: 2rem;
     font-family: PoppinsRegular;
     font-weight: 400;
     color: #555454;
     list-style: none;
-    margin-bottom: 1rem;
+
+    &:not(:last-of-type) {
+        margin-bottom: 1rem;
+    }
 `;
 
 const Img = styled(GatsbyImage)`
@@ -40,7 +48,7 @@ const Img = styled(GatsbyImage)`
 `;
 
 const Quote = styled.div`
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     border-left: 2px solid #264b94;
     color: #12306a;
     h6 {
@@ -67,7 +75,7 @@ export const richTextOptions: Options = {
                 {children}
             </a>
         ),
-        [BLOCKS.QUOTE]: (main) => {
+        [BLOCKS.QUOTE]: (main: any) => {
             const UnTaggedChilren = documentToReactComponents(main, {
                 renderNode: {
                     [BLOCKS.PARAGRAPH]: (_, children) => (
@@ -81,7 +89,7 @@ export const richTextOptions: Options = {
             return UnTaggedChilren;
         },
         [BLOCKS.UL_LIST]: (_, children) => <ul>{children}</ul>,
-        [BLOCKS.OL_LIST]: (_, children) => <ol className="ml-4">{children}</ol>,
+        [BLOCKS.OL_LIST]: (_, children) => <OL>{children}</OL>,
         [BLOCKS.LIST_ITEM]: (main: any) => {
             const UnTaggedChildren = documentToReactComponents(main, {
                 renderNode: {

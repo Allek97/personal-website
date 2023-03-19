@@ -26,6 +26,7 @@ export const contentfulProjectPageQuery = graphql`
         contentfulProjects(id: { eq: $id }) {
             id
             title
+            isFreelanceWork
             core {
                 raw
                 references {
@@ -70,6 +71,7 @@ const ProjectTemplate = ({
         content,
         thumbnail,
         core,
+        isFreelanceWork,
     } = contentfulProjects;
 
     const { description: projectDescription } = description || {};
@@ -114,9 +116,12 @@ const ProjectTemplate = ({
                     />
 
                     <ProjectPageOthers>
-                        <h1>Other Works</h1>
+                        <h1>
+                            Other{" "}
+                            {isFreelanceWork ? "Freelance Work" : "Projects"}
+                        </h1>
                         <Works
-                            variant="freelance"
+                            variant={isFreelanceWork ? "freelance" : "project"}
                             ignoreProject={projectName}
                         />
                     </ProjectPageOthers>

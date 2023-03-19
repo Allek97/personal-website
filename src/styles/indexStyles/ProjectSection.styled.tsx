@@ -41,7 +41,7 @@ export const ProjectContainer = styled.article`
         font-size: 5rem;
         font-family: Manrope;
         text-transform: uppercase;
-        line-height: 8.5rem;
+        line-height: 5.5rem;
         letter-spacing: -0.03em;
     }
 `;

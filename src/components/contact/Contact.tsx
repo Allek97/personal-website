@@ -99,7 +99,7 @@ const Contact = () => {
                     delayValue={0.1}
                 />
                 <AnimateText
-                    text="For employers:"
+                    text="Professional Resume:"
                     type="heading1"
                     isAnimate={isContactInView}
                     version="slideUp"

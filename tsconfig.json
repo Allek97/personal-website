@@ -18,7 +18,8 @@
         "paths": {
             "@components/*": ["src/components/*"],
             "@contentful/*": ["src/contentful/*"],
-            "@styles/*": ["src/styles/*"]
+            "@styles/*": ["src/styles/*"],
+            "@assets/*": ["src/assets/*"]
         }
     },
     "include": ["**/*.ts", "**/*.tsx", "test.ts"],

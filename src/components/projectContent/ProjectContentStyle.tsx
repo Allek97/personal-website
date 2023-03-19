@@ -34,14 +34,13 @@ export const Content = styled.div`
     h6 {
         margin-bottom: 2rem;
         font-family: ManropeMedium;
-
-        &:not(:first-child) {
-            margin-top: 6rem;
-        }
     }
 
     h1 {
         font-size: 3.2rem;
+        &:not(:first-child) {
+            margin-top: 6rem;
+        }
     }
     h2 {
         font-size: 3rem;

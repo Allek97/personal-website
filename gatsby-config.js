@@ -58,8 +58,10 @@ module.exports = {
         {
             resolve: "gatsby-plugin-root-import",
             options: {
-                "@components": ["src/components"],
-                "@contentful": ["src/contentful"],
+                "@components/*": ["src/components"],
+                "@contentful/*": ["src/contentful"],
+                "@styles/*": ["src/styles/*"],
+                "@assets/*": ["src/assets/*"],
             },
         },
         `gatsby-plugin-react-helmet`,

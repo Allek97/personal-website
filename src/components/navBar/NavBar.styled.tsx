@@ -203,29 +203,27 @@ export const Nav = styled.div<MenuBoxProps>`
     & > div:first-of-type {
         text-decoration: none;
         cursor: pointer;
-        h3 {
-            padding: 4px;
 
-            transition: all 0.3s ease-in;
+        svg {
+            width: 16.5rem;
 
-            border: 3px solid
-                ${(props) =>
+            .logo-wings {
+                fill: ${(props) =>
                     props.$isOpen
                         ? "#102a42"
                         : props.$isScrolled
                         ? "#102a42"
                         : props.navColor};
+            }
 
-            font-size: 1.45rem;
-            font-family: PoppinsBlack;
-            text-shadow: 0 0 20px rgb(0 0 0 / 10%);
-            line-height: 1.8rem;
-            color: ${(props) =>
-                props.$isOpen
-                    ? "#102a42"
-                    : props.$isScrolled
-                    ? "#102a42"
-                    : props.navColor};
+            .logo-name {
+                fill: ${(props) =>
+                    props.$isOpen
+                        ? "#102a42"
+                        : props.$isScrolled
+                        ? "#102a42"
+                        : props.navColor};
+            }
         }
     }
 
@@ -238,7 +236,7 @@ export const Nav = styled.div<MenuBoxProps>`
             transition: all 0.3s ease-in-out;
 
             font-size: 2.3rem;
-            font-family: PoppinsBlack;
+            font-family: Manrope;
             font-weight: bold;
             text-shadow: 0 0 20px rgb(0 0 0 / 10%);
             line-height: 1.8rem;

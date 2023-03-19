@@ -7,6 +7,7 @@ import MenuList from "../menuList/MenuList";
 import { MenuBox, NavContainer, Nav, CloseMenu } from "./NavBar.styled";
 import useScroll from "../../hooks/useScroll";
 import useScrollDirectionGatsby from "../../hooks/useScrollDirectionGatsby";
+import LogoSVG from "../../assets/svgs/ilias-allek";
 
 interface Props {
     navColor?: string;
@@ -60,11 +61,7 @@ const NavBar = ({ navColor = "var(--color-blue-dark)" }: Props) => {
                                     : "pointer-events-auto"
                             }
                         >
-                            <h3>
-                                AEK
-                                <br />
-                                ILIAS.
-                            </h3>
+                            <LogoSVG />
                         </Link>
                     </div>
                     <div>

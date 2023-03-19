@@ -1153,8 +1153,10 @@ type SitePluginPluginOptions {
   pageLimit: Int
   assetDownloadWorkers: Int
   useNameForId: Boolean
-  _components: [String]
-  _contentful: [String]
+  _components__: [String]
+  _contentful__: [String]
+  _styles__: [String]
+  _assets__: [String]
   pathCheck: Boolean
   allExtensions: Boolean
   isTSX: Boolean
@@ -2293,8 +2295,10 @@ input SitePluginPluginOptionsFilterInput {
   pageLimit: IntQueryOperatorInput
   assetDownloadWorkers: IntQueryOperatorInput
   useNameForId: BooleanQueryOperatorInput
-  _components: StringQueryOperatorInput
-  _contentful: StringQueryOperatorInput
+  _components__: StringQueryOperatorInput
+  _contentful__: StringQueryOperatorInput
+  _styles__: StringQueryOperatorInput
+  _assets__: StringQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
   allExtensions: BooleanQueryOperatorInput
   isTSX: BooleanQueryOperatorInput
@@ -2516,8 +2520,10 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___pageLimit
   pluginCreator___pluginOptions___assetDownloadWorkers
   pluginCreator___pluginOptions___useNameForId
-  pluginCreator___pluginOptions____components
-  pluginCreator___pluginOptions____contentful
+  pluginCreator___pluginOptions____components__
+  pluginCreator___pluginOptions____contentful__
+  pluginCreator___pluginOptions____styles__
+  pluginCreator___pluginOptions____assets__
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___pluginOptions___allExtensions
   pluginCreator___pluginOptions___isTSX
@@ -5204,8 +5210,10 @@ enum SitePluginFieldsEnum {
   pluginOptions___pageLimit
   pluginOptions___assetDownloadWorkers
   pluginOptions___useNameForId
-  pluginOptions____components
-  pluginOptions____contentful
+  pluginOptions____components__
+  pluginOptions____contentful__
+  pluginOptions____styles__
+  pluginOptions____assets__
   pluginOptions___pathCheck
   pluginOptions___allExtensions
   pluginOptions___isTSX
