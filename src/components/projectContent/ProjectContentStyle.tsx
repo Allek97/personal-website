@@ -86,9 +86,13 @@ export const ProjectAd = styled.div`
 
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
 
     width: 25%;
+
+    & > div:first-of-type {
+        display: none;
+    }
 
     @media only screen and (max-width: 58em) {
         position: static;
@@ -97,8 +101,20 @@ export const ProjectAd = styled.div`
         align-items: center;
 
         width: 100%;
-        max-width: 28rem;
+
         margin-bottom: 10rem;
+        padding-top: 10rem;
+
+        border-top: 2px solid #190e42;
+
+        & > div:first-of-type {
+            display: flex;
+            flex-direction: column;
+            max-width: 28rem;
+            align-items: center;
+
+            margin-bottom: 5rem;
+        }
     }
 
     h1 {
@@ -121,8 +137,6 @@ export const ProjectAd = styled.div`
     }
 
     h2 {
-        margin-top: 2rem;
-
         font-size: 2.5rem;
         font-family: ManropeMedium;
     }
@@ -195,5 +209,44 @@ export const ProjectPageBtn = styled.a`
         /* box-shadow: rgb(25 14 66 / 90%) 0px 0.4rem 1rem 0px; */
         background-color: rgba(25, 14, 66, 1);
         color: white;
+    }
+`;
+
+export const WorkSpecifics = styled.div`
+    display: grid;
+    /* flex-direction: column; */
+    grid-template-columns: 1fr;
+    /* gap: 5rem; */
+
+    width: 100%;
+    max-width: 80rem;
+
+    margin-top: 2rem;
+
+    @media only screen and (max-width: 58em) {
+        justify-items: center;
+        grid-template-columns: 1fr 1fr;
+        margin-top: 8rem;
+    }
+
+    & > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &:not(:last-of-type) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    h2 {
+        font-size: 3rem;
+        color: rgb(18 48 124);
+    }
+
+    p {
+        font-size: 1.8rem;
+        &:not(:last-of-type) {
+            margin-bottom: 1rem;
+        }
     }
 `;

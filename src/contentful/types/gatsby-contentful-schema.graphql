@@ -1142,6 +1142,7 @@ type SitePluginPluginOptions {
   namespace: String
   transpileTemplateLiterals: Boolean
   pure: Boolean
+  dest: String
   defaults: SitePluginPluginOptionsDefaults
   base64Width: Int
   stripMetadata: Boolean
@@ -1170,6 +1171,8 @@ type SitePluginPluginOptions {
 
 type SitePluginPluginOptionsDefaults {
   quality: Int
+  formats: [String]
+  placeholder: String
 }
 
 type SitePluginPackageJson {
@@ -2289,6 +2292,7 @@ input SitePluginPluginOptionsFilterInput {
   namespace: StringQueryOperatorInput
   transpileTemplateLiterals: BooleanQueryOperatorInput
   pure: BooleanQueryOperatorInput
+  dest: StringQueryOperatorInput
   defaults: SitePluginPluginOptionsDefaultsFilterInput
   base64Width: IntQueryOperatorInput
   stripMetadata: BooleanQueryOperatorInput
@@ -2317,6 +2321,8 @@ input SitePluginPluginOptionsFilterInput {
 
 input SitePluginPluginOptionsDefaultsFilterInput {
   quality: IntQueryOperatorInput
+  formats: StringQueryOperatorInput
+  placeholder: StringQueryOperatorInput
 }
 
 input SitePluginPackageJsonFilterInput {
@@ -2519,7 +2525,10 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___namespace
   pluginCreator___pluginOptions___transpileTemplateLiterals
   pluginCreator___pluginOptions___pure
+  pluginCreator___pluginOptions___dest
   pluginCreator___pluginOptions___defaults___quality
+  pluginCreator___pluginOptions___defaults___formats
+  pluginCreator___pluginOptions___defaults___placeholder
   pluginCreator___pluginOptions___base64Width
   pluginCreator___pluginOptions___stripMetadata
   pluginCreator___pluginOptions___defaultQuality
@@ -5218,7 +5227,10 @@ enum SitePluginFieldsEnum {
   pluginOptions___namespace
   pluginOptions___transpileTemplateLiterals
   pluginOptions___pure
+  pluginOptions___dest
   pluginOptions___defaults___quality
+  pluginOptions___defaults___formats
+  pluginOptions___defaults___placeholder
   pluginOptions___base64Width
   pluginOptions___stripMetadata
   pluginOptions___defaultQuality

@@ -27,16 +27,10 @@ export const contentfulProjectPageQuery = graphql`
             id
             title
             isFreelanceWork
-            core {
-                raw
-                references {
-                    ... on ContentfulAsset {
-                        contentful_id
-                        title
-                        description
-                        gatsbyImageData(width: 1000)
-                        __typename
-                    }
+            thumbnail {
+                gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
+                file {
+                    url
                 }
             }
             content {
@@ -48,12 +42,22 @@ export const contentfulProjectPageQuery = graphql`
             description {
                 description
             }
-            thumbnail {
-                gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
-                file {
-                    url
+            core {
+                raw
+                references {
+                    ... on ContentfulAsset {
+                        contentful_id
+                        title
+                        description
+                        gatsbyImageData(quality: 100)
+                        __typename
+                    }
                 }
             }
+            role
+            team
+            teamStack
+            timeline
         }
     }
 `;
@@ -72,6 +76,10 @@ const ProjectTemplate = ({
         thumbnail,
         core,
         isFreelanceWork,
+        role,
+        team,
+        teamStack,
+        timeline,
     } = contentfulProjects;
 
     const { description: projectDescription } = description || {};
@@ -87,6 +95,8 @@ const ProjectTemplate = ({
     const projectThumbnail = getImage(gatsbyImageData)!;
 
     useEffect(() => window.scrollTo(0, 0), []);
+
+    console.log(role, team, teamStack, timeline);
 
     return (
         <>
@@ -113,6 +123,11 @@ const ProjectTemplate = ({
                         projectGithubLink={projectGithubLink}
                         projectAppLink={projectAppLink}
                         core={core}
+                        isFreelanceWork={isFreelanceWork}
+                        role={role}
+                        team={team}
+                        teamStack={teamStack}
+                        timeline={timeline}
                     />
 
                     <ProjectPageOthers>

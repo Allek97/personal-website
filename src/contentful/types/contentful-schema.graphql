@@ -242,6 +242,10 @@ type Project implements Entry {
   conclusion(locale: String): String
   isFreelanceWork(locale: String): Boolean
   core(locale: String): ProjectCore
+  role(locale: String): [String]
+  team(locale: String): [String]
+  teamStack(locale: String): [String]
+  timeline(locale: String): String
 }
 
 type ProjectLinkingCollections {
@@ -487,6 +491,25 @@ input ProjectFilter {
   core_exists: Boolean
   core_contains: String
   core_not_contains: String
+  role_exists: Boolean
+  role_contains_all: [String]
+  role_contains_some: [String]
+  role_contains_none: [String]
+  team_exists: Boolean
+  team_contains_all: [String]
+  team_contains_some: [String]
+  team_contains_none: [String]
+  teamStack_exists: Boolean
+  teamStack_contains_all: [String]
+  teamStack_contains_some: [String]
+  teamStack_contains_none: [String]
+  timeline_exists: Boolean
+  timeline: String
+  timeline_not: String
+  timeline_in: [String]
+  timeline_not_in: [String]
+  timeline_contains: String
+  timeline_not_contains: String
   OR: [ProjectFilter]
   AND: [ProjectFilter]
 }
@@ -498,6 +521,8 @@ enum ProjectOrder {
   date_DESC
   isFreelanceWork_ASC
   isFreelanceWork_DESC
+  timeline_ASC
+  timeline_DESC
   sys_id_ASC
   sys_id_DESC
   sys_publishedAt_ASC

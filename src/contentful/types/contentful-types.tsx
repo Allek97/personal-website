@@ -309,8 +309,12 @@ export type Project = Entry & {
   lesson?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<ProjectLinkingCollections>;
   resume?: Maybe<Scalars['String']>;
+  role?: Maybe<Array<Maybe<Scalars['String']>>>;
   sys: Sys;
+  team?: Maybe<Array<Maybe<Scalars['String']>>>;
+  teamStack?: Maybe<Array<Maybe<Scalars['String']>>>;
   thumbnail?: Maybe<Asset>;
+  timeline?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   used?: Maybe<Scalars['String']>;
 };
@@ -369,9 +373,29 @@ export type ProjectResumeArgs = {
 };
 
 
+export type ProjectRoleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type ProjectTeamArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+export type ProjectTeamStackArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
 export type ProjectThumbnailArgs = {
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type ProjectTimelineArgs = {
+  locale?: InputMaybe<Scalars['String']>;
 };
 
 
@@ -466,8 +490,27 @@ export type ProjectFilter = {
   resume_not?: InputMaybe<Scalars['String']>;
   resume_not_contains?: InputMaybe<Scalars['String']>;
   resume_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  role_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  role_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  role_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  role_exists?: InputMaybe<Scalars['Boolean']>;
   sys?: InputMaybe<SysFilter>;
+  teamStack_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  teamStack_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  teamStack_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  teamStack_exists?: InputMaybe<Scalars['Boolean']>;
+  team_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  team_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  team_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  team_exists?: InputMaybe<Scalars['Boolean']>;
   thumbnail_exists?: InputMaybe<Scalars['Boolean']>;
+  timeline?: InputMaybe<Scalars['String']>;
+  timeline_contains?: InputMaybe<Scalars['String']>;
+  timeline_exists?: InputMaybe<Scalars['Boolean']>;
+  timeline_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  timeline_not?: InputMaybe<Scalars['String']>;
+  timeline_not_contains?: InputMaybe<Scalars['String']>;
+  timeline_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   title?: InputMaybe<Scalars['String']>;
   title_contains?: InputMaybe<Scalars['String']>;
   title_exists?: InputMaybe<Scalars['Boolean']>;
@@ -510,6 +553,8 @@ export enum ProjectOrder {
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TimelineAsc = 'timeline_ASC',
+  TimelineDesc = 'timeline_DESC',
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC'
 }

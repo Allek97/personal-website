@@ -1,3 +1,6 @@
+import { ReactNode } from "react";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 import styled from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types";
@@ -5,7 +8,6 @@ import {
     documentToReactComponents,
     Options,
 } from "@contentful/rich-text-react-renderer";
-import { ReactNode } from "react";
 
 type Children = {
     children: ReactNode;
@@ -36,10 +38,51 @@ const LI = styled.li`
     &:not(:last-of-type) {
         margin-bottom: 1rem;
     }
+
+    h6 {
+        color: black !important;
+    }
+`;
+
+const ImgCode = styled.div`
+    width: 100%;
+    margin-top: 2rem;
+    max-height: 550px;
+    overflow-x: auto;
+
+    @media only screen and (max-width: 65em) {
+        width: 100%;
+    }
+
+    h6 {
+        margin-left: 3rem;
+    }
+
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #fff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        //#226f91;
+        //  -webkit-border-radius: 10px;
+        //  border-radius: 10px;
+        background-color: var(--color-blue-dark);
+        box-shadow: inset 0 0 6px RGBA(0, 0, 0, 0.5);
+    }
+
+    &::-webkit-scrollbar-thumb:window-inactive {
+        background-color: var(--color-blue-dark);
+    }
 `;
 
 const Img = styled(GatsbyImage)`
-    width: 120%;
+    width: 100%;
     margin-top: 8rem;
 
     @media only screen and (max-width: 65em) {
@@ -95,20 +138,38 @@ export const richTextOptions: Options = {
                 renderNode: {
                     [BLOCKS.LIST_ITEM]: (_, children) => <LI>{children}</LI>,
                     [BLOCKS.PARAGRAPH]: (_, children) => children,
+                    [BLOCKS.EMBEDDED_ASSET]: ({ data }) => {
+                        const { gatsbyImageData, description } = data.target;
+                        return (
+                            <div style={{ marginBottom: "5rem" }}>
+                                <p>{description}</p>
+                                <ImgCode>
+                                    <Zoom>
+                                        <GatsbyImage
+                                            image={getImage(gatsbyImageData)!}
+                                            alt={description}
+                                        />
+                                    </Zoom>
+                                </ImgCode>
+                            </div>
+                        );
+                    },
                 },
                 renderMark: {
                     [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
-                    [MARKS.ITALIC]: (text) => (
-                        <h6 style={{ color: "black !important" }}>{text}</h6>
-                    ),
+                    [MARKS.ITALIC]: (text) => <h6 className="black">{text}</h6>,
                 },
             });
 
             return UnTaggedChildren;
         },
         [BLOCKS.EMBEDDED_ASSET]: ({ data }) => {
-            const { gatsbyImageData, description } = data.target;
-            return <Img image={getImage(gatsbyImageData)!} alt={description} />;
+            const { gatsbyImageData, title } = data.target;
+            return (
+                <Zoom>
+                    <Img image={getImage(gatsbyImageData)!} alt={title} />
+                </Zoom>
+            );
         },
     },
 };

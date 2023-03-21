@@ -90,9 +90,9 @@ const Hero = () => {
                             }}
                         >
                             <ProjectLink
-                                aria-label="globe theme toggle"
+                                aria-label="Link to my startup"
                                 {...ProjectVariant}
-                                href="https://hiempsal.vercel.app/"
+                                href="https://hiempsal.ca"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 whileHover={{
@@ -119,7 +119,7 @@ const Hero = () => {
                                             marginRight: "1rem",
                                         }}
                                     />
-                                    Take A Look On My Lastest App
+                                    Take A Look On My Lastest Work
                                 </motion.div>
                             </ProjectLink>
                         </div>
@@ -132,19 +132,6 @@ const Hero = () => {
                         />
                     </motion.div>
                 </HeroArticle>
-
-                {/* <UFOContainer
-                    initial={{ y: "5rem", scale: 0.9, opacity: 0 }}
-                    animate={{ y: "0rem", scale: 1, opacity: 1 }}
-                    transition={{
-                        delay: 0.3,
-                    }}
-                >
-                    <UFOImage
-                        image={rocketImage as IGatsbyImageData}
-                        alt="Ufo"
-                    />
-                </UFOContainer> */}
 
                 <Stand />
             </Header>

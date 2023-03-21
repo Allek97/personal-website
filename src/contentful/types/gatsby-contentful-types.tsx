@@ -969,9 +969,13 @@ export type ContentfulProjects = ContentfulEntry &
         node_locale: Scalars["String"];
         parent?: Maybe<Node>;
         resume?: Maybe<ContentfulProjectsResumeTextNode>;
+        role?: Maybe<Array<Maybe<Scalars["String"]>>>;
         spaceId?: Maybe<Scalars["String"]>;
         sys?: Maybe<ContentfulProjectsSys>;
+        team?: Maybe<Array<Maybe<Scalars["String"]>>>;
+        teamStack?: Maybe<Array<Maybe<Scalars["String"]>>>;
         thumbnail?: Maybe<ContentfulAsset>;
+        timeline?: Maybe<Scalars["String"]>;
         title?: Maybe<Scalars["String"]>;
         updatedAt?: Maybe<Scalars["Date"]>;
         used?: Maybe<ContentfulProjectsUsedTextNode>;
@@ -1040,10 +1044,12 @@ export type ContentfulProjectsConnectionSumArgs = {
 export type ContentfulProjectsCore = {
     __typename?: "ContentfulProjectsCore";
     raw?: Maybe<Scalars["String"]>;
+    references?: Maybe<Array<Maybe<ContentfulAsset>>>;
 };
 
 export type ContentfulProjectsCoreFilterInput = {
     raw?: InputMaybe<StringQueryOperatorInput>;
+    references?: InputMaybe<ContentfulAssetFilterListInput>;
 };
 
 export type ContentfulProjectsEdge = {
@@ -2338,6 +2344,94 @@ export enum ContentfulProjectsFieldsEnum {
     ContentTags = "content___tags",
     ContentfulId = "contentful_id",
     CoreRaw = "core___raw",
+    CoreReferences = "core___references",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesChildren = "core___references___children",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesChildrenChildren = "core___references___children___children",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesChildrenId = "core___references___children___id",
+    CoreReferencesContentfulId = "core___references___contentful_id",
+    CoreReferencesCreatedAt = "core___references___createdAt",
+    CoreReferencesDescription = "core___references___description",
+    CoreReferencesFileContentType = "core___references___file___contentType",
+    CoreReferencesFileFileName = "core___references___file___fileName",
+    CoreReferencesFileUrl = "core___references___file___url",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFixedAspectRatio = "core___references___fixed___aspectRatio",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFixedBase64 = "core___references___fixed___base64",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFixedHeight = "core___references___fixed___height",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFixedSrc = "core___references___fixed___src",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFixedSrcSet = "core___references___fixed___srcSet",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFixedSrcSetWebp = "core___references___fixed___srcSetWebp",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFixedSrcWebp = "core___references___fixed___srcWebp",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFixedTracedSvg = "core___references___fixed___tracedSVG",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFixedWidth = "core___references___fixed___width",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFluidAspectRatio = "core___references___fluid___aspectRatio",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFluidBase64 = "core___references___fluid___base64",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFluidSizes = "core___references___fluid___sizes",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFluidSrc = "core___references___fluid___src",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFluidSrcSet = "core___references___fluid___srcSet",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFluidSrcSetWebp = "core___references___fluid___srcSetWebp",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFluidSrcWebp = "core___references___fluid___srcWebp",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesFluidTracedSvg = "core___references___fluid___tracedSVG",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesGatsbyImageData = "core___references___gatsbyImageData",
+    CoreReferencesId = "core___references___id",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesInternalContent = "core___references___internal___content",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesInternalContentDigest = "core___references___internal___contentDigest",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesInternalDescription = "core___references___internal___description",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesInternalFieldOwners = "core___references___internal___fieldOwners",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesInternalIgnoreType = "core___references___internal___ignoreType",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesInternalMediaType = "core___references___internal___mediaType",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesInternalOwner = "core___references___internal___owner",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesInternalType = "core___references___internal___type",
+    CoreReferencesNodeLocale = "core___references___node_locale",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesParentChildren = "core___references___parent___children",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesParentId = "core___references___parent___id",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesResizeAspectRatio = "core___references___resize___aspectRatio",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesResizeBase64 = "core___references___resize___base64",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesResizeHeight = "core___references___resize___height",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesResizeSrc = "core___references___resize___src",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesResizeTracedSvg = "core___references___resize___tracedSVG",
+    /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
+    CoreReferencesResizeWidth = "core___references___resize___width",
+    CoreReferencesSpaceId = "core___references___spaceId",
+    CoreReferencesSysRevision = "core___references___sys___revision",
+    CoreReferencesSysType = "core___references___sys___type",
+    CoreReferencesTitle = "core___references___title",
+    CoreReferencesUpdatedAt = "core___references___updatedAt",
     CreatedAt = "createdAt",
     Date = "date",
     DescriptionChildren = "description___children",
@@ -2557,12 +2651,15 @@ export enum ContentfulProjectsFieldsEnum {
     ResumeParentParentId = "resume___parent___parent___id",
     ResumeResume = "resume___resume",
     ResumeSysType = "resume___sys___type",
+    Role = "role",
     SpaceId = "spaceId",
     SysContentTypeSysId = "sys___contentType___sys___id",
     SysContentTypeSysLinkType = "sys___contentType___sys___linkType",
     SysContentTypeSysType = "sys___contentType___sys___type",
     SysRevision = "sys___revision",
     SysType = "sys___type",
+    Team = "team",
+    TeamStack = "teamStack",
     /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
     ThumbnailChildren = "thumbnail___children",
     /** @deprecated Sorting on fields that need arguments to resolve is deprecated. */
@@ -2699,6 +2796,7 @@ export enum ContentfulProjectsFieldsEnum {
     ThumbnailSysType = "thumbnail___sys___type",
     ThumbnailTitle = "thumbnail___title",
     ThumbnailUpdatedAt = "thumbnail___updatedAt",
+    Timeline = "timeline",
     Title = "title",
     UpdatedAt = "updatedAt",
     UsedChildren = "used___children",
@@ -2773,9 +2871,13 @@ export type ContentfulProjectsFilterInput = {
     node_locale?: InputMaybe<StringQueryOperatorInput>;
     parent?: InputMaybe<NodeFilterInput>;
     resume?: InputMaybe<ContentfulProjectsResumeTextNodeFilterInput>;
+    role?: InputMaybe<StringQueryOperatorInput>;
     spaceId?: InputMaybe<StringQueryOperatorInput>;
     sys?: InputMaybe<ContentfulProjectsSysFilterInput>;
+    team?: InputMaybe<StringQueryOperatorInput>;
+    teamStack?: InputMaybe<StringQueryOperatorInput>;
     thumbnail?: InputMaybe<ContentfulAssetFilterInput>;
+    timeline?: InputMaybe<StringQueryOperatorInput>;
     title?: InputMaybe<StringQueryOperatorInput>;
     updatedAt?: InputMaybe<DateQueryOperatorInput>;
     used?: InputMaybe<ContentfulProjectsUsedTextNodeFilterInput>;
@@ -4689,9 +4791,13 @@ export type QueryContentfulProjectsArgs = {
     node_locale?: InputMaybe<StringQueryOperatorInput>;
     parent?: InputMaybe<NodeFilterInput>;
     resume?: InputMaybe<ContentfulProjectsResumeTextNodeFilterInput>;
+    role?: InputMaybe<StringQueryOperatorInput>;
     spaceId?: InputMaybe<StringQueryOperatorInput>;
     sys?: InputMaybe<ContentfulProjectsSysFilterInput>;
+    team?: InputMaybe<StringQueryOperatorInput>;
+    teamStack?: InputMaybe<StringQueryOperatorInput>;
     thumbnail?: InputMaybe<ContentfulAssetFilterInput>;
+    timeline?: InputMaybe<StringQueryOperatorInput>;
     title?: InputMaybe<StringQueryOperatorInput>;
     updatedAt?: InputMaybe<DateQueryOperatorInput>;
     used?: InputMaybe<ContentfulProjectsUsedTextNodeFilterInput>;
@@ -5649,7 +5755,6 @@ export enum SitePageFieldsEnum {
     PluginCreatorChildrenInternalType = "pluginCreator___children___internal___type",
     PluginCreatorChildrenParentChildren = "pluginCreator___children___parent___children",
     PluginCreatorChildrenParentId = "pluginCreator___children___parent___id",
-    //   PluginCreatorId = 'pluginCreator___id',
     PluginCreatorInternalContent = "pluginCreator___internal___content",
     PluginCreatorInternalContentDigest = "pluginCreator___internal___contentDigest",
     PluginCreatorInternalDescription = "pluginCreator___internal___description",
@@ -5690,13 +5795,19 @@ export enum SitePageFieldsEnum {
     PluginCreatorParentParentChildren = "pluginCreator___parent___parent___children",
     PluginCreatorParentParentId = "pluginCreator___parent___parent___id",
     PluginCreatorPluginFilepath = "pluginCreator___pluginFilepath",
+    PluginCreatorPluginOptionsAssets = "pluginCreator___pluginOptions____assets__",
+    PluginCreatorPluginOptionsComponents = "pluginCreator___pluginOptions____components__",
+    PluginCreatorPluginOptionsContentful = "pluginCreator___pluginOptions____contentful__",
+    PluginCreatorPluginOptionsStyles = "pluginCreator___pluginOptions____styles__",
     PluginCreatorPluginOptionsAccessToken = "pluginCreator___pluginOptions___accessToken",
-    PluginCreatorPluginOptionsAliasComponents = "pluginCreator___pluginOptions___alias____components",
-    PluginCreatorPluginOptionsAliasContentful = "pluginCreator___pluginOptions___alias____contentful",
     PluginCreatorPluginOptionsAllExtensions = "pluginCreator___pluginOptions___allExtensions",
     PluginCreatorPluginOptionsAssetDownloadWorkers = "pluginCreator___pluginOptions___assetDownloadWorkers",
     PluginCreatorPluginOptionsBase64Width = "pluginCreator___pluginOptions___base64Width",
     PluginCreatorPluginOptionsDefaultQuality = "pluginCreator___pluginOptions___defaultQuality",
+    PluginCreatorPluginOptionsDefaultsFormats = "pluginCreator___pluginOptions___defaults___formats",
+    PluginCreatorPluginOptionsDefaultsPlaceholder = "pluginCreator___pluginOptions___defaults___placeholder",
+    PluginCreatorPluginOptionsDefaultsQuality = "pluginCreator___pluginOptions___defaults___quality",
+    PluginCreatorPluginOptionsDest = "pluginCreator___pluginOptions___dest",
     PluginCreatorPluginOptionsDisplayName = "pluginCreator___pluginOptions___displayName",
     PluginCreatorPluginOptionsDownloadLocal = "pluginCreator___pluginOptions___downloadLocal",
     PluginCreatorPluginOptionsEnvironment = "pluginCreator___pluginOptions___environment",
@@ -5918,13 +6029,19 @@ export enum SitePluginFieldsEnum {
     ParentParentParentChildren = "parent___parent___parent___children",
     ParentParentParentId = "parent___parent___parent___id",
     PluginFilepath = "pluginFilepath",
+    PluginOptionsAssets = "pluginOptions____assets__",
+    PluginOptionsComponents = "pluginOptions____components__",
+    PluginOptionsContentful = "pluginOptions____contentful__",
+    PluginOptionsStyles = "pluginOptions____styles__",
     PluginOptionsAccessToken = "pluginOptions___accessToken",
-    PluginOptionsAliasComponents = "pluginOptions___alias____components",
-    PluginOptionsAliasContentful = "pluginOptions___alias____contentful",
     PluginOptionsAllExtensions = "pluginOptions___allExtensions",
     PluginOptionsAssetDownloadWorkers = "pluginOptions___assetDownloadWorkers",
     PluginOptionsBase64Width = "pluginOptions___base64Width",
     PluginOptionsDefaultQuality = "pluginOptions___defaultQuality",
+    PluginOptionsDefaultsFormats = "pluginOptions___defaults___formats",
+    PluginOptionsDefaultsPlaceholder = "pluginOptions___defaults___placeholder",
+    PluginOptionsDefaultsQuality = "pluginOptions___defaults___quality",
+    PluginOptionsDest = "pluginOptions___dest",
     PluginOptionsDisplayName = "pluginOptions___displayName",
     PluginOptionsDownloadLocal = "pluginOptions___downloadLocal",
     PluginOptionsEnvironment = "pluginOptions___environment",
@@ -6050,12 +6167,17 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 
 export type SitePluginPluginOptions = {
     __typename?: "SitePluginPluginOptions";
+    _assets__?: Maybe<Array<Maybe<Scalars["String"]>>>;
+    _components__?: Maybe<Array<Maybe<Scalars["String"]>>>;
+    _contentful__?: Maybe<Array<Maybe<Scalars["String"]>>>;
+    _styles__?: Maybe<Array<Maybe<Scalars["String"]>>>;
     accessToken?: Maybe<Scalars["String"]>;
-    alias?: Maybe<SitePluginPluginOptionsAlias>;
     allExtensions?: Maybe<Scalars["Boolean"]>;
     assetDownloadWorkers?: Maybe<Scalars["Int"]>;
     base64Width?: Maybe<Scalars["Int"]>;
     defaultQuality?: Maybe<Scalars["Int"]>;
+    defaults?: Maybe<SitePluginPluginOptionsDefaults>;
+    dest?: Maybe<Scalars["String"]>;
     displayName?: Maybe<Scalars["Boolean"]>;
     downloadLocal?: Maybe<Scalars["Boolean"]>;
     environment?: Maybe<Scalars["String"]>;
@@ -6078,24 +6200,31 @@ export type SitePluginPluginOptions = {
     useNameForId?: Maybe<Scalars["Boolean"]>;
 };
 
-export type SitePluginPluginOptionsAlias = {
-    __typename?: "SitePluginPluginOptionsAlias";
-    _components?: Maybe<Array<Maybe<Scalars["String"]>>>;
-    _contentful?: Maybe<Array<Maybe<Scalars["String"]>>>;
+export type SitePluginPluginOptionsDefaults = {
+    __typename?: "SitePluginPluginOptionsDefaults";
+    formats?: Maybe<Array<Maybe<Scalars["String"]>>>;
+    placeholder?: Maybe<Scalars["String"]>;
+    quality?: Maybe<Scalars["Int"]>;
 };
 
-export type SitePluginPluginOptionsAliasFilterInput = {
-    _components?: InputMaybe<StringQueryOperatorInput>;
-    _contentful?: InputMaybe<StringQueryOperatorInput>;
+export type SitePluginPluginOptionsDefaultsFilterInput = {
+    formats?: InputMaybe<StringQueryOperatorInput>;
+    placeholder?: InputMaybe<StringQueryOperatorInput>;
+    quality?: InputMaybe<IntQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsFilterInput = {
+    _assets__?: InputMaybe<StringQueryOperatorInput>;
+    _components__?: InputMaybe<StringQueryOperatorInput>;
+    _contentful__?: InputMaybe<StringQueryOperatorInput>;
+    _styles__?: InputMaybe<StringQueryOperatorInput>;
     accessToken?: InputMaybe<StringQueryOperatorInput>;
-    alias?: InputMaybe<SitePluginPluginOptionsAliasFilterInput>;
     allExtensions?: InputMaybe<BooleanQueryOperatorInput>;
     assetDownloadWorkers?: InputMaybe<IntQueryOperatorInput>;
     base64Width?: InputMaybe<IntQueryOperatorInput>;
     defaultQuality?: InputMaybe<IntQueryOperatorInput>;
+    defaults?: InputMaybe<SitePluginPluginOptionsDefaultsFilterInput>;
+    dest?: InputMaybe<StringQueryOperatorInput>;
     displayName?: InputMaybe<BooleanQueryOperatorInput>;
     downloadLocal?: InputMaybe<BooleanQueryOperatorInput>;
     environment?: InputMaybe<StringQueryOperatorInput>;

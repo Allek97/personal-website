@@ -1,7 +1,7 @@
 overwrite: true
-schema: "./src/contentful/gatsby-graphql-contentful-schema.graphql"
+schema: "./src/contentful/types/contentful-schema.graphql"
 documents: "src/**/*.graphql"
 generates:
-    src/generated/graphql-contentful-types.tsx:
+    src/generated/contentful-schema-types.tsx:
         plugins:
             - "typescript"

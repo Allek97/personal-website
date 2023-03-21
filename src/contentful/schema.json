@@ -935,6 +935,10 @@ type ContentfulProjects implements ContentfulReference & ContentfulEntry & Node 
   ): Date
   isFreelanceWork: Boolean
   core: ContentfulProjectsCore
+  role: [String]
+  team: [String]
+  teamStack: [String]
+  timeline: String
   thumbnail: ContentfulAsset
   aboutImages: [ContentfulAsset]
   description: contentfulProjectsDescriptionTextNode
@@ -1015,6 +1019,7 @@ type ContentfulProjects implements ContentfulReference & ContentfulEntry & Node 
 
 type ContentfulProjectsCore {
   raw: String
+  references: [ContentfulAsset]
 }
 
 type ContentfulProjectsSys {
@@ -1137,6 +1142,8 @@ type SitePluginPluginOptions {
   namespace: String
   transpileTemplateLiterals: Boolean
   pure: Boolean
+  dest: String
+  defaults: SitePluginPluginOptionsDefaults
   base64Width: Int
   stripMetadata: Boolean
   defaultQuality: Int
@@ -1152,16 +1159,20 @@ type SitePluginPluginOptions {
   pageLimit: Int
   assetDownloadWorkers: Int
   useNameForId: Boolean
-  alias: SitePluginPluginOptionsAlias
+  _components__: [String]
+  _contentful__: [String]
+  _styles__: [String]
+  _assets__: [String]
   pathCheck: Boolean
   allExtensions: Boolean
   isTSX: Boolean
   jsxPragma: String
 }
 
-type SitePluginPluginOptionsAlias {
-  _components: [String]
-  _contentful: [String]
+type SitePluginPluginOptionsDefaults {
+  quality: Int
+  formats: [String]
+  placeholder: String
 }
 
 type SitePluginPackageJson {
@@ -1243,7 +1254,7 @@ type Query {
   allContentfulEntry(filter: ContentfulEntryFilterInput, sort: ContentfulEntrySortInput, skip: Int, limit: Int): ContentfulEntryConnection!
   contentfulAsset(contentful_id: StringQueryOperatorInput, id: StringQueryOperatorInput, spaceId: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, file: ContentfulAssetFileFilterInput, title: StringQueryOperatorInput, description: StringQueryOperatorInput, node_locale: StringQueryOperatorInput, sys: ContentfulAssetSysFilterInput, fixed: ContentfulFixedFilterInput, fluid: ContentfulFluidFilterInput, gatsbyImageData: JSONQueryOperatorInput, resize: ContentfulResizeFilterInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ContentfulAsset
   allContentfulAsset(filter: ContentfulAssetFilterInput, sort: ContentfulAssetSortInput, skip: Int, limit: Int): ContentfulAssetConnection!
-  contentfulProjects(contentful_id: StringQueryOperatorInput, id: StringQueryOperatorInput, node_locale: StringQueryOperatorInput, title: StringQueryOperatorInput, date: DateQueryOperatorInput, isFreelanceWork: BooleanQueryOperatorInput, core: ContentfulProjectsCoreFilterInput, thumbnail: ContentfulAssetFilterInput, aboutImages: ContentfulAssetFilterListInput, description: contentfulProjectsDescriptionTextNodeFilterInput, content: contentfulProjectsContentJsonNodeFilterInput, resume: contentfulProjectsResumeTextNodeFilterInput, used: contentfulProjectsUsedTextNodeFilterInput, conclusion: contentfulProjectsConclusionTextNodeFilterInput, spaceId: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, sys: ContentfulProjectsSysFilterInput, lesson: contentfulProjectsLessonTextNodeFilterInput, gatsbyPath: StringQueryOperatorInput, childrenContentfulProjectsUsedTextNode: contentfulProjectsUsedTextNodeFilterListInput, childContentfulProjectsUsedTextNode: contentfulProjectsUsedTextNodeFilterInput, childrenContentfulProjectsResumeTextNode: contentfulProjectsResumeTextNodeFilterListInput, childContentfulProjectsResumeTextNode: contentfulProjectsResumeTextNodeFilterInput, childrenContentfulProjectsLessonTextNode: contentfulProjectsLessonTextNodeFilterListInput, childContentfulProjectsLessonTextNode: contentfulProjectsLessonTextNodeFilterInput, childrenContentfulProjectsDescriptionTextNode: contentfulProjectsDescriptionTextNodeFilterListInput, childContentfulProjectsDescriptionTextNode: contentfulProjectsDescriptionTextNodeFilterInput, childrenContentfulProjectsContentJsonNode: contentfulProjectsContentJsonNodeFilterListInput, childContentfulProjectsContentJsonNode: contentfulProjectsContentJsonNodeFilterInput, childrenContentfulProjectsConclusionTextNode: contentfulProjectsConclusionTextNodeFilterListInput, childContentfulProjectsConclusionTextNode: contentfulProjectsConclusionTextNodeFilterInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ContentfulProjects
+  contentfulProjects(contentful_id: StringQueryOperatorInput, id: StringQueryOperatorInput, node_locale: StringQueryOperatorInput, title: StringQueryOperatorInput, date: DateQueryOperatorInput, isFreelanceWork: BooleanQueryOperatorInput, core: ContentfulProjectsCoreFilterInput, role: StringQueryOperatorInput, team: StringQueryOperatorInput, teamStack: StringQueryOperatorInput, timeline: StringQueryOperatorInput, thumbnail: ContentfulAssetFilterInput, aboutImages: ContentfulAssetFilterListInput, description: contentfulProjectsDescriptionTextNodeFilterInput, content: contentfulProjectsContentJsonNodeFilterInput, resume: contentfulProjectsResumeTextNodeFilterInput, used: contentfulProjectsUsedTextNodeFilterInput, conclusion: contentfulProjectsConclusionTextNodeFilterInput, spaceId: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, sys: ContentfulProjectsSysFilterInput, lesson: contentfulProjectsLessonTextNodeFilterInput, gatsbyPath: StringQueryOperatorInput, childrenContentfulProjectsUsedTextNode: contentfulProjectsUsedTextNodeFilterListInput, childContentfulProjectsUsedTextNode: contentfulProjectsUsedTextNodeFilterInput, childrenContentfulProjectsResumeTextNode: contentfulProjectsResumeTextNodeFilterListInput, childContentfulProjectsResumeTextNode: contentfulProjectsResumeTextNodeFilterInput, childrenContentfulProjectsLessonTextNode: contentfulProjectsLessonTextNodeFilterListInput, childContentfulProjectsLessonTextNode: contentfulProjectsLessonTextNodeFilterInput, childrenContentfulProjectsDescriptionTextNode: contentfulProjectsDescriptionTextNodeFilterListInput, childContentfulProjectsDescriptionTextNode: contentfulProjectsDescriptionTextNodeFilterInput, childrenContentfulProjectsContentJsonNode: contentfulProjectsContentJsonNodeFilterListInput, childContentfulProjectsContentJsonNode: contentfulProjectsContentJsonNodeFilterInput, childrenContentfulProjectsConclusionTextNode: contentfulProjectsConclusionTextNodeFilterListInput, childContentfulProjectsConclusionTextNode: contentfulProjectsConclusionTextNodeFilterInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ContentfulProjects
   allContentfulProjects(filter: ContentfulProjectsFilterInput, sort: ContentfulProjectsSortInput, skip: Int, limit: Int): ContentfulProjectsConnection!
   contentfulProjectsUsedTextNode(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, used: StringQueryOperatorInput, sys: contentfulProjectsUsedTextNodeSysFilterInput): contentfulProjectsUsedTextNode
   allContentfulProjectsUsedTextNode(filter: contentfulProjectsUsedTextNodeFilterInput, sort: contentfulProjectsUsedTextNodeSortInput, skip: Int, limit: Int): contentfulProjectsUsedTextNodeConnection!
@@ -2281,6 +2292,8 @@ input SitePluginPluginOptionsFilterInput {
   namespace: StringQueryOperatorInput
   transpileTemplateLiterals: BooleanQueryOperatorInput
   pure: BooleanQueryOperatorInput
+  dest: StringQueryOperatorInput
+  defaults: SitePluginPluginOptionsDefaultsFilterInput
   base64Width: IntQueryOperatorInput
   stripMetadata: BooleanQueryOperatorInput
   defaultQuality: IntQueryOperatorInput
@@ -2296,16 +2309,20 @@ input SitePluginPluginOptionsFilterInput {
   pageLimit: IntQueryOperatorInput
   assetDownloadWorkers: IntQueryOperatorInput
   useNameForId: BooleanQueryOperatorInput
-  alias: SitePluginPluginOptionsAliasFilterInput
+  _components__: StringQueryOperatorInput
+  _contentful__: StringQueryOperatorInput
+  _styles__: StringQueryOperatorInput
+  _assets__: StringQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
   allExtensions: BooleanQueryOperatorInput
   isTSX: BooleanQueryOperatorInput
   jsxPragma: StringQueryOperatorInput
 }
 
-input SitePluginPluginOptionsAliasFilterInput {
-  _components: StringQueryOperatorInput
-  _contentful: StringQueryOperatorInput
+input SitePluginPluginOptionsDefaultsFilterInput {
+  quality: IntQueryOperatorInput
+  formats: StringQueryOperatorInput
+  placeholder: StringQueryOperatorInput
 }
 
 input SitePluginPackageJsonFilterInput {
@@ -2508,6 +2525,10 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___namespace
   pluginCreator___pluginOptions___transpileTemplateLiterals
   pluginCreator___pluginOptions___pure
+  pluginCreator___pluginOptions___dest
+  pluginCreator___pluginOptions___defaults___quality
+  pluginCreator___pluginOptions___defaults___formats
+  pluginCreator___pluginOptions___defaults___placeholder
   pluginCreator___pluginOptions___base64Width
   pluginCreator___pluginOptions___stripMetadata
   pluginCreator___pluginOptions___defaultQuality
@@ -2523,8 +2544,10 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___pageLimit
   pluginCreator___pluginOptions___assetDownloadWorkers
   pluginCreator___pluginOptions___useNameForId
-  pluginCreator___pluginOptions___alias____components
-  pluginCreator___pluginOptions___alias____contentful
+  pluginCreator___pluginOptions____components__
+  pluginCreator___pluginOptions____contentful__
+  pluginCreator___pluginOptions____styles__
+  pluginCreator___pluginOptions____assets__
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___pluginOptions___allExtensions
   pluginCreator___pluginOptions___isTSX
@@ -3102,6 +3125,7 @@ input ContentfulAssetSortInput {
 
 input ContentfulProjectsCoreFilterInput {
   raw: StringQueryOperatorInput
+  references: ContentfulAssetFilterListInput
 }
 
 input ContentfulAssetFilterListInput {
@@ -3255,6 +3279,61 @@ enum ContentfulProjectsFieldsEnum {
   date
   isFreelanceWork
   core___raw
+  core___references
+  core___references___contentful_id
+  core___references___id
+  core___references___spaceId
+  core___references___createdAt
+  core___references___updatedAt
+  core___references___file___url
+  core___references___file___fileName
+  core___references___file___contentType
+  core___references___title
+  core___references___description
+  core___references___node_locale
+  core___references___sys___type
+  core___references___sys___revision
+  core___references___fixed___base64 @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fixed___tracedSVG @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fixed___aspectRatio @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fixed___width @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fixed___height @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fixed___src @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fixed___srcSet @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fixed___srcWebp @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fixed___srcSetWebp @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fluid___base64 @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fluid___tracedSVG @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fluid___aspectRatio @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fluid___src @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fluid___srcSet @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fluid___srcWebp @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fluid___srcSetWebp @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___fluid___sizes @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___gatsbyImageData @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___resize___base64 @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___resize___tracedSVG @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___resize___src @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___resize___width @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___resize___height @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___resize___aspectRatio @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___parent___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___children___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___children___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___internal___content @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___internal___contentDigest @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___internal___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___internal___fieldOwners @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___internal___ignoreType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___internal___mediaType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___internal___owner @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  core___references___internal___type @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  role
+  team
+  teamStack
+  timeline
   thumbnail___contentful_id
   thumbnail___id
   thumbnail___spaceId
@@ -4254,6 +4333,10 @@ input ContentfulProjectsFilterInput {
   date: DateQueryOperatorInput
   isFreelanceWork: BooleanQueryOperatorInput
   core: ContentfulProjectsCoreFilterInput
+  role: StringQueryOperatorInput
+  team: StringQueryOperatorInput
+  teamStack: StringQueryOperatorInput
+  timeline: StringQueryOperatorInput
   thumbnail: ContentfulAssetFilterInput
   aboutImages: ContentfulAssetFilterListInput
   description: contentfulProjectsDescriptionTextNodeFilterInput
@@ -5144,6 +5227,10 @@ enum SitePluginFieldsEnum {
   pluginOptions___namespace
   pluginOptions___transpileTemplateLiterals
   pluginOptions___pure
+  pluginOptions___dest
+  pluginOptions___defaults___quality
+  pluginOptions___defaults___formats
+  pluginOptions___defaults___placeholder
   pluginOptions___base64Width
   pluginOptions___stripMetadata
   pluginOptions___defaultQuality
@@ -5159,8 +5246,10 @@ enum SitePluginFieldsEnum {
   pluginOptions___pageLimit
   pluginOptions___assetDownloadWorkers
   pluginOptions___useNameForId
-  pluginOptions___alias____components
-  pluginOptions___alias____contentful
+  pluginOptions____components__
+  pluginOptions____contentful__
+  pluginOptions____styles__
+  pluginOptions____assets__
   pluginOptions___pathCheck
   pluginOptions___allExtensions
   pluginOptions___isTSX

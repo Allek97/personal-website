@@ -22,9 +22,23 @@ module.exports = {
         `gatsby-plugin-styled-components`,
         `gatsby-plugin-sass`,
         `gatsby-plugin-image`,
-        `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
-        `gatsby-plugin-extract-schema`,
+        {
+            resolve: "gatsby-plugin-extract-schema",
+            options: {
+                dest: `${__dirname}/src/contentful/types/gatsby-contentful-schema.graphql`,
+            },
+        },
+        {
+            resolve: `gatsby-plugin-sharp`,
+            options: {
+                defaults: {
+                    quality: 95,
+                    formats: ["auto", "webp", "avif"],
+                    placeholder: "blurred",
+                },
+            },
+        },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
