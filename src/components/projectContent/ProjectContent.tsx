@@ -17,9 +17,10 @@ import {
     ProjectAd,
     ProjectPageBtn,
     ProjectPageStory,
-    WorkSpecifics,
 } from "./ProjectContentStyle";
 import socials from "../../constants/socials";
+import TeamStack from "./TeamStack";
+import { ProjectPageMore } from "../../components/projectOverview/ProjectOverview.styled";
 
 interface Props {
     projectName?: Maybe<string>;
@@ -75,59 +76,68 @@ const ProjectContent = ({
                     </ul>
                 </div>
 
-                <ProjectPageBtn
+                {/* <ProjectPageBtn
                     href={projectAppLink!}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
                     View the site
-                </ProjectPageBtn>
+                </ProjectPageBtn> */}
 
-                <ProjectPageBtn
+                <ProjectPageMore
+                    href={projectAppLink!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ visible: { delay: 0.4 } }}
+                    whileHover={{
+                        scale: 1.1,
+                        transition: {
+                            ease: "easeInOut",
+                            duration: 0.2,
+                            delay: 0,
+                        },
+                    }}
+                    style={{ marginBottom: "2rem" }}
+                >
+                    View the site
+                </ProjectPageMore>
+                <ProjectPageMore
+                    href={projectAppLink!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ visible: { delay: 0.4 } }}
+                    whileHover={{
+                        scale: 1.1,
+                        transition: {
+                            ease: "easeInOut",
+                            duration: 0.2,
+                            delay: 0,
+                        },
+                    }}
+                >
+                    Github code
+                </ProjectPageMore>
+
+                {/* <ProjectPageBtn
                     href={projectGithubLink!}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Github
-                </ProjectPageBtn>
+                    Github code
+                </ProjectPageBtn> */}
 
-                <WorkSpecifics>
-                    {isFreelanceWork && (
-                        <>
-                            {role && (
-                                <div>
-                                    <h2>Role</h2>
-                                    {role.map((r) => (
-                                        <p key={r}>{r}</p>
-                                    ))}
-                                </div>
-                            )}
-                            {team && (
-                                <div>
-                                    <h2>Team</h2>
-                                    {team.map((member) => (
-                                        <p key={member}>{member}</p>
-                                    ))}
-                                </div>
-                            )}
-                            {teamStack && (
-                                <div>
-                                    <h2>Team Stack</h2>
-                                    {teamStack.map((stack) => (
-                                        <p key={stack}>{stack}</p>
-                                    ))}
-                                </div>
-                            )}
-
-                            {timeline && (
-                                <div>
-                                    <h2>Timeline</h2>
-                                    <p>{timeline}</p>
-                                </div>
-                            )}
-                        </>
-                    )}
-                </WorkSpecifics>
+                {isFreelanceWork && (
+                    <TeamStack
+                        role={role}
+                        team={team}
+                        teamStack={teamStack}
+                        timeline={timeline}
+                    />
+                )}
             </ProjectAd>
         </ProjectPageStory>
     );

@@ -142,7 +142,7 @@ export const richTextOptions: Options = {
                         const { gatsbyImageData, description } = data.target;
                         return (
                             <div style={{ marginBottom: "5rem" }}>
-                                <p>{description}</p>
+                                <p style={{ color: "black" }}>{description}</p>
                                 <ImgCode>
                                     <Zoom>
                                         <GatsbyImage

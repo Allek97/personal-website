@@ -96,8 +96,6 @@ const ProjectTemplate = ({
 
     useEffect(() => window.scrollTo(0, 0), []);
 
-    console.log(role, team, teamStack, timeline);
-
     return (
         <>
             <Seo
