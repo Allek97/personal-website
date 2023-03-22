@@ -20,7 +20,6 @@ import {
 } from "./ProjectContentStyle";
 import socials from "../../constants/socials";
 import TeamStack from "./TeamStack";
-import { ProjectPageMore } from "../../components/projectOverview/ProjectOverview.styled";
 
 interface Props {
     projectName?: Maybe<string>;
@@ -76,59 +75,21 @@ const ProjectContent = ({
                     </ul>
                 </div>
 
-                {/* <ProjectPageBtn
+                <ProjectPageBtn
                     href={projectAppLink!}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
                     View the site
-                </ProjectPageBtn> */}
+                </ProjectPageBtn>
 
-                <ProjectPageMore
-                    href={projectAppLink!}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ visible: { delay: 0.4 } }}
-                    whileHover={{
-                        scale: 1.1,
-                        transition: {
-                            ease: "easeInOut",
-                            duration: 0.2,
-                            delay: 0,
-                        },
-                    }}
-                    style={{ marginBottom: "2rem" }}
-                >
-                    View the site
-                </ProjectPageMore>
-                <ProjectPageMore
-                    href={projectAppLink!}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial="hidden"
-                    animate="visible"
-                    transition={{ visible: { delay: 0.4 } }}
-                    whileHover={{
-                        scale: 1.1,
-                        transition: {
-                            ease: "easeInOut",
-                            duration: 0.2,
-                            delay: 0,
-                        },
-                    }}
-                >
-                    Github code
-                </ProjectPageMore>
-
-                {/* <ProjectPageBtn
+                <ProjectPageBtn
                     href={projectGithubLink!}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
                     Github code
-                </ProjectPageBtn> */}
+                </ProjectPageBtn>
 
                 {isFreelanceWork && (
                     <TeamStack

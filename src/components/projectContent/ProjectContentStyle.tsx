@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ProjectPageMore } from "../projectOverview/ProjectOverview.styled";
 
 export const ProjectPageStory = styled.div`
     display: flex;
@@ -178,36 +179,10 @@ export const ProjectAd = styled.div`
     }
 `;
 
-export const ProjectPageBtn = styled.a`
-    padding: 0.8rem 0;
+export const ProjectPageBtn = styled(ProjectPageMore)`
+    border-bottom: 2px solid #12307c;
+    color: #12307c;
+    font-size: 2rem;
 
-    transition: all 0.3s;
-
-    box-shadow: 0 3px 10px rgb(19 15 235 / 20%);
-
-    border: 1px solid rgba(25, 14, 66, 1);
-    border-radius: 2rem;
-    width: 19rem;
-
-    /* background-color: rgba(25, 14, 66, 1); */
-
-    color: black;
-    font-family: ManropeMedium;
-    font-size: 1.8rem;
-    letter-spacing: 1px;
-    white-space: nowrap;
-    text-decoration: none;
-    text-align: center;
-
-    cursor: pointer;
-
-    &:first-of-type {
-        margin-bottom: 3rem;
-    }
-
-    &:hover {
-        /* box-shadow: rgb(25 14 66 / 90%) 0px 0.4rem 1rem 0px; */
-        background-color: rgba(25, 14, 66, 1);
-        color: white;
-    }
+    margin-bottom: 1.5rem;
 `;
