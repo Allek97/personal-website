@@ -26,6 +26,7 @@ import {
     SiCypress,
     SiJest,
     SiTestinglibrary,
+    SiRedux,
 } from "react-icons/si";
 import { IoLogoFigma } from "react-icons/io5";
 import ExpressJsIcon from "../assets/svgs/expressjs-icon.svg";
@@ -179,6 +180,11 @@ const stacks = [
         id: 26,
         icon: <FaShopify />,
         title: "Shopify Storefront API",
+    },
+    {
+        id: 27,
+        icon: <SiRedux />,
+        title: "Redux",
     },
 ];
 
