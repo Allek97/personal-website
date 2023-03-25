@@ -27,10 +27,13 @@ import {
     SiJest,
     SiTestinglibrary,
     SiRedux,
+    SiPrisma,
+    SiPostgresql,
 } from "react-icons/si";
 import { IoLogoFigma } from "react-icons/io5";
 import ExpressJsIcon from "../assets/svgs/expressjs-icon.svg";
 import ContentfulIcon from "../assets/svgs/contentful-logo.svg";
+import { BsFillBootstrapFill } from "react-icons/bs";
 
 const stacks = [
     {
@@ -185,6 +188,21 @@ const stacks = [
         id: 27,
         icon: <SiRedux />,
         title: "Redux",
+    },
+    {
+        id: 28,
+        icon: <BsFillBootstrapFill />,
+        title: "Bootstrap",
+    },
+    {
+        id: 29,
+        icon: <SiPrisma />,
+        title: "Prisma",
+    },
+    {
+        id: 30,
+        icon: <SiPostgresql />,
+        title: "PostgreSQL",
     },
 ];
 

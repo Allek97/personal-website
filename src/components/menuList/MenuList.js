@@ -9,65 +9,83 @@ import MenuLink from "./MenuLink";
 import { container, menuVariant, socialVariant } from "./animation";
 
 const MenuList = ({ isOpen, setIsOpen }) => {
-  return (
-    <div>
-      <FixedBox
-        initial="hidden"
-        animate={isOpen ? "visible" : "hidden"}
-        variants={menuVariant}
-      >
+    return (
         <div>
-          <List
-            initial="menuHidden"
-            animate={isOpen ? "menuVisible" : "menuHidden"}
-            variants={container}
-          >
-            <MenuLink setIsOpen={setIsOpen} sectionLink="homeSection">
-              Home
-            </MenuLink>
-            <MenuLink setIsOpen={setIsOpen} sectionLink="aboutSection">
-              About
-            </MenuLink>
-            <MenuLink setIsOpen={setIsOpen} sectionLink="projectSection">
-              Projects
-            </MenuLink>
-            <MenuLink setIsOpen={setIsOpen} sectionLink="contactSection">
-              Contact
-            </MenuLink>
-          </List>
+            <FixedBox
+                initial="hidden"
+                animate={isOpen ? "visible" : "hidden"}
+                variants={menuVariant}
+            >
+                <div>
+                    <List
+                        initial="menuHidden"
+                        animate={isOpen ? "menuVisible" : "menuHidden"}
+                        variants={container}
+                    >
+                        <MenuLink
+                            setIsOpen={setIsOpen}
+                            sectionLink="homeSection"
+                        >
+                            Home
+                        </MenuLink>
+                        <MenuLink
+                            setIsOpen={setIsOpen}
+                            sectionLink="aboutSection"
+                        >
+                            About
+                        </MenuLink>
+                        <MenuLink
+                            setIsOpen={setIsOpen}
+                            sectionLink="freelanceSection"
+                        >
+                            Works
+                        </MenuLink>
+                        <MenuLink
+                            setIsOpen={setIsOpen}
+                            sectionLink="projectSection"
+                        >
+                            Projects
+                        </MenuLink>
+                        <MenuLink
+                            setIsOpen={setIsOpen}
+                            sectionLink="contactSection"
+                        >
+                            Contact
+                        </MenuLink>
+                    </List>
 
-          <SocialList
-            initial="menuHidden"
-            animate={isOpen ? "menuVisible" : "menuHidden"}
-            variants={container}
-          >
-            {socials.map((social) => {
-              return (
-                <motion.li
-                  key={social.id}
-                  variants={socialVariant}
-                  whileHover={{ scale: 1.3 }}
-                >
-                  <SideLinkSvg
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {social.icon}
-                  </SideLinkSvg>
-                </motion.li>
-              );
-            })}
-          </SocialList>
+                    <SocialList
+                        initial="menuHidden"
+                        animate={isOpen ? "menuVisible" : "menuHidden"}
+                        variants={container}
+                    >
+                        {socials.map((social) => {
+                            return (
+                                <motion.li
+                                    key={social.id}
+                                    variants={socialVariant}
+                                    whileHover={{ scale: 1.3 }}
+                                >
+                                    <SideLinkSvg
+                                        href={social.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {social.icon}
+                                    </SideLinkSvg>
+                                </motion.li>
+                            );
+                        })}
+                    </SocialList>
+                </div>
+            </FixedBox>
         </div>
-      </FixedBox>
-    </div>
-  );
+    );
 };
 
 MenuList.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  setIsOpen: PropTypes.func.isRequired,
+    isOpen: PropTypes.bool.isRequired,
+    setIsOpen: PropTypes.func.isRequired,
 };
 
 export default MenuList;

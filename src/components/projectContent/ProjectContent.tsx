@@ -82,14 +82,15 @@ const ProjectContent = ({
                 >
                     View the site
                 </ProjectPageBtn>
-
-                <ProjectPageBtn
-                    href={projectGithubLink!}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Github code
-                </ProjectPageBtn>
+                {projectGithubLink && (
+                    <ProjectPageBtn
+                        href={projectGithubLink!}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Github code
+                    </ProjectPageBtn>
+                )}
 
                 {isFreelanceWork && (
                     <TeamStack

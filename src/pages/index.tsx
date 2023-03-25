@@ -66,7 +66,7 @@ export default function Index() {
                         <ProjectSection id="freelance" ref={freelanceRef}>
                             <ProjectContainer>
                                 <AnimateText
-                                    text="Freelance Work"
+                                    text="Works"
                                     type="heading1"
                                     isAnimate={isFreelanceInView}
                                     version="slideUp"
