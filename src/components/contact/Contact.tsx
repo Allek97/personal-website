@@ -116,7 +116,7 @@ const Contact = () => {
                         scale: 0.98,
                     }}
                     style={{ alignSelf: "flex-start" }}
-                    href="Ilias_Allek_SWE_Resume_EN.docx"
+                    href="Ilias_Allek_SWE_Resume_EN.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="my resume in english"
@@ -132,7 +132,7 @@ const Contact = () => {
                         scale: 0.98,
                     }}
                     style={{ alignSelf: "flex-start" }}
-                    href="Ilias_Allek_SWE_Resume_FR.docx"
+                    href="Ilias_Allek_SWE_Resume_FR.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="my resume in french"
